@@ -1,0 +1,23 @@
+footer {
+  .footer__area {
+    color: rgba(27, 88, 173, 0.869);
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .footer__app-item {
+    width: 90%;
+    float: inline-end;
+  }
+  .footer__social {
+    width: 90%;
+    justify-content: space-between;
+    a {
+     
+      width: calc(100% / 3 - 10px);
+      .footer__social-item {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+nav {
+  background-color: white;
+  height: auto;
+  z-index: 100;
+  width: 100%;
+
+  .logo-img__login-page {
+    img {
+      height: 65px;
+    }
+  }
+
+  #navbar__middle {
+    display: flex;
+    justify-content: space-between;
+  }
+  #navbar__right {
+    #navbar__phone {
+      border: black 1px solid;
+      border-radius: 20px;
+
+      .blue {
+        color: #1b75d0;
+      }
+    }
+
+    .yellow {
+      color: yellow;
+      background-color: red;
+      font-size: 13px;
+      padding: 3px;
+      border-radius: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #navbar__middle {
+    width: 100%;
+  }
+  #navbar__right {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 992px) {
+  nav {
+    .navbar-nav {
+      .nav-item {
+        justify-content: center;
+        border: none;
+        a {
+          text-align: center;
+        }
+      }
+    }
+    #navbar__right {
+      #navbar__phone {
+        border: 0;
+      }
+    }
+  }
+}

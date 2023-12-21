@@ -1,0 +1,42 @@
+<!-- ---------------------Create Footer--------------------- -->
+<div class="container">
+  <footer class="py-5">
+    <div class="row">
+      <!-- ---------------------Creater Location Footer-------------------- -->
+      <div
+        *ngFor="let item of footerLocationItems; let i = index"
+        class="col-6 col-md-2 mb-3"
+      >
+        <p class="footer__area">{{ item.area }}</p>
+        <p class="footer__location">{{ item.location }}</p>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3 d-flex flex-column align-items-end">
+        <!-- ---------------------Display App Image--------------- -->
+        <a
+          *ngFor="let item of footerAppItem; let i = index"
+          [ngClass]="i === footerAppItem.length - 1 ? 'mb-3' : ''"  
+          target="_blank"
+          [href]="item.link"
+          ><img
+            class="footer__app-item"
+            [src]="item.imageURL"
+            [alt]="item.imageName"
+        /></a>
+
+        <!-- ---------------------Display Social Image------------------ -->
+        <div class="footer__social d-flex ">
+          <a
+            *ngFor="let item of footerSocialItem"
+            target="_blank"
+            [href]="item.link"
+            ><img
+              class="footer__social-item"
+              [src]="item.imageURL"
+              [alt]="item.imageName"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

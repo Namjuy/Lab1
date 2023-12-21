@@ -1,0 +1,156 @@
+.carousel {
+  height: fit-content;
+  .carousel-item {
+    width: 100%;
+    img {
+      height: 700px;
+    }
+  }
+
+  .carousel-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1em;
+    width: 55%;
+    background-color: rgba(171, 171, 171, 0.749);
+    // opacity: 0.75;
+    left: 3%;
+    bottom: 20%;
+    height: 15%;
+    border-radius: 15px;
+
+    h5,
+    p {
+      color: white;
+    }
+
+    #detail-button {
+      background-color: rgb(19, 196, 57);
+      border: none;
+      a{
+        text-decoration: none;
+        color: white;
+      }
+      &:hover{
+        background-color: rgba(13, 151, 43, 0.677);
+      }
+    }
+  }
+
+  .carousel-indicators {
+    #outer-circle {
+      border-radius: 50%;
+      height: 18px;
+      width: 18px;
+      border: 2px solid white;
+      margin: 5px;
+      li {
+        position: relative;
+        height: 8px;
+        width: 8px;
+        left: 56%;
+        top: 50%;
+        transform: translate(-100%, -50%);
+      }
+    }
+  }
+
+  #modal__login {
+    margin: 0 auto;
+    right: 4%;
+    bottom: 20%;
+    width: 350px;
+
+    a {
+      img {
+        width: 150px;
+      }
+    }
+
+    .input-group {
+      width: 85%;
+
+      .input-group-prepend {
+        span {
+          border-radius: 50% 0 0 50%;
+        }
+      }
+
+      span {
+        border-radius: 0 50% 50% 0;
+      }
+    }
+
+    .forget-pass-container {
+      width: 90%;
+      margin: 0 auto;
+
+      p {
+        color: rgb(73, 73, 216);
+      }
+    }
+
+    #login-button {
+      width: 85%;
+      background-color: #3dd5f3;
+      border: none;
+      &:hover{
+        background-color: #38bbd6;
+      }
+    }
+
+    .qr-container {
+      padding: 20px;
+
+      img {
+        width: 35%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .carousel {
+    .carousel-inner {
+      position: relative;
+
+      .carousel-item {
+        width: 100%;
+
+        img {
+          height: 750px;
+        }
+      }
+
+      .carousel-caption {
+        width: 100%;
+        margin: 10px auto;
+        left: 0;
+        bottom: 7%;
+
+        h5,
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+
+    #modal__login {
+      top: 3%;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      text-align: center;
+      height: fit-content;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-caption {
+    i {
+      display: none;
+    }
+  }
+}

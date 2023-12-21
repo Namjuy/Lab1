@@ -1,0 +1,122 @@
+<!-- ----Create carousel and login form------ -->
+<div
+  data-bs-ride="carousel"
+  id="carouselExampleIndicators"
+  class="carousel slide position-relative"
+>
+  <!-- ----------Create carousel indicator (dot) -------- -->
+  <div class="carousel-indicators">
+    <div *ngFor="let indicator of getIndicators()" id="outer-circle">
+      <li
+        [ngClass]="indicator === 0 ? 'active' : ''"
+        [attr.data-bs-target]="'#carouselExampleIndicators'"
+        [attr.data-bs-slide-to]="indicator"
+        class="rounded-circle"
+        [attr.aria-current]="indicator === 0"
+      ></li>
+    </div>
+  </div>
+
+  <!-- ----------Create carousel image---------- -->
+  <div class="carousel-inner">
+    <div
+      *ngFor="let item of carouselItems; let i = index"
+      [ngClass]="{ 'carousel-item': true, active: i === 0 }"
+    >
+      <img src="{{ item.image }}" class="d-block w-100" alt="..." />
+      <!-- -----------------Create Carousel Caption------------------->
+      <div class="carousel-caption">
+        <div class="me-3 d-flex flex-column align-items-start">
+          <h5>{{ item.title }}</h5>
+          <p>
+            {{ item.detail }}
+          </p>
+        </div>
+
+        <button
+          id="detail-button"
+          class="btn btn-primary rounded-pill"
+          type="submit"
+        >
+          <a href="">Chi tiết <i class="bi bi-arrow-right-short"></i></a>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- -----------------Create login modal------------------- -->
+  <div id="modal__login" class="bg-white border rounded position-absolute">
+    <a class="d-flex justify-content-center" href="">
+      <img src="../../../assets/logo.jpg" alt="" />
+    </a>
+
+    <!-- ------------------Create username input------------------ -->
+    <div class="input-group mb-3 my-0 mx-auto">
+      <div class="input-group-prepend">
+        <span class="input-group-text bg-white" id="basic-addon1">
+          <i class="bi bi-person-fill"></i>
+        </span>
+      </div>
+      <input
+        type="text"
+        class="form-control rounded-end-5"
+        placeholder="Username"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+
+    <!-- ------------------Create password input------------------ -->
+    <div class="input-group mb-3 my-0 mx-auto">
+      <div class="input-group-prepend">
+        <span class="input-group-text bg-white" id="basic-addon1"
+          ><i class="bi bi-lock-fill"></i
+        ></span>
+      </div>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+      />
+      <!-- -----------------Create icon to show password------------------- -->
+      <span class="input-group-text"
+        ><i class="bi bi-eye" id="togglePassword"></i
+      ></span>
+    </div>
+
+    <div class="forget-pass-container d-flex justify-content-between">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckDefault"
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          Nhớ mật khẩu
+        </label>
+      </div>
+      <p>Quên mật khẩu?</p>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button
+        id="login-button"
+        class="btn btn-primary rounded-pill"
+        type="submit"
+      >
+        Đăng nhập
+      </button>
+    </div>
+
+    <!-- ---------------------Display QR code-------------------- -->
+
+    <div
+      class="qr-container d-flex flex-column align-items-center justify-content-center"
+    >
+      <img src="../../../assets/qrcode-login.png" alt="qrcode-login" />
+      <p>Quét mã QR để cài đặt</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<!-- ------------------Create navbar------------------ -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white container">
+  <!-- ------------------Create logo-------------------- -->
+  <a class="logo-img__login-page" href="https://bagps.vn/" target="_blank">
+    <img src="../../../assets/logo.jpg" alt="logo" />
+  </a>
+
+  <!-- ------------------Create navbar toggle------------------- -->
+  <button
+    aria-expanded="false"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-label="Toggle navigation"
+    class="navbar-toggler"
+    type="button"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div
+    class="collapse navbar-collapse justify-content-around xl"
+    id="navbarSupportedContent"
+  >
+    <!-- ------------------Create menu items--------------------- -->
+    <ul id="navbar__middle" class="navbar-nav">
+      <li *ngFor="let menuItem of menuItems" class="nav-item">
+        <a class="nav-link" target="_blank" [href]="menuItem.link">{{
+          menuItem.title
+        }}</a>
+      </li>
+    </ul>
+
+    <ul id="navbar__right" class="navbar-nav">
+      <!-- -----------------Create phone contact item----------------- -->
+      <li id="navbar__phone" class="nav-item d-inline-block">
+        <a class="nav-link" href="#">
+          <i class="bi bi-telephone-fill blue pe-2"></i>19080000</a
+        >
+      </li>
+
+      <!-- ---------------------Create language item----------------- -->
+      <li class="nav-item dropdown d-flex">
+        <a
+          aria-haspopup="true"
+          aria-expanded="false"
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+        >
+          <i class="bi-star-fill yellow"></i>Tiếng việt
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Tiếng Việt</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Tiếng Anh</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
