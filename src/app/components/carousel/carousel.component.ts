@@ -5,17 +5,24 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
 })
+
+////Name    Date   Comments
+////duypn  19/12/2023  create
 export class CarouselComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
 
+  //Initalize the quantity of indicator
   numIndicators = 3;
 
+  //Create a number array with length is quantity of indicator 
   getIndicators(): number[] {
     return Array.from({ length: this.numIndicators }, (_, index) => index);
   }
 
+
+  //Initalize the carousel item array
   carouselItems = [
     {
       title: 'HỖ TRỢ ĐỊNH VỊ PHƯƠNG TIỆN NGOÀI KHƠI',
