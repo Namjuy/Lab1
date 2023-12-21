@@ -4,27 +4,27 @@ nav {
   z-index: 100;
   width: 100%;
 
-  .logo-img__login-page {
-    img {
+  .navbar__logo-container{
+    .navbar__logo {
       height: 65px;
     }
   }
 
-  #navbar__middle {
+  .navbar-middle {
     display: flex;
     justify-content: space-between;
   }
-  #navbar__right {
-    #navbar__phone {
+  .navbar-right {
+    .navbar-right__item {
       border: black 1px solid;
       border-radius: 20px;
 
-      .blue {
+      .navbar-right__icon--phone {
         color: #1b75d0;
       }
     }
 
-    .yellow {
+    .navbar-right__icon--language {
       color: yellow;
       background-color: red;
       font-size: 13px;
@@ -35,10 +35,10 @@ nav {
 }
 
 @media screen and (max-width: 1200px) {
-  #navbar__middle {
+  .navbar-middle {
     width: 100%;
   }
-  #navbar__right {
+  .navbar-right {
     flex-wrap: wrap;
   }
 }
@@ -48,13 +48,13 @@ nav {
       .nav-item {
         justify-content: center;
         border: none;
-        a {
+        .nav-link {
           text-align: center;
         }
       }
     }
-    #navbar__right {
-      #navbar__phone {
+    .navbar-right {
+      .navbar-right__item {
         border: 0;
       }
     }

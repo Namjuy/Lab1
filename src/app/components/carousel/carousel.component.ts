@@ -9,7 +9,7 @@ export class CarouselComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-  
+
   numIndicators = 3;
 
   getIndicators(): number[] {

@@ -1,8 +1,8 @@
 <!-- ------------------Create navbar------------------ -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white container">
   <!-- ------------------Create logo-------------------- -->
-  <a class="logo-img__login-page" href="https://bagps.vn/" target="_blank">
-    <img src="../../../assets/logo.jpg" alt="logo" />
+  <a class="navbar__logo-container" href="https://bagps.vn/" target="_blank">
+    <img class="navbar__logo" src="../../../assets/logo.jpg" alt="logo" />
   </a>
 
   <!-- ------------------Create navbar toggle------------------- -->
@@ -23,7 +23,7 @@
     id="navbarSupportedContent"
   >
     <!-- ------------------Create menu items--------------------- -->
-    <ul id="navbar__middle" class="navbar-nav">
+    <ul class="navbar-middle navbar-nav">
       <li *ngFor="let menuItem of menuItems" class="nav-item">
         <a class="nav-link" target="_blank" [href]="menuItem.link">{{
           menuItem.title
@@ -31,15 +31,15 @@
       </li>
     </ul>
 
-    <ul id="navbar__right" class="navbar-nav">
+    <ul class="navbar-right navbar-nav">
       <!-- -----------------Create phone contact item----------------- -->
-      <li id="navbar__phone" class="nav-item d-inline-block">
+      <li  class="navbar-right__item nav-item d-inline-block">
         <a class="nav-link" href="#">
-          <i class="bi bi-telephone-fill blue pe-2"></i>19080000</a
+          <i class="navbar-right__icon--phone bi bi-telephone-fill pe-2"></i>19080000</a
         >
       </li>
 
-      <!-- ---------------------Create language item----------------- -->
+      <!-- ---------------------Create language choosing item----------------- -->
       <li class="nav-item dropdown d-flex">
         <a
           aria-haspopup="true"
@@ -49,11 +49,11 @@
           role="button"
           data-bs-toggle="dropdown"
         >
-          <i class="bi-star-fill yellow"></i>Tiếng việt
+          <i class="navbar-right__icon--language bi-star-fill"></i>Tiếng việt
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">
-            <i class="bi-star-fill yellow"></i>Tiếng việt</a
+            <i class="navbar-right__icon--language bi-star-fill"></i>Tiếng việt</a
           >
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Tiếng Anh</a>

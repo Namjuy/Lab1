@@ -6,12 +6,15 @@
 >
   <!-- ----------Create carousel indicator (dot) -------- -->
   <div class="carousel-indicators">
-    <div *ngFor="let indicator of getIndicators()" id="outer-circle">
+    <div
+      *ngFor="let indicator of getIndicators()"
+      class="carousel-indicators__circle--outter"
+    >
       <li
         [ngClass]="indicator === 0 ? 'active' : ''"
         [attr.data-bs-target]="'#carouselExampleIndicators'"
         [attr.data-bs-slide-to]="indicator"
-        class="rounded-circle"
+        class="carousel-indicators__circle--inner rounded-circle"
         [attr.aria-current]="indicator === 0"
       ></li>
     </div>
@@ -23,37 +26,45 @@
       *ngFor="let item of carouselItems; let i = index"
       [ngClass]="{ 'carousel-item': true, active: i === 0 }"
     >
-      <img src="{{ item.image }}" class="d-block w-100" alt="..." />
+      <img
+        [src]="item.image"
+        class="carousel-item__image d-block w-100"
+        alt="..."
+      />
       <!-- -----------------Create Carousel Caption------------------->
       <div class="carousel-caption">
         <div class="me-3 d-flex flex-column align-items-start">
-          <h5>{{ item.title }}</h5>
-          <p>
+          <h5 class="carousel-caption__title">{{ item.title }}</h5>
+          <p class="carousel-caption__detail">
             {{ item.detail }}
           </p>
         </div>
 
         <button
-          id="detail-button"
-          class="btn btn-primary rounded-pill"
+          class="carousel-caption__button--detail btn btn-primary rounded-pill"
           type="submit"
         >
-          <a href="">Chi tiết <i class="bi bi-arrow-right-short"></i></a>
+          <a class="carousel-caption__link" href="#"
+            >Chi tiết <i class="carousel-caption__icon bi bi-arrow-right-short"></i
+          ></a>
         </button>
       </div>
     </div>
   </div>
 
   <!-- -----------------Create login modal------------------- -->
-  <div id="modal__login" class="bg-white border rounded position-absolute">
-    <a class="d-flex justify-content-center" href="">
-      <img src="../../../assets/logo.jpg" alt="" />
+  <div id="login-modal" class="bg-white border rounded position-absolute">
+    <a class="login-modal__link d-flex justify-content-center" href="">
+      <img class="login-modal__image" src="../../../assets/logo.jpg" alt="" />
     </a>
 
     <!-- ------------------Create username input------------------ -->
     <div class="input-group mb-3 my-0 mx-auto">
       <div class="input-group-prepend">
-        <span class="input-group-text bg-white" id="basic-addon1">
+        <span
+          class="input-group-prepend__icon-container input-group-text bg-white"
+          id="basic-addon1"
+        >
           <i class="bi bi-person-fill"></i>
         </span>
       </div>
@@ -69,7 +80,9 @@
     <!-- ------------------Create password input------------------ -->
     <div class="input-group mb-3 my-0 mx-auto">
       <div class="input-group-prepend">
-        <span class="input-group-text bg-white" id="basic-addon1"
+        <span
+          class="input-group-prepend__icon-container input-group-text bg-white"
+          id="basic-addon1"
           ><i class="bi bi-lock-fill"></i
         ></span>
       </div>
@@ -81,11 +94,12 @@
         aria-describedby="basic-addon1"
       />
       <!-- -----------------Create icon to show password------------------- -->
-      <span class="input-group-text"
-        ><i class="bi bi-eye" id="togglePassword"></i
+      <span class="input-group-prepend__icon-container input-group-text"
+        ><i class="bi bi-eye-slash-fill" id="togglePasword"></i
       ></span>
     </div>
 
+    <!-- ------------------Create forget password----------------- -->
     <div class="forget-pass-container d-flex justify-content-between">
       <div class="form-check">
         <input
@@ -98,12 +112,11 @@
           Nhớ mật khẩu
         </label>
       </div>
-      <p>Quên mật khẩu?</p>
+      <p class="forget-pass__label">Quên mật khẩu?</p>
     </div>
     <div class="d-flex justify-content-center">
       <button
-        id="login-button"
-        class="btn btn-primary rounded-pill"
+        class="login__button--submit btn btn-primary rounded-pill"
         type="submit"
       >
         Đăng nhập
@@ -115,7 +128,11 @@
     <div
       class="qr-container d-flex flex-column align-items-center justify-content-center"
     >
-      <img src="../../../assets/qrcode-login.png" alt="qrcode-login" />
+      <img
+        class="qr__image"
+        src="../../../assets/qrcode-login.png"
+        alt="qrcode-login"
+      />
       <p>Quét mã QR để cài đặt</p>
     </div>
   </div>

@@ -1,21 +1,21 @@
 footer {
-  .footer__area {
+  .footer__label--area {
     color: rgba(27, 88, 173, 0.869);
     font-weight: bold;
     font-size: 15px;
   }
 
-  .footer__app-item {
+  .footer-app__image {
     width: 90%;
     float: inline-end;
   }
-  .footer__social {
+  .footer-social {
     width: 90%;
     justify-content: space-between;
-    a {
+    .footer-social__link {
      
       width: calc(100% / 3 - 10px);
-      .footer__social-item {
+      .footer-social__image {
         width: 100%;
       }
     }
