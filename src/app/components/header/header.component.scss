@@ -4,7 +4,7 @@ nav {
   z-index: 100;
   width: 100%;
 
-  .navbar__logo-container{
+  .navbar__logo-container {
     .navbar__logo {
       height: 65px;
     }
@@ -13,6 +13,7 @@ nav {
   .navbar-middle {
     display: flex;
     justify-content: space-between;
+    margin-left: 10%;
   }
   .navbar-right {
     .navbar-right__item {
