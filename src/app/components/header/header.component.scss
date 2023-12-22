@@ -8,7 +8,7 @@ nav {
 
   //--------------------Navbar logo------------------
   .navbar__logo-container {
-    margin-right: 15%;
+    margin-right: 10%;
 
     .navbar__logo {
       height: 45px;
@@ -21,6 +21,7 @@ nav {
     justify-content: space-between;
 
     .nav-link {
+      font-family: IBMBold, sans-serif;
       color: #1b75d0;
     }
   }
@@ -28,26 +29,36 @@ nav {
   // ------------------Navbar right---------------------
   .navbar-right {
 
-    .navbar-right__item {
+    .navbar-right__phone {
       border: black 1px solid;
       border-radius: 20px;
+      font-style: italic;
+      font-family: IBMItalic, sans-serif;
 
       .navbar-right__icon--phone {
         color: #1b75d0;
       }
     }
+    
+    .navbar-right__language {
+      font-family: IBMLight, sans-serif;
 
-    .navbar-right__icon--language {
-      color: yellow;
-      background-color: red;
-      font-size: 13px;
-      padding: 3px;
-      border-radius: 50%;
-      margin-right: 5px;
-    }
-    .dropdown-item__image {
-      width: 25px;
-      margin-right: 5px;
+      .navbar-right__icon--language {
+        color: yellow;
+        background-color: red;
+        font-size: 13px;
+        padding: 3px;
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+
+      .dropdown-item {
+
+        .dropdown-item__image {
+          width: 25px;
+          margin-right: 5px;
+        }
+      }
     }
   }
 }
@@ -60,10 +71,18 @@ nav {
     flex-wrap: wrap;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  nav {
+    .navbar__logo-container {
+      margin-right: 5%;
+    }
+  }
+}
+
 @media screen and (max-width: 992px) {
   nav {
     .navbar-nav {
-
       .nav-item {
         justify-content: center;
         border: none;
@@ -72,7 +91,7 @@ nav {
         }
       }
     }
-    
+
     .navbar-right {
       .navbar-right__item {
         border: 0;

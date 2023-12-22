@@ -1,7 +1,7 @@
 <!-- ---------------------Create Footer--------------------- -->
 
 <footer class="py-5">
-  <div class="footer-row row d-flex">
+  <div class="footer-location row d-flex">
     <!-- ---------------------Creater Location Footer-------------------- -->
     <div
       *ngFor="let item of footerLocationItems; let i = index"
@@ -10,34 +10,33 @@
       <p class="footer-item__label--area">{{ item.area }}</p>
       <p class="footer-item__label--location">{{ item.location }}</p>
     </div>
+  </div>
+  <div class="footer-download mb-3 ">
+    <!-- ---------------------Display App Image--------------- -->
+    <a
+      *ngFor="let item of footerAppItem; let i = index"
+      [ngClass]="i === footerAppItem.length - 1 ? 'mb-3' : ''"
+      class="footer-app__link"
+      target="_blank"
+      [href]="item.link"
+      ><img
+        class="footer-app__image"
+        [src]="item.imageURL"
+        [alt]="item.imageName"
+    /></a>
 
-    <div class="footer-item mb-3 d-flex flex-column align-items-center">
-      <!-- ---------------------Display App Image--------------- -->
+    <!-- ---------------------Display Social Image------------------ -->
+    <div class="footer-social d-flex">
       <a
-        *ngFor="let item of footerAppItem; let i = index"
-        [ngClass]="i === footerAppItem.length - 1 ? 'mb-3' : ''"
-        class="footer-app__link"
+        *ngFor="let item of footerSocialItem"
+        class="footer-social__link"
         target="_blank"
         [href]="item.link"
         ><img
-          class="footer-app__image"
+          class="footer-social__image"
           [src]="item.imageURL"
           [alt]="item.imageName"
       /></a>
-
-      <!-- ---------------------Display Social Image------------------ -->
-      <div class="footer-social d-flex">
-        <a
-          *ngFor="let item of footerSocialItem"
-          class="footer-social__link"
-          target="_blank"
-          [href]="item.link"
-          ><img
-            class="footer-social__image"
-            [src]="item.imageURL"
-            [alt]="item.imageName"
-        /></a>
-      </div>
     </div>
   </div>
 </footer>

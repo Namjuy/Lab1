@@ -21,6 +21,16 @@ export class CarouselComponent implements OnInit {
     return Array.from({ length: this.numIndicators }, (_, index) => index);
   }
 
+  //Create a method shorter long string
+   ellipsify= (str : string) =>{
+    if (str.length > 80) {
+        return (str.substring(0, 80) + "...");
+    }
+    else {
+        return str;
+    }
+}
+
   //Initalize the carousel item array
   carouselItems = [
     {
