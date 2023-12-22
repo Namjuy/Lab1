@@ -16,7 +16,7 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 1em;
-    width: 55%;
+    width: 50%;
     background-color: rgba(171, 171, 171, 0.42);
     left: 3%;
     bottom: 20%;
@@ -24,13 +24,17 @@
     border-radius: 15px;
 
     .carousel-container {
-      width: 70%;
+      width: 80%;
       text-align: start;
 
       .carousel-caption__title {
         font-family: IBMBold, sans-serif;
       }
-      .carousel-caption__detail {
+      .carousel-caption__detail--full {
+        font-family: IBMRegular, sans-serif;
+      }
+      .carousel-caption__detail--short {
+        display: none;
         font-family: IBMRegular, sans-serif;
       }
     }
@@ -124,7 +128,7 @@
     .qr-container {
       padding: 20px;
       font-family: IBMRegular;
-      
+
       .qr__image {
         width: 35%;
       }
@@ -134,6 +138,7 @@
 
 // -------------------Responsive----------------------
 @media screen and (max-width: 992px) {
+  
   .carousel {
     .carousel-inner {
       position: relative;
@@ -171,15 +176,29 @@
 }
 
 @media screen and (max-width: 768px) {
-  .carousel-caption {
-    .carousel-caption__icon {
-      display: none;
+  .carousel {
+    .carousel-caption {
+      .carousel-container {
+
+        .carousel-caption__icon {
+          display: none;
+        }
+
+        .carousel-caption__detail--full {
+          display: none;
+        }
+        
+        .carousel-caption__detail--short {
+          display: block;
+        }
+      }
     }
   }
 }
 
 @media screen and (max-width: 350px) {
   .carousel {
+
     #login-modal {
       width: 100vw;
     }
