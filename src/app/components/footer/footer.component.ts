@@ -13,7 +13,6 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {}
 
-
   //Initialize location item array
   footerLocationItems = [
     {
@@ -38,6 +37,10 @@ export class FooterComponent implements OnInit {
       area: 'TP HỒ CHÍ MINH',
       location:
         'Số 9, Đường 37, KĐT Vạn Phúc, P. Hiệp Bình Phước, TP. Thủ Đức, TP. Hồ Chí Minh.',
+    },
+    {
+      area: 'HÀ TĨNH',
+      location: 'Số 402, Đ. Trần Phú, X. Thạch Trung, TP. Hà Tĩnh, Hà Tĩnh',
     },
   ];
 

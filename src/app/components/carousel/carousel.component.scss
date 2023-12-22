@@ -20,11 +20,16 @@
     bottom: 20%;
     height: 15%;
     border-radius: 15px;
-
-    .carousel-caption__title,
-    .carousel-caption__detail {
-      color: white;
+    .carousel-container{
+      width: 70%;
+      .carousel-caption__title,
+      .carousel-caption__detail {
+        text-align: start;
+        color: white;
+      
+      }
     }
+   
 
     .carousel-caption__button--detail {
       background-color: rgb(19, 196, 57);
