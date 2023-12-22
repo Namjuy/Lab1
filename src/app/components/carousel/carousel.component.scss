@@ -1,3 +1,4 @@
+//-------------------Carousel------------------
 .carousel {
   height: fit-content;
   .carousel-item {
@@ -7,6 +8,7 @@
     }
   }
 
+  //------------------Carousel caption------------------
   .carousel-caption {
     display: flex;
     justify-content: space-between;
@@ -37,6 +39,7 @@
     }
   }
 
+  //------------------------Carousel indicator-----------------
   .carousel-indicators {
     .carousel-indicators__circle--outter {
       border-radius: 50%;
@@ -55,6 +58,7 @@
     }
   }
 
+  //--------------------Login modal------------------
   #login-modal {
     margin: 0 auto;
     right: 4%;
@@ -67,6 +71,7 @@
       }
     }
 
+    //------------------Username and password input----------
     .input-group {
       width: 85%;
 
@@ -98,7 +103,7 @@
         background-color: #38bbd6;
       }
     }
-
+    //-----------------QR code-------------------
     .qr-container {
       padding: 20px;
 
@@ -109,6 +114,7 @@
   }
 }
 
+// -------------------Responsive----------------------
 @media screen and (max-width: 992px) {
   .carousel {
     .carousel-inner {
@@ -135,7 +141,7 @@
       }
     }
 
-    #login-modal  {
+    #login-modal {
       top: 3%;
       margin: 0 auto;
       left: 0;

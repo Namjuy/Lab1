@@ -1,14 +1,16 @@
+// -------------------Footer-------------------
 footer {
   .footer__label--area {
     color: rgba(27, 88, 173, 0.869);
     font-weight: bold;
     font-size: 15px;
   }
-
+  //---------------Footer apps ------------------
   .footer-app__image {
     width: 90%;
     float: inline-end;
   }
+  //---------------Footer social----------------
   .footer-social {
     width: 90%;
     justify-content: space-between;

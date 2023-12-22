@@ -5,11 +5,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
+
+////Name   Date       Comments
+////duypn  19/12/2023  create
 export class HeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
 
+
+  //Initialize the navbar menu item array
   menuItems = [
     {
       title: 'Trang chủ',

@@ -5,11 +5,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
+
+////Name   Date       Comments
+////duypn  21/12/2023  create
 export class FooterComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
 
+
+  //Initialize location item array
   footerLocationItems = [
     {
       area: 'TRỤ SỞ HÀ NỘI',
@@ -36,6 +41,7 @@ export class FooterComponent implements OnInit {
     },
   ];
 
+  //Initialize app store item array
   footerAppItem = [
     {
       link: 'https://play.google.com/store/apps/details?id=vn.bagps.gpsmobile&hl=en_US',
@@ -49,6 +55,7 @@ export class FooterComponent implements OnInit {
     },
   ];
 
+  //Initialize social medial item array
   footerSocialItem = [
     {
       link: 'https://www.facebook.com/bagps.vn/',

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carousel.component.scss'],
 })
 
-////Name    Date   Comments
+////Name   Date       Comments
 ////duypn  19/12/2023  create
 export class CarouselComponent implements OnInit {
   constructor() {}

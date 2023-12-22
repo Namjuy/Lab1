@@ -1,20 +1,25 @@
+// ------------------Navbar--------------------
 nav {
   background-color: white;
   height: auto;
   z-index: 100;
   width: 100%;
 
+  //--------------------Navbar logo------------------
   .navbar__logo-container {
     .navbar__logo {
       height: 65px;
     }
+    margin-right: 10%;
   }
 
+  //--------------------NavBar menu---------------------
   .navbar-middle {
     display: flex;
     justify-content: space-between;
-    margin-left: 10%;
   }
+
+  //------------------Navbar right---------------------
   .navbar-right {
     .navbar-right__item {
       border: black 1px solid;
@@ -32,9 +37,12 @@ nav {
       padding: 3px;
       border-radius: 50%;
     }
+    .dropdown-item__image {
+      width: 25px;
+    }
   }
 }
-
+// ---------------------------Responsive--------------------
 @media screen and (max-width: 1200px) {
   .navbar-middle {
     width: 100%;
