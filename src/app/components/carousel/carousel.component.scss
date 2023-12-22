@@ -15,7 +15,7 @@
     align-items: center;
     padding-left: 1em;
     width: 55%;
-    background-color: rgba(171, 171, 171, 0.749);
+    background-color: rgba(171, 171, 171, 0.42);
     left: 3%;
     bottom: 20%;
     height: 15%;
@@ -66,8 +66,9 @@
     width: 350px;
 
     .login-modal__link {
+      margin: 30px 0;
       .login-modal__image {
-        width: 150px;
+        height: 50px;
       }
     }
 
@@ -76,12 +77,12 @@
       width: 85%;
 
       .input-group-prepend {
-        .input-group-prepend__icon-container {
+        .input-group-prepend__icon-container--left {
           border-radius: 50% 0 0 50%;
         }
       }
 
-      .input-group-prepend__icon-container {
+      .input-group-prepend__icon-container--right {
         border-radius: 0 50% 50% 0;
       }
     }

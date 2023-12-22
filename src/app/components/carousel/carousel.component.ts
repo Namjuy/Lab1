@@ -16,18 +16,17 @@ export class CarouselComponent implements OnInit {
   //Initalize the quantity of indicator
   numIndicators = 3;
 
-  //Create a number array with length is quantity of indicator 
+  //Create a number array with length is quantity of indicator
   getIndicators(): number[] {
     return Array.from({ length: this.numIndicators }, (_, index) => index);
   }
 
-
   //Initalize the carousel item array
   carouselItems = [
     {
-      title: 'HỖ TRỢ ĐỊNH VỊ PHƯƠNG TIỆN NGOÀI KHƠI',
+      title: 'NĂNG LỰC CÔNG NGHỆ',
       detail:
-        'GPS định vị toạ độ của phương tiện đảm bảo sự an toàn của người dân',
+        'BA GPS tự hào mang đến cho ngành giao thông vận tải các sản phẩm ứng dụng các công nghệ lõi',
       image: 'https://bagps.vn/public/media//art_2801.jpg',
     },
     {

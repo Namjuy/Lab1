@@ -3,23 +3,27 @@ nav {
   background-color: white;
   height: auto;
   z-index: 100;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
 
   //--------------------Navbar logo------------------
   .navbar__logo-container {
     .navbar__logo {
-      height: 65px;
+      height: 45px;
     }
-    margin-right: 10%;
+    margin-right: 15%;
   }
 
   //--------------------NavBar menu---------------------
   .navbar-middle {
     display: flex;
     justify-content: space-between;
+    .nav-link {
+      color: #1b75d0;
+    }
   }
 
-  //------------------Navbar right---------------------
+  // ------------------Navbar right---------------------
   .navbar-right {
     .navbar-right__item {
       border: black 1px solid;
@@ -36,9 +40,11 @@ nav {
       font-size: 13px;
       padding: 3px;
       border-radius: 50%;
+      margin-right: 5px;
     }
     .dropdown-item__image {
       width: 25px;
+      margin-right: 5px;
     }
   }
 }
