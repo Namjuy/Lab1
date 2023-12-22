@@ -8,16 +8,18 @@ nav {
 
   //--------------------Navbar logo------------------
   .navbar__logo-container {
+    margin-right: 15%;
+
     .navbar__logo {
       height: 45px;
     }
-    margin-right: 15%;
   }
 
   //--------------------NavBar menu---------------------
   .navbar-middle {
     display: flex;
     justify-content: space-between;
+
     .nav-link {
       color: #1b75d0;
     }
@@ -25,6 +27,7 @@ nav {
 
   // ------------------Navbar right---------------------
   .navbar-right {
+
     .navbar-right__item {
       border: black 1px solid;
       border-radius: 20px;
@@ -60,6 +63,7 @@ nav {
 @media screen and (max-width: 992px) {
   nav {
     .navbar-nav {
+
       .nav-item {
         justify-content: center;
         border: none;
@@ -68,6 +72,7 @@ nav {
         }
       }
     }
+    
     .navbar-right {
       .navbar-right__item {
         border: 0;

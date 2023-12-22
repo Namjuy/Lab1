@@ -1,8 +1,10 @@
 //-------------------Carousel------------------
 .carousel {
   height: fit-content;
+
   .carousel-item {
     width: 100%;
+
     .carousel-item__image {
       height: 700px;
     }
@@ -20,8 +22,10 @@
     bottom: 20%;
     height: 15%;
     border-radius: 15px;
+
     .carousel-container{
       width: 70%;
+
       .carousel-caption__title,
       .carousel-caption__detail {
         text-align: start;
@@ -30,10 +34,10 @@
       }
     }
    
-
     .carousel-caption__button--detail {
       background-color: rgb(19, 196, 57);
       border: none;
+
       .carousel-caption__link {
         text-decoration: none;
         color: white;
@@ -52,6 +56,7 @@
       width: 18px;
       border: 2px solid white;
       margin: 5px;
+      
       .carousel-indicators__circle--inner {
         position: relative;
         height: 8px;
