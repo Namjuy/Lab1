@@ -28,20 +28,22 @@ nav {
 
   // ------------------Navbar right---------------------
   .navbar-right {
-
     .navbar-right__phone {
-      border: black 1px solid;
+      border: #1b75d0 1px solid;
       border-radius: 20px;
       font-style: italic;
       font-family: IBMItalic, sans-serif;
+      .nav-link{
+        color: #1b75d0;
+      }
 
       .navbar-right__icon--phone {
         color: #1b75d0;
       }
     }
-    
+
     .navbar-right__language {
-      font-family: IBMLight, sans-serif;
+      font-family: IBMRegular, sans-serif;
 
       .navbar-right__icon--language {
         color: yellow;
@@ -53,7 +55,6 @@ nav {
       }
 
       .dropdown-item {
-
         .dropdown-item__image {
           width: 25px;
           margin-right: 5px;

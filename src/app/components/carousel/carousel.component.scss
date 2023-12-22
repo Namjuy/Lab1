@@ -22,6 +22,7 @@
     bottom: 20%;
     height: 15%;
     border-radius: 15px;
+    box-shadow: #38bbd6;
 
     .carousel-container {
       width: 80%;
@@ -138,7 +139,7 @@
 
 // -------------------Responsive----------------------
 @media screen and (max-width: 992px) {
-  
+
   .carousel {
     .carousel-inner {
       position: relative;
