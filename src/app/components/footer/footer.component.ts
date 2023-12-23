@@ -13,6 +13,14 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {}
 
+  onMouseWheel(event: WheelEvent): void {
+    if (event.deltaY !== 0) {
+      const scrollContainer = event.currentTarget as HTMLElement;
+      scrollContainer.scrollLeft += event.deltaY;
+      event.preventDefault();
+    }
+  }
+
   //Initialize location item array
   footerLocationItems = [
     {

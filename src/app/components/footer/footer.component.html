@@ -1,7 +1,7 @@
 <!-- ---------------------Create Footer--------------------- -->
 
-<footer class="py-5">
-  <div class="footer-location row d-flex">
+<footer class="py-4">
+  <div (wheel)="onMouseWheel($event)"  class="footer-location row d-flex">
     <!-- ---------------------Creater Location Footer-------------------- -->
     <div
       *ngFor="let item of footerLocationItems; let i = index"

@@ -68,9 +68,7 @@
         position: relative;
         height: 8px;
         width: 8px;
-        left: 56%;
-        top: 50%;
-        transform: translate(-100%, -50%);
+        top: -50%;
       }
     }
   }
@@ -139,7 +137,6 @@
 
 // -------------------Responsive----------------------
 @media screen and (max-width: 992px) {
-
   .carousel {
     .carousel-inner {
       position: relative;
@@ -180,7 +177,6 @@
   .carousel {
     .carousel-caption {
       .carousel-container {
-
         .carousel-caption__icon {
           display: none;
         }
@@ -188,7 +184,7 @@
         .carousel-caption__detail--full {
           display: none;
         }
-        
+
         .carousel-caption__detail--short {
           display: block;
         }
@@ -199,7 +195,6 @@
 
 @media screen and (max-width: 350px) {
   .carousel {
-
     #login-modal {
       width: 100vw;
     }

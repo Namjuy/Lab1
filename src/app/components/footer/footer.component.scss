@@ -7,7 +7,6 @@ footer {
   .footer-location {
     width: 80%;
     overflow-x: auto;
-    overflow-y: hidden;
     flex-wrap: nowrap;
     margin: 0 auto;
 
@@ -27,6 +26,10 @@ footer {
     }
   }
 
+  .footer-location::-webkit-scrollbar {
+    width: 0;
+  }
+
   //-----------------Footer download------------
   .footer-download {
     width: 15%;
@@ -37,7 +40,6 @@ footer {
     //---------------Footer apps ------------------
     .footer-app__link {
       text-align: end;
-
       .footer-app__image {
         width: 50%;
       }
@@ -48,7 +50,7 @@ footer {
       justify-content: space-between;
 
       .footer-social__link {
-        max-width: calc(100% / 3 - 20px);
+        max-width: calc(100% / 3 - 10px);
 
         .footer-social__image {
           width: 100%;
@@ -71,7 +73,7 @@ footer {
     }
   }
 }
-@media screen and (min-width: 992px) {
+@media screen and (max-width: 992px) {
   footer {
     .footer-location {
       .footer-item {
@@ -79,11 +81,12 @@ footer {
       }
     }
     .footer-download {
-      width: 70%;
+      width: 30%;
       margin: 0 auto;
       align-items: center;
 
       .footer-app__link {
+        width: 100%;
         text-align: center;
       }
     }
@@ -125,7 +128,7 @@ footer {
       }
     }
     .footer-download {
-      width: 50%;
+      width: 80%;
       margin: 0 auto;
     }
   }
