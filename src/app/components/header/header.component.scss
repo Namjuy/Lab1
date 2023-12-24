@@ -35,6 +35,7 @@ nav {
       font-family: IBMItalic, sans-serif;
       .nav-link{
         color: #1b75d0;
+        
       }
 
       .navbar-right__icon--phone {
@@ -52,6 +53,14 @@ nav {
         padding: 3px;
         border-radius: 50%;
         margin-right: 5px;
+      }
+      .nav-link{
+        .dropdown-item {
+          .dropdown-item__image {
+            width: 25px;
+            margin-right: 5px;
+          }
+        }
       }
 
       .dropdown-item {
