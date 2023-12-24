@@ -13,25 +13,36 @@ export class CarouselComponent implements OnInit {
 
   ngOnInit() {}
 
-  //Initalize the quantity of indicator
+  // Define a variable numIndicators
   numIndicators = 3;
 
-  //Create a number array with length is quantity of indicator
+  // Initialize a password variable and set it to an empty string
+  password: string = '';
+
+  // Initialize a boolean variable isShowPassword and set it to false
+  isShowPassword: boolean = false;
+
+  // Create an array of numbers with a length equal to the value of numIndicators
+  // The array is created using Array.from() and a mapping function that returns the index
   getIndicators(): number[] {
     return Array.from({ length: this.numIndicators }, (_, index) => index);
   }
 
-  //Create a method shorter long string
-   ellipsify= (str : string) =>{
+  // The array is created using Array.from() and a mapping function that returns the index
+  ellipsify = (str: string) => {
     if (str.length > 50) {
-        return (str.substring(0, 50) + "...");
+      return str.substring(0, 50) + '...';
+    } else {
+      return str;
     }
-    else {
-        return str;
-    }
-}
+  };
 
-  //Initalize the carousel item array
+  // Create a method to toggle the visibility of the password
+  tooglePasswordVisible = () => {
+    this.isShowPassword = !this.isShowPassword;
+  };
+
+  // Initialize an array of carousel items
   carouselItems = [
     {
       title: 'NĂNG LỰC CÔNG NGHỆ',

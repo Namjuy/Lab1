@@ -13,15 +13,19 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {}
 
+  // Handle the mouse wheel event to horizontally scroll a container.
   onMouseWheel(event: WheelEvent): void {
     if (event.deltaY !== 0) {
       const scrollContainer = event.currentTarget as HTMLElement;
+
+       // Adjust the horizontal scroll of the container based on the deltaY value.
       scrollContainer.scrollLeft += event.deltaY;
+
       event.preventDefault();
     }
   }
 
-  //Initialize location item array
+  // Initialize an array of location items for the footer.
   footerLocationItems = [
     {
       area: 'TRỤ SỞ HÀ NỘI',
@@ -52,7 +56,7 @@ export class FooterComponent implements OnInit {
     },
   ];
 
-  //Initialize app store item array
+  // Initialize an array of app store items for the footer
   footerAppItem = [
     {
       link: 'https://play.google.com/store/apps/details?id=vn.bagps.gpsmobile&hl=en_US',
@@ -66,7 +70,7 @@ export class FooterComponent implements OnInit {
     },
   ];
 
-  //Initialize social medial item array
+  // Initialize an array of social media items for the footer.
   footerSocialItem = [
     {
       link: 'https://www.facebook.com/bagps.vn/',

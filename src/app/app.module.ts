@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CarouselComponent,
     FooterComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule,FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

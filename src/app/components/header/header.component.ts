@@ -16,17 +16,18 @@ interface MenuItem {
 export class HeaderComponent implements OnInit {
   constructor() {}
 
+  // Initialize the menuItems property by creating a shallow copy of the Vietnamese menu items
   ngOnInit() {
     this.menuItems = [...this.vietnameseMenuItems]
   }
 
-  // -----Initialize selected language ------------
+  // Define a property named selectedLanguage and initialize it
   selectedLanguage = 'vi';
 
-  // ---------Initialize menu item---------------
+  // Define an array property named menuItems of type MenuItem[].
   menuItems: MenuItem[] = [];
 
-  // ------------Initialize vietnamese menu item-------------
+  // Define an array named vietnameseMenuItems of type MenuItem[].
   vietnameseMenuItems: MenuItem[] = [
     { title: 'Trang chủ', link: 'https://bagps.vn/' },
     {
@@ -43,7 +44,7 @@ export class HeaderComponent implements OnInit {
     { title: 'Về chúng tôi', link: 'https://bagps.vn/gioi-thieu/' },
   ];
 
-  // ------------English vietnamese menu item-------------
+  // Define an array named englishMenuItems of type MenuItem[].
   englishMenuItems: MenuItem[] = [
     { title: 'Home', link: 'https://bagps.vn/' },
     {
@@ -60,7 +61,7 @@ export class HeaderComponent implements OnInit {
     { title: 'About Us', link: 'https://bagps.vn/gioi-thieu/' },
   ];
 
-  // -----------------Create method change language when choose dropdown-----
+  // Define a method named changeLanguage to change the language when click dropdown
   changeLanguage(language: string) {
     this.selectedLanguage = language;
     this.menuItems =

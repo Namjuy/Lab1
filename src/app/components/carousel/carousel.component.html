@@ -89,7 +89,8 @@
         ></span>
       </div>
       <input
-        type="password"
+        [(ngModel)]="password"
+        [type]="isShowPassword ? 'text' : 'password'"
         class="form-control"
         placeholder="Password"
         aria-label="Username"
@@ -97,8 +98,13 @@
       />
 
       <!-- -----------------Create icon to show password------------------- -->
-      <span class="input-group-prepend__icon-container--right input-group-text"
-        ><i class="bi bi-eye-slash-fill" id="togglePasword"></i
+      <span
+        (click)="tooglePasswordVisible()"
+        class="input-group-prepend__icon-container--right input-group-text"
+        ><i
+          [class]="isShowPassword ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"
+          id="togglePasword"
+        ></i
       ></span>
     </div>
 
