@@ -14,26 +14,22 @@ interface MenuItem {
 
 ////Name   Date       Comments
 ////duypn  19/12/2023  create
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   constructor(private translate: TranslateService) {
     translate.addLangs(['vi', 'en']);
     translate.setDefaultLang('vi');
   }
 
+  // Initialize method to handle switch language when choose dropdown
   switchLanguage = (language: string) => {
     this.translate.use(language);
     this.selectedLanguage = language;
-    
   };
-
-  // Initialize the menuItems property by creating a shallow copy of the Vietnamese menu items
-  ngOnInit() {}
 
   // Define a property named selectedLanguage and initialize it
   selectedLanguage = 'vi';
 
   // Define an array property named menuItems of type MenuItem[].
-
   menuItems: MenuItem[] = [
     {
       title: 'HOME' ,

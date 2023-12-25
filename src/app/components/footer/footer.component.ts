@@ -9,13 +9,14 @@ import { TranslateService } from '@ngx-translate/core';
 
 ////Name   Date       Comments
 ////duypn  21/12/2023  create
-export class FooterComponent implements OnInit {
+export class FooterComponent  {
+
+  // Constructor for a class that takes TranslateService as a private params
+  //TODO: use TranslateService like a library to change language
   constructor(private translate:TranslateService) {
     translate.addLangs(['vi', 'en']);
     translate.setDefaultLang('vi');
   }
-
-  ngOnInit() {}
 
   // Initialize to handle the mouse wheel event when horizontally scroll footer location
   onMouseWheel(event: WheelEvent): void {
@@ -24,7 +25,6 @@ export class FooterComponent implements OnInit {
 
        // Adjust the horizontal scroll of the container based on the deltaY value.
       scrollContainer.scrollLeft += event.deltaY;
-
       event.preventDefault();
     }
   }

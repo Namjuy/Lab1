@@ -9,13 +9,15 @@ import { TranslateService } from '@ngx-translate/core';
 
 ////Name   Date       Comments
 ////duypn  19/12/2023  create
-export class CarouselComponent implements OnInit {
+export class CarouselComponent{
+
+  // Constructor for a class that takes TranslateService as a private params
+  //TODO: use TranslateService like a library to change language
   constructor(private translate: TranslateService) {
     translate.addLangs(['vi', 'en']);
     translate.setDefaultLang('vi');
   }
 
-  ngOnInit() {}
 
   // Define a variable numIndicators
   numIndicators = 3;

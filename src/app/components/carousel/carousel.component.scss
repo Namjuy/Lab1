@@ -1,15 +1,19 @@
 //-------------------Carousel------------------
 .carousel {
-  .carousel-item {
+  .carousel-inner {
     height: 700px;
-    width: 100%; /* Set the width of the container */
-    overflow: hidden;
-
-    .carousel-item__image {
-      object-fit: cover;
+    width: 100%;
+    .carousel-item {
       height: 100%;
-      max-width: none;
-      object-position: left;
+      width: 1920px; /* Set the width of the container */
+      overflow: hidden;
+      object-fit: cover;
+      .carousel-item__image {
+        height: 100%;
+
+        max-width: none;
+        object-position: left;
+      }
     }
   }
 
@@ -19,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 1em;
-    width: 50%;
+    width: 50vw;
     background-color: rgba(171, 171, 171, 0.42);
     left: 3%;
     bottom: 20%;
@@ -147,8 +151,7 @@
       position: relative;
 
       .carousel-caption {
-        width: 100%;
-        margin: 10px auto;
+        width: 100vw;
         left: 0;
         bottom: 7%;
 
