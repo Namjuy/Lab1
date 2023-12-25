@@ -28,16 +28,18 @@
     >
       <img
         [src]="item.image"
-        class="carousel-item__image d-block w-100"
+        class="carousel-item__image d-block w-100 img-fluid"
         alt="..."
       />
       <!-- -----------------Create Carousel Caption------------------->
       <div class="carousel-caption">
         <div class="carousel-container d-flex flex-column align-items-start">
-          <h5 class="carousel-caption__title">{{ item.title }}</h5>
-          <p class="carousel-caption__detail--full">{{ item.detail }}</p>
+          <h5 class="carousel-caption__title">{{ item.title | translate }}</h5>
+          <p class="carousel-caption__detail--full">
+            {{ item.detail | translate }}
+          </p>
           <p class="carousel-caption__detail--short">
-            {{ ellipsify(item.detail) }}
+            {{ ellipsify(item.detail | translate) }}
           </p>
         </div>
 
@@ -46,7 +48,7 @@
           type="submit"
         >
           <a class="carousel-caption__link" href="#"
-            >Chi tiết
+            >{{"DETAILBTN"|translate}}
             <i class="carousel-caption__icon bi bi-arrow-right-short"></i
           ></a>
         </button>
@@ -73,9 +75,9 @@
       <input
         type="text"
         class="form-control rounded-end-5"
-        placeholder="Username"
         aria-label="Username"
         aria-describedby="basic-addon1"
+        [placeholder]="'USER'|translate"
       />
     </div>
 
@@ -92,7 +94,7 @@
         [(ngModel)]="password"
         [type]="isShowPassword ? 'text' : 'password'"
         class="form-control"
-        placeholder="Password"
+        [placeholder]="'PASSWORD'|translate"
         aria-label="Username"
         aria-describedby="basic-addon1"
       />
@@ -118,10 +120,10 @@
           id="flexCheckDefault"
         />
         <label class="form-check-label" for="flexCheckDefault">
-          Nhớ mật khẩu
+          {{ "REMEMBERME" | translate }}
         </label>
       </div>
-      <p class="forget-pass__label">Quên mật khẩu?</p>
+      <p class="forget-pass__label">{{ "FORGETPASS" | translate }} ?</p>
     </div>
 
     <div class="d-flex justify-content-center">
@@ -129,7 +131,7 @@
         class="login__button--submit btn btn-primary rounded-pill"
         type="submit"
       >
-        Đăng nhập
+        {{ "LOGIN" | translate }}
       </button>
     </div>
 
@@ -143,7 +145,7 @@
         src="../../../assets/qrcode-login.png"
         alt="qrcode-login"
       />
-      <p>Quét mã QR để cài đặt</p>
+      <p>{{"QR"|translate}}</p>
     </div>
   </div>
 </div>

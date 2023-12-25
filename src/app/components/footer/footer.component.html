@@ -7,8 +7,8 @@
       *ngFor="let item of footerLocationItems; let i = index"
       class="footer-item mb-3"
     >
-      <p class="footer-item__label--area">{{ item.area }}</p>
-      <p class="footer-item__label--location">{{ item.location }}</p>
+      <p class="footer-item__label--area">{{ item.area | translate}}</p>
+      <p class="footer-item__label--location">{{ item.location |translate}}</p>
     </div>
   </div>
   <div class="footer-download mb-3 ">

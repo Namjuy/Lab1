@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-carousel',
@@ -9,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 ////Name   Date       Comments
 ////duypn  19/12/2023  create
 export class CarouselComponent implements OnInit {
-  constructor() {}
+  constructor(private translate: TranslateService) {
+    translate.addLangs(['vi', 'en']);
+    translate.setDefaultLang('vi');
+  }
 
   ngOnInit() {}
 
@@ -45,23 +49,20 @@ export class CarouselComponent implements OnInit {
   // Initialize an array of carousel items
   carouselItems = [
     {
-      title: 'NĂNG LỰC CÔNG NGHỆ',
-      detail:
-        'BA GPS tự hào mang đến cho ngành giao thông vận tải các sản phẩm ứng dụng các công nghệ lõi.',
+      title: 'CAPTION1',
+      detail: 'DETAIL1',
       image: 'https://bagps.vn/public/media//art_2801.jpg',
     },
     {
-      title: 'HỖ TRỢ CẢM BIẾN NHIÊN LIỆU',
-      detail:
-        'Tối ưu chi phí thông qua việc lắp đặt cảm biến nhiên liệu tích hợp định vị trên xe.',
-      image: 'https://i.ytimg.com/vi/_sSd4OVYVCk/maxresdefault.jpg',
+      title: 'CAPTION2',
+      detail: 'DETAIL2',
+      image: "../../assets/banner_web-04.png",
     },
     {
-      title: 'HỖ TRỢ ĐỊNH VỊ PHƯƠNG TIỆN',
-      detail:
-        'GPS định vị toạ độ của phương tiện đảm bảo sự an toàn của người dân.',
+      title: 'CAPTION3',
+      detail: 'DETAIL3',
       image:
-        'https://bagps.vn/public/media//tai_li%E1%BB%87u/4_%C6%AFu_vi%E1%BB%86t_giup_thong_thai_l%E1%BB%B0a_ch%E1%BB%8Cn_camera_ngh%E1%BB%8A_%C4%90%E1%BB%8Anh_10_ti%E1%BA%BEt_ki%E1%BB%86m_7_tri%E1%BB%86u_vn%C4%90.png',
+        'https://bagps.vn/public/media/banner_web.jpg',
     },
   ];
 }

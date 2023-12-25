@@ -1,11 +1,15 @@
 //-------------------Carousel------------------
 .carousel {
-  height: fit-content;
-
   .carousel-item {
+    height: 700px;
+    width: 100%; /* Set the width of the container */
+    overflow: hidden;
+
     .carousel-item__image {
-      height: 700px;
       object-fit: cover;
+      height: 100%;
+      max-width: none;
+      object-position: left;
     }
   }
 
@@ -34,7 +38,7 @@
       .carousel-caption__detail--full {
         font-family: IBMRegular, sans-serif;
       }
-      
+
       .carousel-caption__detail--short {
         display: none;
         font-family: IBMRegular, sans-serif;
@@ -141,14 +145,6 @@
   .carousel {
     .carousel-inner {
       position: relative;
-
-      .carousel-item {
-        width: 100%;
-
-        .carousel-item__image {
-          height: 750px;
-        }
-      }
 
       .carousel-caption {
         width: 100%;

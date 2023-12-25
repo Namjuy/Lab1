@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 interface MenuItem {
   title: string;
@@ -14,59 +15,44 @@ interface MenuItem {
 ////Name   Date       Comments
 ////duypn  19/12/2023  create
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  constructor(private translate: TranslateService) {
+    translate.addLangs(['vi', 'en']);
+    translate.setDefaultLang('vi');
+  }
+
+  switchLanguage = (language: string) => {
+    this.translate.use(language);
+    this.selectedLanguage = language;
+    
+  };
 
   // Initialize the menuItems property by creating a shallow copy of the Vietnamese menu items
-  ngOnInit() {
-    this.menuItems = [...this.vietnameseMenuItems]
-  }
+  ngOnInit() {}
 
   // Define a property named selectedLanguage and initialize it
   selectedLanguage = 'vi';
 
   // Define an array property named menuItems of type MenuItem[].
-  menuItems: MenuItem[] = [];
 
-  // Define an array named vietnameseMenuItems of type MenuItem[].
-  vietnameseMenuItems: MenuItem[] = [
-    { title: 'Trang chủ', link: 'https://bagps.vn/' },
+  menuItems: MenuItem[] = [
     {
-      title: 'Sản phẩm dịch vụ',
+      title: 'HOME' ,
+      link: 'https://bagps.vn/',
+    },
+    {
+      title: 'PRODUCTS' ,
       link: 'https://bagps.vn/san-pham-va-giai-phap',
     },
-    { title: 'Tin tức', link: 'https://bagps.vn/tin-tuc-c10' },
+    { title: 'NEWS' , link: 'https://bagps.vn/tin-tuc-c10' },
     {
-      title: 'Đóng phí',
+      title: 'FEES' ,
       link: 'https://bagps.vn/huong-dan-dong-phi-dich-vu-ba-gps-d610',
     },
-    { title: 'Hướng dẫn', link: 'https://badoc.bagroup.vn/x/SAGhBg' },
-    { title: 'Mạng lưới', link: 'https://bagps.vn/mang-luoi' },
-    { title: 'Về chúng tôi', link: 'https://bagps.vn/gioi-thieu/' },
-  ];
-
-  // Define an array named englishMenuItems of type MenuItem[].
-  englishMenuItems: MenuItem[] = [
-    { title: 'Home', link: 'https://bagps.vn/' },
     {
-      title: 'Products and Services',
-      link: 'https://bagps.vn/san-pham-va-giai-phap',
+      title: 'GUIDES',
+      link: 'https://badoc.bagroup.vn/x/SAGhBg',
     },
-    { title: 'News', link: 'https://bagps.vn/tin-tuc-c10' },
-    {
-      title: 'Pay Fees',
-      link: 'https://bagps.vn/huong-dan-dong-phi-dich-vu-ba-gps-d610',
-    },
-    { title: 'Guides', link: 'https://badoc.bagroup.vn/x/SAGhBg' },
-    { title: 'Network', link: 'https://bagps.vn/mang-luoi' },
-    { title: 'About Us', link: 'https://bagps.vn/gioi-thieu/' },
+    { title: 'NETWORK' , link: 'https://bagps.vn/mang-luoi' },
+    { title: 'ABOUT', link: 'https://bagps.vn/gioi-thieu/' },
   ];
-
-  // Define a method named changeLanguage to change the language when click dropdown
-  changeLanguage(language: string) {
-    this.selectedLanguage = language;
-    this.menuItems =
-      language === 'en'
-        ? [...this.englishMenuItems]
-        : [...this.vietnameseMenuItems];
-  }
 }

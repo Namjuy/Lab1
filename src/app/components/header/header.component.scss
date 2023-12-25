@@ -33,12 +33,13 @@ nav {
       border-radius: 20px;
       font-style: italic;
       font-family: IBMItalic, sans-serif;
+     
       .nav-link {
+        display: flex;
+        justify-content: center;
         color: #1b75d0;
-      
       }
 
-    
       .navbar-right__icon--phone {
         color: #1b75d0;
       }
@@ -47,8 +48,8 @@ nav {
     .navbar-right__language {
       font-family: IBMRegular, sans-serif;
 
-      .nav-link{
-        .dropdown-item__image{
+      .nav-link {
+        .dropdown-item__image {
           width: 25px;
           margin-right: 5px;
         }
@@ -62,7 +63,6 @@ nav {
         border-radius: 50%;
         margin-right: 5px;
       }
-    
 
       .dropdown-item {
         .dropdown-item__image {

@@ -26,7 +26,7 @@
     <ul class="navbar-middle navbar-nav">
       <li *ngFor="let menuItem of menuItems" class="nav-item">
         <a class="nav-link" target="_blank" [href]="menuItem.link">{{
-          menuItem.title
+          menuItem.title | translate
         }}</a>
       </li>
     </ul>
@@ -41,41 +41,45 @@
       </li>
 
       <!-- ---------------------Create language choosing item----------------- -->
-      <li class="navbar-right__language nav-item dropdown-center d-flex">
-        <a
-          aria-haspopup="true"
-          aria-expanded="false"
-          class="nav-link dropdown-toggle"
-          id="navbarDropdown"
-          role="button"
-          data-bs-toggle="dropdown"
-        >
-          <ng-container *ngIf="selectedLanguage === 'vi'; else englishContent">
-            <i class="navbar-right__icon--language bi-star-fill"></i> Tiếng việt
-          </ng-container>
-          <ng-template #englishContent>
-            <img
-              class="dropdown-item__image"
-              src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg"
-              alt=""
-            />English
-          </ng-template>
-        </a>
-        <!-- ------------------Create dropdown language menu -------------- -->
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a (click)="changeLanguage('vi')" class="dropdown-item">
-            <i class="navbar-right__icon--language bi-star-fill"></i>Tiếng việt
+      <li class="navbar-right__language nav-item d-flex">
+        <div class="dropdown">
+          <a
+            aria-haspopup="true"
+            aria-expanded="false"
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
+            <ng-container *ngIf="selectedLanguage === 'vi'; else englishContent">
+              <i class="navbar-right__icon--language bi-star-fill"></i> Tiếng việt
+            </ng-container>
+            <ng-template #englishContent>
+              <img
+                class="dropdown-item__image"
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg"
+                alt=""
+              />English
+            </ng-template>
           </a>
-          <div class="dropdown-divider"></div>
-          <a (click)="changeLanguage('en')" class="dropdown-item" >
-            <img
-              class="dropdown-item__image"
-              src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg"
-              alt=""
-            />English
-          </a>
+          <!-- ------------------Create dropdown language menu -------------- -->
+          <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
+            <a (click)="switchLanguage('vi')" class="dropdown-item">
+              <i class="navbar-right__icon--language bi-star-fill"></i>Tiếng việt
+            </a>
+            <div class="dropdown-divider"></div>
+            <a (click)="switchLanguage('en')" class="dropdown-item">
+              <img
+                class="dropdown-item__image"
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg"
+                alt=""
+              />English
+            </a>
+          </div>
         </div>
       </li>
+      
+      
     </ul>
   </div>
 </nav>

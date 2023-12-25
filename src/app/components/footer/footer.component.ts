@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-footer',
@@ -9,11 +10,14 @@ import { Component, OnInit } from '@angular/core';
 ////Name   Date       Comments
 ////duypn  21/12/2023  create
 export class FooterComponent implements OnInit {
-  constructor() {}
+  constructor(private translate:TranslateService) {
+    translate.addLangs(['vi', 'en']);
+    translate.setDefaultLang('vi');
+  }
 
   ngOnInit() {}
 
-  // Handle the mouse wheel event to horizontally scroll a container.
+  // Initialize to handle the mouse wheel event when horizontally scroll footer location
   onMouseWheel(event: WheelEvent): void {
     if (event.deltaY !== 0) {
       const scrollContainer = event.currentTarget as HTMLElement;
@@ -28,32 +32,29 @@ export class FooterComponent implements OnInit {
   // Initialize an array of location items for the footer.
   footerLocationItems = [
     {
-      area: 'TRỤ SỞ HÀ NỘI',
-      location: 'Lô 14 phố Nguyễn Cảnh Dị, Q. Hoàng Mai, Hà Nội',
+      area: 'AREA1',
+      location: 'LOCATION1',
     },
     {
-      area: 'HẢI PHÒNG',
-      location:
-        'Căn BH 01- 47 Khu đô thị Vinhomes Imperia, Đ. Bạch Đằng, P. Thượng Lý, Q. Hồng Bàng, TP. Hải Phòng.',
+      area: 'AREA2',
+      location: 'LOCATION2',
     },
     {
-      area: 'CHI NHÁNH MIỀN TRUNG',
-      location: 'Số B5-15, ngõ 26, Đ. Nguyễn Thái Học, TP. Vinh, Nghệ An.',
+      area: 'AREA3',
+      location: 'LOCATION3',
     },
     {
-      area: 'ĐÀ NẴNG',
-      location:
-        'Lô 1 Khu B2-19, KĐT Biệt thự sinh thái, Công Viên Văn Hóa Làng Quê và Quần thể Du lịch sông nước, P. Hòa Quý, Ngũ Hành Sơn, TP. Đà Nẵng.',
+      area: 'AREA4',
+      location: 'LOCATION4',
     },
     {
-      area: 'TP HỒ CHÍ MINH',
-      location:
-        'Số 9, Đường 37, KĐT Vạn Phúc, P. Hiệp Bình Phước, TP. Thủ Đức, TP. Hồ Chí Minh.',
+      area: 'AREA5',
+      location: 'LOCATION5',
     },
     {
-      area: 'HÀ TĨNH',
-      location: 'Số 402, Đ. Trần Phú, X. Thạch Trung, TP. Hà Tĩnh, Hà Tĩnh',
-    },
+      area: 'AREA6',
+      location: 'LOCATION6',
+    }
   ];
 
   // Initialize an array of app store items for the footer
