@@ -23,8 +23,6 @@ export class CarouselComponent {
   // Initialize a boolean variable isShowPassword and set it to false
   isShowPassword: boolean = false;
 
-  
-
   // The array is created using Array.from() and a mapping function that returns the index
   ellipsify = (str: string) => {
     if (str.length > 50) {
@@ -49,12 +47,12 @@ export class CarouselComponent {
     {
       title: 'CAPTION2',
       detail: 'DETAIL2',
-      image:
-        "../../assets/banner_web-04.png"    },
+      image: '../../assets/banner_web-03.jpg',
+    },
     {
       title: 'CAPTION3',
       detail: 'DETAIL3',
-      image: "../../assets/banner_web-04.png",
+      image: '../../assets/banner_web-02.jpg',
     },
   ];
 }
