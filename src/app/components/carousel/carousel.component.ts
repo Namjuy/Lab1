@@ -9,15 +9,13 @@ import { TranslateService } from '@ngx-translate/core';
 
 ////Name   Date       Comments
 ////duypn  19/12/2023  create
-export class CarouselComponent{
-
+export class CarouselComponent {
   // Constructor for a class that takes TranslateService as a private params
   //TODO: use TranslateService like a library to change language
   constructor(private translate: TranslateService) {
     translate.addLangs(['vi', 'en']);
     translate.setDefaultLang('vi');
   }
-
 
   // Define a variable numIndicators
   numIndicators = 3;
@@ -53,18 +51,17 @@ export class CarouselComponent{
     {
       title: 'CAPTION1',
       detail: 'DETAIL1',
-      image: 'https://bagps.vn/public/media//art_2801.jpg',
+      image: '../../assets/banner_web-04.png',
     },
     {
       title: 'CAPTION2',
       detail: 'DETAIL2',
-      image: "../../assets/banner_web-04.png",
-    },
+      image:
+        "../../assets/banner_web-04.png"    },
     {
       title: 'CAPTION3',
       detail: 'DETAIL3',
-      image:
-        'https://bagps.vn/public/media/banner_web.jpg',
+      image: "../../assets/banner_web-04.png",
     },
   ];
 }

@@ -34,14 +34,14 @@
     <ul class="navbar-right navbar-nav">
       <!-- -----------------Create phone contact item----------------- -->
       <li class="navbar-right__phone nav-item d-inline-block">
-        <a href="tel:19080000" class="nav-link" >
+        <a href="tel:19080000" class="nav-link">
           <i class="navbar-right__icon--phone bi bi-telephone-fill pe-2"></i
           >19080000</a
         >
       </li>
 
       <!-- ---------------------Create language choosing item----------------- -->
-      <li class="navbar-right__language nav-item d-flex">
+      <li class="navbar-right__language nav-item d-flex align-items-center">
         <div class="dropdown">
           <a
             aria-haspopup="true"
@@ -51,8 +51,11 @@
             role="button"
             data-bs-toggle="dropdown"
           >
-            <ng-container *ngIf="selectedLanguage === 'vi'; else englishContent">
-              <i class="navbar-right__icon--language bi-star-fill"></i> Tiếng việt
+            <ng-container
+              *ngIf="selectedLanguage === 'vi'; else englishContent"
+            >
+              <i class="navbar-right__icon--language bi-star-fill"></i> Tiếng
+              việt
             </ng-container>
             <ng-template #englishContent>
               <img
@@ -63,9 +66,13 @@
             </ng-template>
           </a>
           <!-- ------------------Create dropdown language menu -------------- -->
-          <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
+          <div
+            class="dropdown-menu dropdown-menu-center"
+            aria-labelledby="navbarDropdown"
+          >
             <a (click)="switchLanguage('vi')" class="dropdown-item">
-              <i class="navbar-right__icon--language bi-star-fill"></i>Tiếng việt
+              <i class="navbar-right__icon--language bi-star-fill"></i>Tiếng
+              việt
             </a>
             <div class="dropdown-divider"></div>
             <a (click)="switchLanguage('en')" class="dropdown-item">
@@ -78,8 +85,6 @@
           </div>
         </div>
       </li>
-      
-      
     </ul>
   </div>
 </nav>

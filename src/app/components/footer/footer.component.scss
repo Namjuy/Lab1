@@ -1,9 +1,10 @@
-// -------------------Footer-------------------
+// --------------------Footer----------------
 footer {
   display: flex;
   width: 85%;
   margin: 0 auto;
 
+  // ------------------Footer Location----------
   .footer-location {
     width: 80%;
     overflow-x: auto;
@@ -14,14 +15,12 @@ footer {
       max-width: calc(100% / 5);
 
       .footer-item__label--area {
-        font-family: IBMBold, sans-serif;
+        font: bold 15px RobotoBold, sans-serif;
         color: rgba(27, 88, 173, 0.869);
-        font-weight: bold;
-        font-size: 15px;
       }
 
       .footer-item__label--location {
-        font-family: IBMRegular, sans-serif;
+        font: normal small RobotoRegular, sans-serif;
       }
     }
   }
@@ -30,21 +29,21 @@ footer {
     width: 0;
   }
 
-  //-----------------Footer download------------
+  // ---------------Footer download----------------
   .footer-download {
     width: 15%;
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
 
-    //---------------Footer apps ------------------
     .footer-app__link {
       text-align: end;
+
       .footer-app__image {
         width: 50%;
       }
     }
-    //---------------Footer social----------------
+
     .footer-social {
       width: 50%;
       justify-content: space-between;
@@ -60,35 +59,29 @@ footer {
   }
 }
 
-//-------------Responsive----------------
+// --------------Responsive--------------
 @media screen and (max-width: 1200px) {
   footer {
-    .footer-location {
-      .footer-item {
-        max-width: calc(100% / 4);
-      }
+    .footer-location .footer-item {
+      max-width: calc(100% / 4);
     }
     .footer-download {
       width: 20%;
     }
   }
 }
+
 @media screen and (max-width: 992px) {
   footer {
-    .footer-location {
-      .footer-item {
-        max-width: calc(100% / 4);
-      }
-    }
+    .footer-location .footer-item,
     .footer-download {
-      width: 30%;
+      max-width: 30%;
       margin: 0 auto;
-      align-items: center;
+    }
 
-      .footer-app__link {
-        width: 100%;
-        text-align: center;
-      }
+    .footer-app__link {
+      width: 100%;
+      text-align: center;
     }
   }
 }
@@ -97,19 +90,16 @@ footer {
   footer {
     display: block;
     width: 100%;
-    .footer-location {
-      margin: 0 auto;
-      .footer-item {
-        max-width: calc(100% / 3);
-      }
-    }
+    .footer-location .footer-item,
     .footer-download {
-      width: 30%;
+      max-width: 30%;
       margin: 0 auto;
-      align-items: center;
 
       .footer-app__link {
         text-align: center;
+      }
+      .footer-social{
+        margin: 0 auto;
       }
     }
   }
@@ -117,16 +107,13 @@ footer {
 
 @media screen and (max-width: 576px) {
   footer {
-    .footer-location {
-      margin: 0 auto;
-      flex-wrap: wrap;
-      .footer-item {
-        max-width: calc(100%);
-        .footer-item__label--area {
-          text-align: center;
-        }
+    .footer-location .footer-item {
+      max-width: 100%;
+      .footer-item__label--area {
+        text-align: center;
       }
     }
+
     .footer-download {
       width: 80%;
       margin: 0 auto;
