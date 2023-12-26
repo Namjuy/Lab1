@@ -17,20 +17,13 @@ export class CarouselComponent {
     translate.setDefaultLang('vi');
   }
 
-  // Define a variable numIndicators
-  numIndicators = 3;
-
   // Initialize a password variable and set it to an empty string
   password: string = '';
 
   // Initialize a boolean variable isShowPassword and set it to false
   isShowPassword: boolean = false;
 
-  // Create an array of numbers with a length equal to the value of numIndicators
-  // The array is created using Array.from() and a mapping function that returns the index
-  getIndicators(): number[] {
-    return Array.from({ length: this.numIndicators }, (_, index) => index);
-  }
+  
 
   // The array is created using Array.from() and a mapping function that returns the index
   ellipsify = (str: string) => {

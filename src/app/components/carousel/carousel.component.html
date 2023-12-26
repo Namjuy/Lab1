@@ -1,10 +1,10 @@
 <div data-bs-ride="carousel" id="carouselExampleIndicators" class="carousel slide position-relative">
   <!-- Create carousel indicator (dot) -->
   <div class="carousel-indicators">
-    <div *ngFor="let indicator of getIndicators()" class="carousel-indicators__circle--outter">
-      <li [ngClass]="{'active': indicator === 0}" [attr.data-bs-target]="'#carouselExampleIndicators'"
-        [attr.data-bs-slide-to]="indicator" class="carousel-indicators__circle--inner rounded-circle"
-        [attr.aria-current]="indicator === 0"></li>
+    <div *ngFor="let number of carouselItems ; let i =index" class="carousel-indicators__circle--outter">
+      <li [ngClass]="{'active': i === 0}" [attr.data-bs-target]="'#carouselExampleIndicators'"
+        [attr.data-bs-slide-to]="i" class="carousel-indicators__circle--inner rounded-circle"
+        [attr.aria-current]="i === 0"></li>
     </div>
   </div>
 
@@ -85,4 +85,3 @@
     </div>
   </div>
 </div>
-  
