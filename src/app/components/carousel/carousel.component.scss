@@ -31,9 +31,9 @@
     height: 15%;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
+
     .carousel-container {
-      padding-top: 1em ;
+      padding-top: 1em;
       width: 80%;
       text-align: start;
 
@@ -91,7 +91,7 @@
     right: 4%;
     top: 10%;
     width: 350px;
-    
+
     .login-modal__link {
       margin: 30px 0;
 
@@ -112,6 +112,7 @@
       .input-group-prepend,
       .input-group-prepend__icon-container--right {
         border-radius: 0 50% 50% 0;
+        background-color: white;
       }
 
       .input-group-prepend__icon-container--left {
@@ -178,8 +179,8 @@
       position: relative;
 
       .carousel-caption {
-        width: 100vw;
-        left: 0;
+        width: 95vw;
+        left: 2.5vw;
         top: 73%;
 
         .carousel-caption__title,

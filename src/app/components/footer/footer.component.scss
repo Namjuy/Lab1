@@ -40,13 +40,13 @@ footer {
       text-align: end;
 
       .footer-app__image {
-        width: 50%;
+        width: 60%;
       }
     }
 
     // --------------Footer social----------------
     .footer-social {
-      width: 50%;
+      width: 60%;
       justify-content: space-between;
 
       .footer-social__link {
@@ -98,8 +98,12 @@ footer {
 
       .footer-app__link {
         text-align: center;
+        .footer-app__image{
+          width: 80%;
+        }
       }
       .footer-social {
+        width: 80%;
         margin: 0 auto;
       }
     }
@@ -121,8 +125,16 @@ footer {
     
 
     .footer-download {
-      width: 80%;
+      width: 100%;
       margin: 0 auto;
+      .footer-app__link{
+        .footer-app__image{
+          width: 100%;
+        }
+      }
+      .footer-social{
+        width: 100%;
+      }
     }
   }
 }
