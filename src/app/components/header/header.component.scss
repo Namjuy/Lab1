@@ -29,7 +29,6 @@ nav {
 
   /* ------------------Navbar right--------------------- */
   .navbar-right {
-  
     .navbar-right__phone {
       border: #1b75d0 1px solid;
       border-radius: 20px;
@@ -53,7 +52,6 @@ nav {
       .nav-link {
         .dropdown-item__image {
           margin-right: 5px;
-          border-radius: 50%;
           width: 19px;
         }
       }
@@ -69,7 +67,6 @@ nav {
 
       .dropdown-item {
         .dropdown-item__image {
-          border-radius: 50%;
           width: 19px;
           margin-right: 5px;
         }
@@ -95,7 +92,7 @@ nav {
   nav .navbar-nav .nav-item {
     justify-content: center;
     border: none;
-    
+
     .nav-link {
       text-align: center;
     }
