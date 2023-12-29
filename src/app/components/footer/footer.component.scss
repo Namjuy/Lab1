@@ -46,7 +46,8 @@ footer {
 
     // --------------Footer social----------------
     .footer-social {
-      width: 60%;
+      width: 130px;
+      min-width: 100px;
       justify-content: space-between;
 
       .footer-social__link {
@@ -98,7 +99,7 @@ footer {
 
       .footer-app__link {
         text-align: center;
-        .footer-app__image{
+        .footer-app__image {
           width: 80%;
         }
       }
@@ -114,25 +115,23 @@ footer {
   footer {
     .footer-location .footer-item {
       max-width: 100%;
-     
+
       .footer-item__label--area {
         text-align: center;
       }
     }
-    .footer-location{
+    .footer-location {
       flex-wrap: wrap;
     }
-    
 
     .footer-download {
-      width: 100%;
       margin: 0 auto;
-      .footer-app__link{
-        .footer-app__image{
+      .footer-app__link {
+        .footer-app__image {
           width: 100%;
         }
       }
-      .footer-social{
+      .footer-social {
         width: 100%;
       }
     }
