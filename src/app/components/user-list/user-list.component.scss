@@ -1,0 +1,94 @@
+.table-container {
+  max-width: 1920px;
+  overflow-x: auto;
+  min-width: 576px;
+  .table {
+    .table__head {
+      background-color: #0087ff;
+      border-collapse: collapse;
+
+      th {
+        color: white;
+        font-size: 12px;
+        text-align: center;
+        font-family: RobotoBold, sans-serif;
+        border: 0.5px solid grey;
+        vertical-align: middle;
+      }
+
+      th:nth-last-child(-n + 8) {
+        width: 4%;
+      }
+    }
+
+    .table__body {
+      .table__row {
+        text-align: center;
+        font-size: 13px;
+        font-family: RobotoRegular, sans-serif;
+
+        .red {
+          color: red;
+        }
+
+        td {
+          border: 0.5px solid grey;
+
+          i {
+            font-size: 15px;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+
+          .bi-box-arrow-in-right {
+            &:hover {
+              color: #0087ff;
+            }
+          }
+
+          .bi-person-fill,
+          .bi-car-front-fill {
+            color: #0087ff;
+          }
+
+          .bi-copy {
+            color: #0087ff;
+          }
+
+          .bi-key-fill {
+            color: #e3e325;
+          }
+
+          .bi-person-lock {
+            color: #f1d535;
+            &:hover {
+              color: #0087ff;
+            }
+          }
+
+          .bi-unlock-fill {
+            color: #0087ff;
+          }
+
+          .bi-lock-fill {
+            color: #f1d535;
+          }
+
+          .bi-copy,
+          .bi-lock {
+            &:hover {
+              color: #0087ff;
+            }
+          }
+
+          .bi-trash {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-widt: 992px) {
+}

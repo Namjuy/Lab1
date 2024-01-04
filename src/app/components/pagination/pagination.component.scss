@@ -1,0 +1,28 @@
+.bg-secondary-subtle {
+  display: flex;
+  justify-content: space-between;
+  .pagination__left {
+    display: flex;
+    .pagination{
+      height: 30px;
+    }
+    .btn-group {
+      .dropdown-toggle {
+        font-size: 12px;
+        height: 30px;
+      }
+      .dropdown-menu {
+        min-width: 50px;
+        .page-item {
+          text-align: center;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .pagination__right {
+    .pagination__right--detail {
+      font-size: 12px;
+    }
+  }
+}

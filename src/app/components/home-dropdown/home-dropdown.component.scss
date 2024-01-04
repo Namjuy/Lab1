@@ -1,0 +1,16 @@
+.dropdown-center {
+  text-align: center;
+  font-family: RobotoBold, sans-serif;
+
+  .dropdown-toggle {
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    border-radius: 0;
+    height: 30px;
+  }
+  .dropdown-menu {
+    font-size: 12px;
+    font-family: RobotoRegular, sans-serif;
+  }
+}

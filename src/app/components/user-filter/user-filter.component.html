@@ -1,0 +1,25 @@
+<div class="dropdown-center">
+  <button
+    class="btn btn-secondary dropdown-toggle"
+    type="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Chọn thời gian
+  </button>
+
+  <ul class="dropdown-menu">
+    <li class="d-flex dropdown-menu__date">
+      <span>Từ ngày <input type="date" /></span>
+      <span>Đến ngày <input type="date" /></span>
+    </li>
+    <li><hr class="dropdown-divider"></li>
+    <li>
+      <span class="d-flex dropdown-menu__gender"
+        >Giới tính
+        <p>Nam <input type="radio" name="gender" [value]="false" /></p>
+        <p>Nữ <input type="radio" name="gender" [value]="false" /></p>
+      </span>
+    </li>
+  </ul>
+</div>

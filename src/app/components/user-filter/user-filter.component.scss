@@ -1,0 +1,47 @@
+.dropdown-center {
+  text-align: center;
+
+  .dropdown-toggle {
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    border-radius: 0;
+    height: 30px;
+    font-family: RobotoBold, sans-serif;
+
+  }
+  .dropdown-menu {
+    font-size: x-small;
+    min-width: 250px;
+    li {
+      padding: 5px;
+    }
+    .dropdown-menu__date {
+      width: 100%;
+      justify-content: space-between;
+
+      span {
+        font-family: RobotoRegular, sans-serif;
+        max-width: 45%;
+        font-size: 12px;
+      }
+    }
+
+    .dropdown-menu__gender {
+      width: 100%;
+      justify-content: start;
+      font-family: RobotoRegular, sans-serif;
+      font-size: 12px;
+      p {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+        font-family: RobotoRegular, sans-serif;
+        font-size: 12px;
+        input {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

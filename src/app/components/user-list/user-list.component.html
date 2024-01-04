@@ -1,0 +1,61 @@
+<div class="table-container">
+  <table class="table table-hover mt-4 mb-0">
+    <thead class="table__head">
+      <th>STT</th>
+      <th>Chọn</th>
+      <th>Tên Công Ty</th>
+      <th>Đăng nhập</th>
+      <th>Tài khoản</th>
+      <th>Họ và tên</th>
+      <th>Mã NV</th>
+      <th>Kiểu tài khoản</th>
+      <th>Ngày đăng nhập gần đây</th>
+      <th>Thông tin đăng nhập</th>
+      <th>Gắn xe</th>
+      <th>Phân quyền</th>
+      <th>Sao chép quyền</th>
+      <th>Khoá</th>
+      <th>Đổi mật khẩu</th>
+      <th>Sao chép tài khoản</th>
+      <th>Mở khoá đăng nhập</th>
+      <th>Xoá</th>
+    </thead>
+    <tbody class="table__body">
+      <tr *ngFor="let item of userList; let i = index" class="table__row">
+        <td>{{ i }}</td>
+        <td>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [value]="item.isSelected"
+            id="flexCheckDefault"
+            [checked]="item.isSelected"
+          />
+        </td>
+        <td><i class="bi bi-box-arrow-in-right"></i></td>
+        <td><i class="bi bi-person-fill"></i></td>
+        <td [ngClass]="{ red: !item.isLog }">{{ item.username }}</td>
+        <td class="text-start">{{ item.fullName }}</td>
+        <td>{{ item.id }}</td>
+        <td>{{ item.role }}</td>
+        <td>{{ item.lastLoginDate }}</td>
+        <td>{{ item.loginInfor }}</td>
+        <td><i class="bi bi-car-front-fill"></i></td>
+        <td><i class="bi bi-key-fill"></i></td>
+        <td><i class="bi bi-copy"></i></td>
+        <td>
+          <ng-container *ngIf="item.isLog; else locked">
+            <i class="bi bi-unlock-fill"></i>
+          </ng-container>
+          <ng-template #locked>
+            <i class="bi bi-lock-fill"></i>
+          </ng-template>
+        </td>
+        <td><i class="bi bi-person-lock"></i></td>
+        <td><i class="bi bi-copy"></i></td>
+        <td><i class="bi bi-arrow-repeat"></i></td>
+        <td><i class="bi bi-trash"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
