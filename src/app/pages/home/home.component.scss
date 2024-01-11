@@ -1,4 +1,11 @@
 #home-container {
   width: 90%;
-  margin: 0 auto; 
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 345px) {
+  #home-container {
+    width: 95%;
+    margin: 0 auto;
+  }
 }

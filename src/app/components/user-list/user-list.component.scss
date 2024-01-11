@@ -1,11 +1,17 @@
 .table-container {
   max-width: 1920px;
+
   overflow-x: auto;
-  min-width: 576px;
+
   .table {
+    display: block;
+    max-height: 700px;
+    overflow-y: auto;
     .table__head {
       background-color: #0087ff;
       border-collapse: collapse;
+      position: sticky;
+      top: 0;
 
       th {
         color: white;
@@ -90,5 +96,13 @@
     }
   }
 }
-@media screen and (max-widt: 992px) {
+@media screen and (max-width: 992px) {
+}
+
+@media screen and (max-width: 320px) {
+  .table-container {
+    .table {
+      min-width: 320px;
+    }
+  }
 }

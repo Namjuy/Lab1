@@ -6,15 +6,19 @@
 .home-filter {
   justify-content: space-between;
 
-  .home-filter__left {
+  .home-filter__left,
+  .home-filter__right {
     display: flex;
     width: 50%;
     height: 30px;
+  }
 
+  .home-filter__left {
     .form-control {
       font-size: 12px;
       border-radius: 0;
       border-right: white;
+      z-index: 1;
     }
 
     .input-group-text {
@@ -26,11 +30,9 @@
   }
 
   .home-filter__right {
-    display: flex;
-    width: 50%;
-    height: 30px;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
+
     .home-filter__title {
       font-size: 12px;
       margin: auto 0;
@@ -47,7 +49,8 @@
 }
 
 .form-check {
-  display: block;
+  margin-top: 20px;
+
   .form-check-label {
     font-size: 12px;
     font-family: RobotoRegular, sans-serif;
@@ -58,14 +61,37 @@
   .home__heading {
     text-align: center;
   }
+
   .home-filter {
     flex-wrap: wrap;
-    .home-filter__left {
-      width: 100%;
-    }
+
+    .home-filter__left,
     .home-filter__right {
       width: 100%;
+    }
+
+    .home-filter__right {
       justify-content: space-between;
     }
+  }
+}
+
+@media screen and (max-width: 477px) {
+  .home-filter {
+    height: fit-content;
+
+    .home-filter__right {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      .home-filter__title{
+        text-align: center;
+        margin-right: 0;
+      }
+    }
+  }
+
+  .form-check {
+    margin-top: 50px;
   }
 }

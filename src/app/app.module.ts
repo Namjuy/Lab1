@@ -44,6 +44,7 @@ const appRoutes: Routes = [
     UserListComponent,
     UserFilterComponent,
     PaginationComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -6,30 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  constructor() {}
+  constructor(private userService: UserService) {}
 
-  ngOnInit() {}
+  list: User[] = [];
+  ngOnInit() {
+    this.getUser();
+  }
 
-  userList = [
-    {
-      isSelected: true,
-      username: 'duypn',
-      fullName: 'Phùng Nam Duy',
-      id: 21,
-      role: 'admin',
-      lastLoginDate: '1/2/2024',
-      loginInfor: 'Bình Anh| Samsung| Android 9',
-      isLog: true,
-    },
-    {
-      isSelected: false,
-      username: 'vinhtn',
-      fullName: 'Nguyễn Thành Vinh',
-      id: 21,
-      role: 'admin',
-      lastLoginDate: '1/3/2024',
-      loginInfor: 'Bình Anh| Samsung| Android 9',
-      isLog: false,
-    },
-  ];
+  getUser = () => {
+    this.userService.getAllUser().subscribe((data) => (this.list = data));
+  };
+
+  
 }
