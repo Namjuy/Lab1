@@ -1,5 +1,9 @@
+
+
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-carousel',
@@ -10,14 +14,18 @@ import { TranslateService } from '@ngx-translate/core';
 ////Name   Date       Comments
 ////duypn  19/12/2023  create
 export class CarouselComponent {
+
+
   // Constructor for a class that takes TranslateService as a private params
   //TODO: use TranslateService like a library to change language
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private userService:UserService, private router:Router) {
     translate.addLangs(['vi', 'en']);
     translate.setDefaultLang('vi');
   }
 
+
   // Initialize a password variable and set it to an empty string
+  username: string = ''
   password: string = '';
 
   // Initialize a boolean variable isShowPassword and set it to false
@@ -55,4 +63,25 @@ export class CarouselComponent {
       image: '../../assets/banner_web-02.jpg',
     },
   ];
+
+   // Function to handle login
+   login(): void {
+    this.userService.login(this.username, this.password).subscribe(
+      (response) => {
+        if(response!=null){
+          console.log("Đăng nhập thành công");
+          this.router.navigate(['/']);
+        }
+      },
+      (error) => {
+        // Handle login error
+        console.error("Đăng nhập thất bại");
+        // You might want to display an error message to the user
+      }
+    );
+  }
+
+  
+
+  
 }

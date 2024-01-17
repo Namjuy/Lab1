@@ -12,7 +12,7 @@ export class UserService {
     'Content-Type': 'application/json',
   });
 
-  userApi = "https://localhost:7233/api/User"
+  userApi = "https://localhost:7226/User"
   
   constructor(private http:HttpClient) { }
 
@@ -20,6 +20,10 @@ export class UserService {
     return this.http.get<[]>(this.userApi,{headers:this.header});
   }
 
+  login(username: string, password: string): Observable<any> {
+    return this.http.post<any>(`https://localhost:7226/api/Authentication/login?username=${username}&password=${password}`, { headers: this.header });
+  }
 
+  
 }
 

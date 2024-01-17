@@ -1,28 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Component } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
-import { HomeDropdownComponent } from './components/home-dropdown/home-dropdown.component';
-import { HomeFilterComponent } from './components/home-filter/home-filter.component';
-import { UserListComponent } from './components/user-list/user-list.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
-import { UserFilterComponent } from './components/user-filter/user-filter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { HeaderComponent } from './components/login-component/header/header.component';
+import { FooterComponent } from './components/login-component/footer/footer.component';
+import { CarouselComponent } from './components/login-component/carousel/carousel.component';
+import { HomeDropdownComponent } from './components/home-component/home-dropdown/home-dropdown.component';
+import { HomeFilterComponent } from './components/home-component/home-filter/home-filter.component';
+import { UserListComponent } from './components/home-component/user-list/user-list.component';
+import { UserFilterComponent } from './components/home-component/user-filter/user-filter.component';
+import { PaginationComponent } from './components/home-component/pagination/pagination.component';
+import { UserModalComponent } from './components/home-component/user-modal/user-modal.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
     UserListComponent,
     UserFilterComponent,
     PaginationComponent,
-    
+    UserModalComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     NgbModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

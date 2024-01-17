@@ -73,6 +73,7 @@
         </span>
       </div>
       <input
+        [(ngModel)]="username"
         type="text"
         class="form-control rounded-end-5 border-start-0"
         aria-label="Username"
@@ -135,6 +136,7 @@
       <button
         class="login__button--submit btn btn-primary rounded-pill"
         type="submit"
+        (click)="login()"
       >
         {{ "LOGIN" | translate }}
       </button>
