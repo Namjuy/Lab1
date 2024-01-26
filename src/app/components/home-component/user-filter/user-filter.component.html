@@ -1,3 +1,5 @@
+<!-- user-filter.component.html -->
+
 <div class="dropdown-center">
   <button
     class="btn btn-secondary dropdown-toggle"
@@ -10,15 +12,45 @@
 
   <ul class="dropdown-menu">
     <li class="d-flex dropdown-menu__date">
-      <span>Từ ngày <input type="date" /></span>
-      <span>Đến ngày <input type="date" /></span>
+      <span
+        >Từ ngày
+        <input
+          type="date"
+          [(ngModel)]="startDate"
+          (ngModelChange)="onStartDateChange()"
+      /></span>
+      <span
+        >Đến ngày
+        <input
+          type="date"
+          [(ngModel)]="endDate"
+          (ngModelChange)="onEndDateChange()"
+      /></span>
     </li>
-    <li><hr class="dropdown-divider"></li>
+    <li><hr class="dropdown-divider" /></li>
     <li>
-      <span class="d-flex dropdown-menu__gender"
-        >Giới tính:
-        <p>Nam <input type="radio" name="gender" [value]="false" /></p>
-        <p>Nữ <input type="radio" name="gender" [value]="false" /></p>
+      <span class="d-flex dropdown-menu__gender">
+        Giới tính:
+        <p>
+          Nam
+          <input
+            type="radio"
+            name="gender"
+            value="male"
+            [(ngModel)]="selectedGender"
+            (change)="onGenderChange()"
+          />
+        </p>
+        <p>
+          Nữ
+          <input
+            type="radio"
+            name="gender"
+            value="female"
+            [(ngModel)]="selectedGender"
+            (change)="onGenderChange()"
+          />
+        </p>
       </span>
     </li>
   </ul>

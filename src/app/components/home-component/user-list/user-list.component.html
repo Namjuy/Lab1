@@ -1,3 +1,13 @@
+<app-home-filter (handleSearch)="handleSearch($event)"></app-home-filter>
+<div class="form-check">
+  <button
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    (click)="createUser()"
+  >
+    Tạo người dùng
+  </button>
+</div>
 <div class="table-container">
   <table class="table table-hover mt-4 mb-0">
     <thead class="table__head">
@@ -16,13 +26,13 @@
       <th>Sao chép quyền</th>
       <th>Khoá</th>
       <th>Đổi mật khẩu</th>
-      <th>Sao chép tài khoản</th>
+      <th>Chỉnh sửa thông tin</th>
       <th>Mở khoá đăng nhập</th>
       <th>Xoá</th>
     </thead>
     <tbody class="table__body">
-      <tr *ngFor="let item of list; let i = index" class="table__row">
-        <td>{{ i+1 }}</td>
+      <tr *ngFor="let item of userList" class="table__row">
+        <td>{{ totalUserList.indexOf(item) +1}}</td>
         <td>
           <input
             class="form-check-input"
@@ -38,8 +48,8 @@
         <td class="text-start">{{ item.fullName }}</td>
         <td>{{ item.userId }}</td>
         <td>Admin</td>
-        <td>{{ item.dateOfBirth }}</td>
-        <td>Bình Anh | Samsung </td>
+        <td>{{ item.lastModifyDate }}</td>
+        <td>Bình Anh | Samsung</td>
         <td><i class="bi bi-car-front-fill"></i></td>
         <td><i class="bi bi-key-fill"></i></td>
         <td><i class="bi bi-copy"></i></td>
@@ -52,10 +62,29 @@
           </ng-template>
         </td>
         <td><i class="bi bi-person-lock"></i></td>
-        <td><i class="bi bi-copy"></i></td>
+        <td>
+          <i
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            class="bi bi-wrench"
+            (click)="getSelectedUser(item)"
+          ></i>
+        </td>
         <td><i class="bi bi-arrow-repeat"></i></td>
         <td><i class="bi bi-trash"></i></td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<app-pagination
+  (currentPage)="handleCurrentPage($event)"
+  [totalPage]="totalPage"
+  (itemsPerPageNumber)="itemsPerPage = $event"
+  [indexFirstItem]="indexOfFirstItem"
+  [indexLastItem]="indexOfLastItem"
+></app-pagination>
+<app-user-modal
+  [selectedUser]="selectedUser"
+  [isCreateCheck]="isCreateCheck"
+></app-user-modal>

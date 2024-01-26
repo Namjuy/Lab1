@@ -6,19 +6,21 @@
           <i class="bi bi-skip-start-fill"></i>
         </a>
       </li>
-      <li class="page-item">
+      <li class="page-item" (click)="handlePreviousPage()">
         <a class="page-link" href="#" aria-label="Previous">
           <i class="bi bi-caret-left-fill"></i>
         </a>
       </li>
-      <li class="page-item active" aria-current="page">
-        <span class="page-link">1</span>
+      <li
+        class="page-item"
+        *ngFor="let pageNumber of getPages()"
+        [class.active]="currentPageIndex === pageNumber"
+      >
+        <a class="page-link" (click)="changePage(pageNumber)">{{
+          pageNumber
+        }}</a>
       </li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">4</a></li>
-      <li class="page-item"><a class="page-link" href="#">5</a></li>
-      <li class="page-item">
+      <li class="page-item" (click)="handleNextPage()">
         <a class="page-link" href="#" aria-label="Next">
           <i class="bi bi-caret-right-fill"></i>
         </a>
@@ -36,19 +38,20 @@
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        10
+        {{ itemsPerPage }}
       </button>
       <ul class="dropdown-menu">
-        <li class="page-item">5</li>
-        <li class="page-item">10</li>
-        <li class="page-item">20</li>
+        <li class="page-item" (click)="setItemPerPage(5)">5</li>
+        <li class="page-item" (click)="setItemPerPage(10)">10</li>
+        <li class="page-item" (click)="setItemPerPage(20)">20</li>
       </ul>
       <p>dòng mỗi trang</p>
     </div>
   </div>
   <div class="pagination__right d-flex align-items-center">
     <p class="pagination__right--detail py-1 mb-0">
-      1 - 20 trên tổng 102 dòng <i class="bi bi-arrow-clockwise"></i>
+      {{ indexFirstItem }} - {{ indexLastItem }} trên tổng {{ totalPage }} dòng
+      <i class="bi bi-arrow-clockwise"></i>
     </p>
   </div>
 </nav>

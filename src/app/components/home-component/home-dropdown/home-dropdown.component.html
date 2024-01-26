@@ -4,20 +4,33 @@
     type="button"
     data-bs-toggle="dropdown"
     aria-expanded="false"
+    [(ngModel)]="selectedOption"
   >
-    {{ item.title }}
+    {{ optionValue }}
   </button>
   <ul class="dropdown-menu">
     <li>
-      <a class="dropdown-item" href="#">{{ item.firstItem }}</a>
+      <a class="dropdown-item" href="#" (click)="selectOption('userName')"
+        >Tên đăng nhập</a
+      >
     </li>
     <li><hr class="dropdown-divider" /></li>
     <li>
-      <a class="dropdown-item" href="#">{{ item.secondItem }}</a>
+      <a class="dropdown-item" href="#" (click)="selectOption('fullName')"
+        >Họ và tên</a
+      >
     </li>
     <li><hr class="dropdown-divider" /></li>
     <li>
-      <a class="dropdown-item" href="#">{{ item.thirdItem }}</a>
+      <a class="dropdown-item" href="#" (click)="selectOption('email')"
+        >Email</a
+      >
+    </li>
+    <li><hr class="dropdown-divider" /></li>
+    <li>
+      <a class="dropdown-item" href="#" (click)="selectOption('phone')"
+        >Điện thoại</a
+      >
     </li>
   </ul>
 </div>

@@ -6,30 +6,26 @@
       class="form-control"
       placeholder="Nhập tên đăng nhập"
       aria-label="Username"
+      [(ngModel)]="inputSearchValue"
     />
     <span class="input-group-text"><i class="bi bi-search"></i></span>
-    <app-home-dropdown [item]="searchOptionItems"></app-home-dropdown>
+    <app-home-dropdown
+      (selectOptionValue)="selectOptionValue = $event"
+    ></app-home-dropdown>
   </div>
   <div class="home-filter__right">
     <p class="home-filter__title">Tài khoản không truy cập trong</p>
-    <app-user-filter></app-user-filter>
-
+    <app-user-filter
+      (startDateValue)="startDate = $event"
+      (endDateValue)="endDate = $event"
+      (selectedGenderValue)="(selectedGender)"
+    ></app-user-filter>
     <button
+      (click)="onSearch()"
       type="button"
       class="home-filter__btn-search btn btn-primary btn-sm"
     >
       <i class="bi bi-search"></i>Tìm kiếm
     </button>
   </div>
-</div>
-<div class="form-check">
-  <input
-    class="home-filter__check form-check-input"
-    type="checkbox"
-    value=""
-    id="flexCheckDefault"
-  />
-  <label class="form-check-label" for="flexCheckDefault"
-    >Hiển thị toàn bộ thông tin người dùng</label
-  >
 </div>

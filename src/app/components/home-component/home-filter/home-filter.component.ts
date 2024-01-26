@@ -1,29 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-home-filter',
   templateUrl: './home-filter.component.html',
-  styleUrls: ['./home-filter.component.scss']
+  styleUrls: ['./home-filter.component.scss'],
 })
 export class HomeFilterComponent implements OnInit {
+  @Output() handleSearch = new EventEmitter<any>();
 
-  constructor() { }
+  inputSearchValue: string = '';
+  selectOptionValue = '';
+  startDate = '';
+  endDate = '';
+  selectedGender = '';
 
-  ngOnInit() {
-  }
+  filterMap = new Map();
 
-  searchOptionItems = 
-    {
-      title: 'Tên đăng nhập',
-      firstItem: 'Họ và tên',
-      secondItem: 'Email',
-      thirdItem: 'Số điện thoại',
-    }
-  
-    filterOptionItems = {
-      title : 'Chọn thời gian',
-      firstItem:'Giới tính',
-      secondItem:'Ngày sinh'
-    }
-  
+  constructor() {}
+
+  ngOnInit() {}
+
+  onSearch = () => {
+    this.filterMap.set('searchFilterInput', this.inputSearchValue);
+    this.filterMap.set('selectOptionValue', this.selectOptionValue);
+    this.filterMap.set('startDate', this.startDate);
+    this.filterMap.set('endDate', this.endDate);
+    this.filterMap.set('selectedGender', this.selectedGender);
+    this.handleSearch.emit(this.filterMap);
+  };
 }

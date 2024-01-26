@@ -1,22 +1,144 @@
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          {{ !isCreateCheck ? "Chỉnh sửa" : "Thêm mới" }}
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      <form
+        (ngSubmit)="onSubmit()"
+        [formGroup]="!isCreateCheck ? updateForm : createForm"
+        method="post"
+      >
+        <div
+          *ngFor="
+            let item of !isCreateCheck ? labelUpdateItem : labelCreateItem;
+            let i = index
+          "
+          class="form-container"
+        >
+          <div
+            *ngIf="i != 2 && i != 3 && i != 7 && i != 8"
+            class="form-control"
+          >
+            <label
+              >{{ item.label
+              }}<strong *ngIf="i != 4 && i != 5 && i != 6">*</strong>:</label
+            >
+            <div class="form-input">
+              <input
+                type="text"
+                [placeholder]="item.inputHolderValue"
+                [formControlName]="item.type"
+                [value]="!isCreateCheck ? selectedUser[item.type] : ''"
+                [ngModel]=" selectedUser?.[item.type]"
+              />
+              <label
+                *ngIf="
+                  i != 4 &&
+                  i != 5 &&
+                  i != 6 &&
+                  f[item.type].errors &&
+                  isSubmitted
+                "
+                for=""
+                >{{ item.label }} không hợp lệ</label
+              >
+            </div>
+          </div>
+
+          <div *ngIf="i == 2" class="form-control">
+            <label>{{ item.label }} <strong>*</strong>:</label>
+            <div class="form-input">
+              <input
+                type="date"
+                [placeholder]="item.inputHolderValue"
+                [formControlName]="item.type"
+                [value]="
+                  !isCreateCheck ? formatTime(selectedUser[item.type]) : ''
+                "
+                [ngModel]="
+                  !isCreateCheck ? formatTime(selectedUser[item.type]) : ''
+                "
+              />
+              <label *ngIf="f[item.type].errors && isSubmitted"
+                >{{ item.label }} không hợp lệ</label
+              >
+            </div>
+          </div>
+
+          <div *ngIf="i == 3" class="form-control">
+            <label>{{ item.label }}<strong>*</strong>:</label>
+            <div class="dropdown">
+              <a
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                {{ displayedGender }}
+              </a>
+              <div class="dropdown-menu">
+                <a
+                  class="dropdown-item"
+                  (click)="
+                    selectedUser ? setUpdateGender(1) : setCreateGender(1)
+                  "
+                  >Nam</a
+                >
+                <a
+                  class="dropdown-item"
+                  (click)="
+                    selectedUser ? setUpdateGender(0) : setCreateGender(0)
+                  "
+                  >Nữ</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="i == 7 || i == 8" class="form-control">
+            <label>{{ item.label }} <strong>*</strong></label>
+            <div class="form-input">
+              <input
+                type="text"
+                [placeholder]="item.inputHolderValue"
+                [formControlName]="item.type"
+              />
+              <label *ngIf="f[item.type].errors && isSubmitted"
+                >Password không được để trống</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            (click)="setSubmit()"
+          >
+            Huỷ
+          </button>
+          <button type="submit" class="btn btn-primary">Lưu</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

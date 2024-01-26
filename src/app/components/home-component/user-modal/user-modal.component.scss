@@ -1,0 +1,96 @@
+.modal {
+  .modal-dialog {
+    .modal-content {
+      .modal-header {
+        .modal-title {
+          font-size: 20px;
+          font-family: RobotoRegular, sans-serif;
+        }
+      }
+
+      form {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        .form-container {
+          display: flex;
+          width: 100%;
+          .form-control {
+            display: flex;
+            justify-content: space-between;
+            border: none;
+            margin-bottom: 10px;
+            label {
+              font-family: RobotoRegular, sans-serif;
+              font-size: 13px;
+              strong {
+                color: red;
+              }
+            }
+
+            .form-input {
+              width: 60%;
+              input {
+                width: 100%;
+                font-family: RobotoRegular, sans-serif;
+                font-size: 13px;
+              }
+              label {
+                display: block;
+                color: red;
+                width: 100%;
+              }
+            }
+            .dropdown {
+              border: 0.5px solid black;
+              width: 30%;
+              height: 23.5px;
+              a {
+                text-align: center;
+                font-size: 13px;
+              }
+              .dropdown-menu {
+                min-width: 100%;
+                .dropdown-item {
+                  text-align: center;
+                }
+              }
+            }
+          }
+
+          &:nth-child(3) {
+            max-width: 70%;
+            flex: 70%;
+            .form-control {
+              .form-input {
+                width: 41%;
+                input {
+                  font-family: RobotoRegular, sans-serif;
+                  font-size: 13px;
+                }
+              }
+            }
+          }
+          &:nth-child(4) {
+            max-width: 30%;
+            flex: 30%;
+
+            .form-control {
+              label {
+                width: 60%;
+              }
+            }
+          }
+        }
+
+        .modal-footer {
+          width: 100%;
+          .btn{
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

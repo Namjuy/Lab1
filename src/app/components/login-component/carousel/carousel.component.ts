@@ -1,9 +1,8 @@
-
-
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { JwtService } from 'src/app/services/jwt-service/jwt.service';
 
 @Component({
   selector: 'app-carousel',
@@ -14,18 +13,23 @@ import { UserService } from 'src/app/services/user.service';
 ////Name   Date       Comments
 ////duypn  19/12/2023  create
 export class CarouselComponent {
-
+  
+  decodeToken: any;
 
   // Constructor for a class that takes TranslateService as a private params
   //TODO: use TranslateService like a library to change language
-  constructor(private translate: TranslateService, private userService:UserService, private router:Router) {
+  constructor(
+    private translate: TranslateService,
+    private authService: AuthService,
+    private router: Router,
+    private jwtService: JwtService
+  ) {
     translate.addLangs(['vi', 'en']);
     translate.setDefaultLang('vi');
   }
 
-
   // Initialize a password variable and set it to an empty string
-  username: string = ''
+  username: string = '';
   password: string = '';
 
   // Initialize a boolean variable isShowPassword and set it to false
@@ -39,6 +43,13 @@ export class CarouselComponent {
       return str;
     }
   };
+
+  // OnInit lifecycle hook
+  ngOnInit() {
+    // Assuming you have the token available after successful login
+    const token = 'your_actual_token_here';
+    this.decodeToken = this.jwtService.decodeToken(token);
+  }
 
   // Create a method to toggle the visibility of the password
   tooglePasswordVisible = () => {
@@ -64,24 +75,26 @@ export class CarouselComponent {
     },
   ];
 
-   // Function to handle login
-   login(): void {
-    this.userService.login(this.username, this.password).subscribe(
+  login(): void {
+    this.authService.login(this.username, this.password).subscribe(
       (response) => {
-        if(response!=null){
-          console.log("Đăng nhập thành công");
-          this.router.navigate(['/']);
+        if (response != null) {
+          const token = response.token;
+          this.decodeToken = this.jwtService.decodeToken(token);
+          if(Number(this.decodeToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])==1)
+          {
+            this.router.navigate(['/']);
+          }
+          else{
+            this.router.navigate(['/user'])
+          }
         }
       },
       (error) => {
-        // Handle login error
-        console.error("Đăng nhập thất bại");
-        // You might want to display an error message to the user
+        console.error('Đăng nhập thất bại');
       }
     );
   }
 
-  
 
-  
 }
