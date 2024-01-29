@@ -20,6 +20,7 @@ export class UserModalComponent implements OnInit {
   // Displayed gender string
   displayedGender = '';
   isSubmitted = false;
+ toastElement: HTMLElement | null = document.querySelector('.toast');
 
   // Form groups for update and create operations
   updateForm: FormGroup = new FormGroup({
@@ -150,12 +151,11 @@ export class UserModalComponent implements OnInit {
 
   onSubmit() {
     this.isSubmitted = true;
+    
     this.selectedUser ? this.updateUser() : this.createUser();
   }
 
   updateUser() {
-    console.log(this.updateForm.value);
-
     if (this.updateForm.valid) {
       const userId = this.selectedUser.userId;
       const updatedUserData = {
@@ -174,8 +174,6 @@ export class UserModalComponent implements OnInit {
   }
 
   createUser() {
-    console.log(this.createForm.value);
-
     if (this.createForm.valid) {
       const now = new Date();
 
@@ -204,4 +202,6 @@ export class UserModalComponent implements OnInit {
       );
     }
   }
+
+
 }
