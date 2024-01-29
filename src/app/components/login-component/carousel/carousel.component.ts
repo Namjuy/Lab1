@@ -84,6 +84,7 @@ export class CarouselComponent {
           if(Number(this.decodeToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])==1)
           {
             this.router.navigate(['/']);
+            localStorage.setItem('authToken', JSON.stringify(this.decodeToken));
           }
           else{
             this.router.navigate(['/user'])

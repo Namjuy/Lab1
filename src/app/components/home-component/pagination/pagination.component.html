@@ -50,8 +50,9 @@
   </div>
   <div class="pagination__right d-flex align-items-center">
     <p class="pagination__right--detail py-1 mb-0">
-      {{ indexFirstItem }} - {{ indexLastItem }} trên tổng {{ totalPage }} dòng
-      <i class="bi bi-arrow-clockwise"></i>
+      {{ (currentPageIndex - 1) * itemsPerPage + 1 }} - {{ indexLastItem }} trên
+      tổng {{ totalRow }} dòng
+      <i class="bi bi-arrow-clockwise" ></i>
     </p>
   </div>
 </nav>

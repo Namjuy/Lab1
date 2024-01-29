@@ -1,20 +1,24 @@
+import { JwtService } from 'src/app/services/jwt-service/jwt.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   // Define HttpHeaders with 'Content-Type' set to 'application/json'
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });
 
   // Inject the HttpClient service into the constructor
-  constructor(private http: HttpClient) {
-  }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private jwtService: JwtService
+  ) {}
 
   // Method to handle user login
   login(username: string, password: string): Observable<any> {
@@ -23,5 +27,38 @@ export class AuthService {
 
     // Send a POST request to the login URL with the HttpHeaders
     return this.http.post<any>(loginUrl, { headers: this.headers });
+  }
+
+  checkAuth(token: string | null): void {
+    if (token) {
+      // Decode the token (you may need to use a library for this)
+      // For simplicity, let's assume a function decodeToken exists
+      const decodedToken = this.jwtService.decodeToken(token);
+
+      if (decodedToken) {
+        // Token is valid, navigate to the home page
+        if (
+          Number(
+            decodedToken[
+              'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+            ]
+          ) == 1
+        ) {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate(['/user']);
+        }
+      } else {
+        // Invalid token, navigate to the login page
+        this.router.navigate(['/login']);
+      }
+    } else {
+      // No token, navigate to the login page
+      this.router.navigate(['/login']);
+    }
+  }
+
+  autoLoggout(){
+    
   }
 }

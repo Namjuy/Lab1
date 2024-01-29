@@ -45,6 +45,8 @@
                 [formControlName]="item.type"
                 [value]="!isCreateCheck ? selectedUser[item.type] : ''"
                 [ngModel]=" selectedUser?.[item.type]"
+                name="selectedUser?.[item.type]'"
+                ngDefaultControl
               />
               <label
                 *ngIf="
@@ -73,6 +75,8 @@
                 [ngModel]="
                   !isCreateCheck ? formatTime(selectedUser[item.type]) : ''
                 "
+                name="selectedUser?.[item.type]'"
+                ngDefaultControl
               />
               <label *ngIf="f[item.type].errors && isSubmitted"
                 >{{ item.label }} không hợp lệ</label

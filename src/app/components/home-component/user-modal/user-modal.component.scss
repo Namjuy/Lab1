@@ -19,6 +19,7 @@
           .form-control {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             border: none;
             margin-bottom: 10px;
             label {
@@ -46,9 +47,11 @@
               border: 0.5px solid black;
               width: 30%;
               height: 23.5px;
+              border: none;
               a {
                 text-align: center;
                 font-size: 13px;
+                padding-top: 2px;
               }
               .dropdown-menu {
                 min-width: 100%;
@@ -86,7 +89,7 @@
 
         .modal-footer {
           width: 100%;
-          .btn{
+          .btn {
             font-size: 13px;
           }
         }

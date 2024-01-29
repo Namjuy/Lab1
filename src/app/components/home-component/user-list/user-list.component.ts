@@ -10,25 +10,33 @@ import { UserService } from 'src/app/services/user-service/user.service';
 export class UserListComponent implements OnInit {
   isCreateCheck: boolean = true;
   userList: User[] = [];
+  totalUserList: User[] = [];
   selectedUser: User | undefined;
   userFilter: any;
-  itemsPerPage = 5;
-  totalPage = 0;
+  itemsPerPage = 10;
   currentPage = 1;
+  totalPage = 0;
   indexOfLastItem = 0;
   indexOfFirstItem = 0;
-  totalUserList: User[] = [];
+  totalRow = 0;
+  totalUserListSearch: User[] = [];
 
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.calculateIndex();
+    this.calculateIndex(this.totalUserList);
     this.getUser();
+  }
+
+  handleItemPerPage(event: any) {
+    this.itemsPerPage = event;
+    this.handleCurrentPage(this.currentPage);
   }
 
   handleCurrentPage = (event: any) => {
     this.currentPage = event;
-    this.calculateIndex();
+
+    this.calculateIndex(this.totalUserList);
     this.userList = this.totalUserList.slice(
       this.indexOfFirstItem,
       this.indexOfLastItem
@@ -46,9 +54,29 @@ export class UserListComponent implements OnInit {
         this.userFilter.get('selectedGender')
       )
       .subscribe((response) => {
-        this.userList = response;
-        this.calculateIndex();
+        this.totalUserListSearch = response;
+        this.totalRow = this.totalUserListSearch.length;
+        this.calculateIndex(this.totalUserListSearch);
+        this.userList = response.slice(
+          this.indexOfFirstItem,
+          this.indexOfLastItem
+        );
       });
+  };
+
+  handleDeleteUser = () => {
+    if (confirm('Are you sure you want to delete?')) {
+      const selectedListUser = this.totalUserList.filter(
+        (item) => item.isSelected == true
+      );
+      selectedListUser.forEach((element) => {
+        this.userService.deleteUser(element.userId).subscribe(() => {
+          this.totalUserList = this.totalUserList.filter(
+            (item) => item.isSelected != true
+          );
+        });
+      });
+    }
   };
 
   getSelectedUser = (user: User) => {
@@ -58,9 +86,9 @@ export class UserListComponent implements OnInit {
 
   getUser(): void {
     this.userService.getAllUser().subscribe((data) => {
-      this.totalPage = Math.ceil(data.length / this.itemsPerPage);
       this.totalUserList = data;
-      this.calculateIndex();
+      this.totalRow = this.totalUserList.length;
+      this.calculateIndex(this.totalUserList);
       this.userList = data.slice(this.indexOfFirstItem, this.indexOfLastItem);
     });
   }
@@ -69,10 +97,11 @@ export class UserListComponent implements OnInit {
     this.isCreateCheck = true;
   };
 
-  private calculateIndex() {
+  private calculateIndex(newList: User[]) {
+    this.totalPage = Math.ceil(newList.length / this.itemsPerPage);
     this.indexOfLastItem =
-      this.currentPage * this.itemsPerPage > this.totalUserList.length
-        ? this.totalUserList.length
+      this.currentPage * this.itemsPerPage > newList.length
+        ? newList.length
         : this.currentPage * this.itemsPerPage;
     this.indexOfFirstItem = (this.currentPage - 1) * this.itemsPerPage;
   }

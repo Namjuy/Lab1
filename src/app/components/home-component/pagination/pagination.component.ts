@@ -1,6 +1,5 @@
 // pagination.component.ts
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-pagination',
@@ -8,13 +7,17 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./pagination.component.scss'],
 })
 export class PaginationComponent implements OnInit {
+  
   @Output() currentPage = new EventEmitter<number>();
   @Output() itemsPerPageNumber = new EventEmitter<number>();
+  @Input() totalRow :any;
   @Input() totalPage: any;
   @Input() indexFirstItem: any;
   @Input() indexLastItem: any;
+ 
   currentPageIndex = 1;
-  itemsPerPage = 5;
+  itemsPerPage = 10;
+  
   
   ngOnInit() {}
 

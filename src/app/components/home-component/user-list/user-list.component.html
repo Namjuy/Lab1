@@ -1,6 +1,8 @@
+
 <app-home-filter (handleSearch)="handleSearch($event)"></app-home-filter>
-<div class="form-check">
+<div class="form-create">
   <button
+    class="btn btn-primary"
     data-bs-toggle="modal"
     data-bs-target="#exampleModal"
     (click)="createUser()"
@@ -31,8 +33,8 @@
       <th>Xoá</th>
     </thead>
     <tbody class="table__body">
-      <tr *ngFor="let item of userList" class="table__row">
-        <td>{{ totalUserList.indexOf(item) +1}}</td>
+      <tr *ngFor="let item of userList; let i = index" class="table__row">
+        <td>{{ i + 1 }}</td>
         <td>
           <input
             class="form-check-input"
@@ -40,11 +42,19 @@
             [value]="item.isSelected"
             id="flexCheckDefault"
             [checked]="item.isSelected"
+            [(ngModel)]="item.isSelected"
+            name="selectedUser?.[item.type]'"
+            ngDefaultControl
           />
         </td>
         <td><i class="bi bi-box-arrow-in-right"></i></td>
-        <td><i class="bi bi-person-fill"></i></td>
-        <td [ngClass]="{ red: !item.isLog }">{{ item.userName }}</td>
+        <td>
+          <i
+            [class.bi-person-fill--blue]="item.isLog"
+            [class.bi-person-fill]="!item.isLog"
+          ></i>
+        </td>
+        <td [ngClass]="{ red: item.isDeleted }">{{ item.userName }}</td>
         <td class="text-start">{{ item.fullName }}</td>
         <td>{{ item.userId }}</td>
         <td>Admin</td>
@@ -71,7 +81,7 @@
           ></i>
         </td>
         <td><i class="bi bi-arrow-repeat"></i></td>
-        <td><i class="bi bi-trash"></i></td>
+        <td (click)="handleDeleteUser()"><i class="bi bi-trash"></i></td>
       </tr>
     </tbody>
   </table>
@@ -79,12 +89,17 @@
 
 <app-pagination
   (currentPage)="handleCurrentPage($event)"
+  (itemsPerPageNumber)="handleItemPerPage($event)"
   [totalPage]="totalPage"
-  (itemsPerPageNumber)="itemsPerPage = $event"
   [indexFirstItem]="indexOfFirstItem"
   [indexLastItem]="indexOfLastItem"
+  [totalRow]="totalRow"
+
 ></app-pagination>
 <app-user-modal
   [selectedUser]="selectedUser"
   [isCreateCheck]="isCreateCheck"
 ></app-user-modal>
+
+
+

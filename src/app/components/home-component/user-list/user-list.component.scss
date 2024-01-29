@@ -1,3 +1,9 @@
+.form-create {
+  .btn {
+    font-size: 12px;
+    font-family: RobotoBold, sans-serif;
+  }
+}
 .table-container {
   max-width: 1920px;
 
@@ -53,9 +59,13 @@
             }
           }
 
-          .bi-person-fill,
+          .bi-person-fill--blue,
           .bi-car-front-fill {
             color: #0087ff;
+          }
+
+          .bi-person-fill{
+
           }
 
           .bi-copy {

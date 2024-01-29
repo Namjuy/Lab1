@@ -60,6 +60,11 @@ export class UserService {
     return this.http.put<User>(url, updatedUserData, { headers: this.headers });
   }
 
+  deleteUser(userId:string):Observable<any>{
+    const url = `${this.userApi}/${userId}`;
+    return this.http.put<User>(url, userId, {headers:this.headers});
+  }
+
   // Custom validator function for validating phone numbers
   phoneNumberValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -90,4 +95,6 @@ export class UserService {
   formatDate(dateString: string): string {
     return new Date(dateString).toISOString().split('T')[0];
   }
+
+  
 }

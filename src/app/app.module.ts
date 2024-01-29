@@ -23,6 +23,7 @@ import { UserListComponent } from './components/home-component/user-list/user-li
 import { UserFilterComponent } from './components/home-component/user-filter/user-filter.component';
 import { PaginationComponent } from './components/home-component/pagination/pagination.component';
 import { UserModalComponent } from './components/home-component/user-modal/user-modal.component';
+import { ToastComponentComponent } from './components/home-component/toast-component/toast-component.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     UserListComponent,
     UserFilterComponent,
     PaginationComponent,
-    UserModalComponent
+    UserModalComponent,
+    ToastComponentComponent
   ],
   imports: [
     BrowserModule,
