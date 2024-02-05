@@ -1,4 +1,4 @@
-
+<app-toast></app-toast>
 <app-home-filter (handleSearch)="handleSearch($event)"></app-home-filter>
 <div class="form-create">
   <button
@@ -34,7 +34,7 @@
     </thead>
     <tbody class="table__body">
       <tr *ngFor="let item of userList; let i = index" class="table__row">
-        <td>{{ i + 1 }}</td>
+        <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
         <td>
           <input
             class="form-check-input"
@@ -71,7 +71,14 @@
             <i class="bi bi-lock-fill"></i>
           </ng-template>
         </td>
-        <td><i class="bi bi-person-lock"></i></td>
+        <td>
+          <i
+            class="bi bi-person-lock"
+            data-bs-toggle="modal"
+            data-bs-target="#changePasswordModal"
+            (click)="getSelectedUser(item)"
+          ></i>
+        </td>
         <td>
           <i
             data-bs-toggle="modal"
@@ -81,7 +88,9 @@
           ></i>
         </td>
         <td><i class="bi bi-arrow-repeat"></i></td>
-        <td (click)="handleDeleteUser()"><i class="bi bi-trash"></i></td>
+        <td data-bs-toggle="modal" data-bs-target="#confirmDelete" (click)="getDeleteUser(item)">
+          <i class="bi bi-trash"></i>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -94,12 +103,18 @@
   [indexFirstItem]="indexOfFirstItem"
   [indexLastItem]="indexOfLastItem"
   [totalRow]="totalRow"
-
 ></app-pagination>
+
 <app-user-modal
   [selectedUser]="selectedUser"
   [isCreateCheck]="isCreateCheck"
 ></app-user-modal>
 
+<app-change-password-modal
+  [selectedUser]="selectedUser"
+></app-change-password-modal>
 
-
+<app-confirm-dialog
+  [deleteUser]="handleDeleteUser"
+  [getUser]="getUser"
+></app-confirm-dialog>

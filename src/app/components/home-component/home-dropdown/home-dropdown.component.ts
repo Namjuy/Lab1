@@ -9,7 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HomeDropdownComponent {
   @Output() selectOptionValue = new EventEmitter<string>();
 
-  optionValue = 'Chọn kiểu tìm kiếm';
+  optionValue = 'Tên đăng nhập';
   selectedOption: string = 'userName';
 
   selectOption(option: string) {
@@ -25,7 +25,7 @@ export class HomeDropdownComponent {
       case 'email':
         this.optionValue = 'Email';
         break;
-      case 'phone':
+      case 'phoneNumber':
         this.optionValue = 'Số điện thoại';
         break;
     }

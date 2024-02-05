@@ -1,8 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Toast } from 'bootstrap';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { JwtService } from 'src/app/services/jwt-service/jwt.service';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'app-carousel',
@@ -13,7 +15,6 @@ import { JwtService } from 'src/app/services/jwt-service/jwt.service';
 ////Name   Date       Comments
 ////duypn  19/12/2023  create
 export class CarouselComponent {
-  
   decodeToken: any;
 
   // Constructor for a class that takes TranslateService as a private params
@@ -22,7 +23,8 @@ export class CarouselComponent {
     private translate: TranslateService,
     private authService: AuthService,
     private router: Router,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private userService: UserService
   ) {
     translate.addLangs(['vi', 'en']);
     translate.setDefaultLang('vi');
@@ -75,27 +77,55 @@ export class CarouselComponent {
     },
   ];
 
+  //Method to handle login
   login(): void {
     this.authService.login(this.username, this.password).subscribe(
       (response) => {
         if (response != null) {
           const token = response.token;
           this.decodeToken = this.jwtService.decodeToken(token);
-          if(Number(this.decodeToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])==1)
-          {
-            this.router.navigate(['/']);
+
+          if (
+            Number(
+              this.decodeToken[
+                'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+              ]
+            ) == 1
+          ) {
+            this.showLoginMessage('toast-loginSuccess');
             localStorage.setItem('authToken', JSON.stringify(this.decodeToken));
-          }
-          else{
-            this.router.navigate(['/user'])
+            localStorage.setItem(
+              'userId',
+              JSON.stringify(
+                this.decodeToken[
+                  'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+                ]
+              )
+            );
+
+            // Adding a delay before navigating to the home page
+            setTimeout(() => {
+              this.router.navigate(['/']);
+            }, 2000); // 2000 milliseconds (2 seconds)
+          } else {
+            this.router.navigate(['/user']);
           }
         }
       },
       (error) => {
+        this.showLoginMessage('toast-loginFailed');
         console.error('Đăng nhập thất bại');
       }
     );
   }
 
+  //Method to show login message
+  showLoginMessage(valid: string) {
+    const toastLiveExample = document.getElementById(valid);
 
+    if (toastLiveExample) {
+      const toastBootstrap = new Toast(toastLiveExample);
+      toastBootstrap.show();
+    }
+  }
 }

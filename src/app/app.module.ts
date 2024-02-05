@@ -23,8 +23,9 @@ import { UserListComponent } from './components/home-component/user-list/user-li
 import { UserFilterComponent } from './components/home-component/user-filter/user-filter.component';
 import { PaginationComponent } from './components/home-component/pagination/pagination.component';
 import { UserModalComponent } from './components/home-component/user-modal/user-modal.component';
-import { ToastComponentComponent } from './components/home-component/toast-component/toast-component.component';
-
+import { ToastComponent } from './components/common/toast/toast.component';
+import { ChangePasswordModalComponent } from './components/home-component/change-password-modal/change-password-modal.component';
+import { ConfirmDialogComponent } from './components/home-component/confirm-dialog/confirm-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -47,7 +48,9 @@ const appRoutes: Routes = [
     UserFilterComponent,
     PaginationComponent,
     UserModalComponent,
-    ToastComponentComponent
+    ToastComponent,
+    ChangePasswordModalComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

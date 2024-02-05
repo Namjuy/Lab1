@@ -2,7 +2,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 
 // Declare the Injectable decorator for the service
@@ -60,9 +60,25 @@ export class UserService {
     return this.http.put<User>(url, updatedUserData, { headers: this.headers });
   }
 
-  deleteUser(userId:string):Observable<any>{
-    const url = `${this.userApi}/${userId}`;
-    return this.http.put<User>(url, userId, {headers:this.headers});
+  // Method to delete a user
+  deleteUser(userId: string): Observable<any> {
+    const url = `${this.userApi}/ban/${userId}`;
+    return this.http.put(url, { headers: this.headers })
+      .pipe(
+        catchError((error: any) => {
+          // Handle the error (log, show a message, etc.)
+          console.error('Error deleting user:', error);
+          // Propagate the error to the calling code
+          throw error;
+        })
+      );
+  }
+  
+
+  // Method to change user password
+  changePassword(userId: string, oldPassword:string,newPassword: string, confirmPassword:string): Observable<any> {
+    const url = `${this.userApi}/changePassword/${userId}?oldPassword=${oldPassword}&newPassword=${newPassword}&confirmPassword=${confirmPassword}`;
+    return this.http.put(url, { newPassword }, { headers: this.headers });
   }
 
   // Custom validator function for validating phone numbers
@@ -92,9 +108,11 @@ export class UserService {
     };
   }
 
+  // Helper method to format date strings
   formatDate(dateString: string): string {
     return new Date(dateString).toISOString().split('T')[0];
   }
 
+  
   
 }

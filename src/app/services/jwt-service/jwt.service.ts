@@ -4,10 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class JwtService {
-  
-  constructor() {    
-  }
-  
+  constructor() {}
+
   /**
    * Decodes a JWT token and returns the payload.
    * @param token - The JWT token to decode.
@@ -16,10 +14,6 @@ export class JwtService {
    */
   public decodeToken(token: string) {
     const segments = token.split('.');
-    if (segments.length !== 3) {
-      throw new Error('Invalid JWT token format');
-    }
-
     const base64Url = segments[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(
@@ -30,8 +24,7 @@ export class JwtService {
         })
         .join('')
     );
-    
+
     return JSON.parse(jsonPayload);
   }
-  
 }

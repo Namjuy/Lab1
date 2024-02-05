@@ -1,10 +1,4 @@
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal" id="exampleModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -36,7 +30,7 @@
           >
             <label
               >{{ item.label
-              }}<strong *ngIf="i != 4 && i != 5 && i != 6">*</strong>:</label
+              }}<strong *ngIf="i != 5 && i != 6">*</strong>:</label
             >
             <div class="form-input">
               <input
@@ -48,15 +42,7 @@
                 name="selectedUser?.[item.type]'"
                 ngDefaultControl
               />
-              <label
-                *ngIf="
-                  i != 4 &&
-                  i != 5 &&
-                  i != 6 &&
-                  f[item.type].errors &&
-                  isSubmitted
-                "
-                for=""
+              <label *ngIf="f[item.type].errors && isSubmitted" for=""
                 >{{ item.label }} không hợp lệ</label
               >
             </div>
@@ -79,7 +65,8 @@
                 ngDefaultControl
               />
               <label *ngIf="f[item.type].errors && isSubmitted"
-                >{{ item.label }} không hợp lệ</label
+                >{{ item.label }} không hợp lệ , người dùng phải lớn hơn 18
+                tuổi</label
               >
             </div>
           </div>
@@ -95,26 +82,50 @@
                 role="button"
                 data-bs-toggle="dropdown"
               >
-                {{ displayedGender }}
+                {{ setDisplayedGender() }}
               </a>
               <div class="dropdown-menu">
                 <a
                   class="dropdown-item"
                   (click)="
-                    selectedUser ? setUpdateGender(1) : setCreateGender(1)
+                    selectedUser
+                      ? setGender(updateForm, 1)
+                      : setGender(createForm, 1)
                   "
                   >Nam</a
                 >
                 <a
                   class="dropdown-item"
                   (click)="
-                    selectedUser ? setUpdateGender(0) : setCreateGender(0)
+                    selectedUser
+                      ? setGender(updateForm, 0)
+                      : setGender(createForm, 0)
                   "
                   >Nữ</a
                 >
               </div>
             </div>
           </div>
+
+          <!-- <div *ngIf="i == 4 || i == 5" class="form-control">
+            <label>{{ item.label }}<strong>*</strong>:</label>
+            <div class="form-input">
+              <input
+                type="text"
+                [placeholder]="item.inputHolderValue"
+                [formControlName]="item.type"
+                [value]="!isCreateCheck ? selectedUser[item.type] : ''"
+                [ngModel]="selectedUser?.[item.type]"
+                name="selectedUser?.[item.type]'"
+                ngDefaultControl
+              />
+              <label
+                *ngIf="i == 4 || i == 5 && !isValidPhoneNumber() && isSubmitted"
+              >
+                {{ item.label }} không hợp lệ
+              </label>
+            </div>
+          </div> -->
 
           <div *ngIf="i == 7 || i == 8" class="form-control">
             <label>{{ item.label }} <strong>*</strong></label>
@@ -124,9 +135,25 @@
                 [placeholder]="item.inputHolderValue"
                 [formControlName]="item.type"
               />
-              <label *ngIf="f[item.type].errors && isSubmitted"
-                >Password không được để trống</label
+              <label
+                *ngIf="
+                  i == 7 && f[item.type].hasError('required') && isSubmitted
+                "
+                >Mật khẩu không được để trống</label
               >
+              <label
+                *ngIf="
+                  i == 8 && f[item.type].hasError('required') && isSubmitted
+                "
+                >Cần xác nhận mật khẩu
+                <label *ngIf="createForm.hasError('mismatch')"
+                  >Mật khẩu không trùng lặp</label
+                ></label
+              >
+
+              <label *ngIf="f[item.type].errors && isSubmitted && i == 7">
+                Mật khẩu tối thiểu 6 ký tự
+              </label>
             </div>
           </div>
         </div>
@@ -140,7 +167,16 @@
           >
             Huỷ
           </button>
-          <button type="submit" class="btn btn-primary">Lưu</button>
+          <button
+            *ngIf="selectedUser ? updateForm : createForm"
+            [attr.data-bs-dismiss]="
+              (selectedUser ? updateForm : createForm).valid ? 'modal' : null
+            "
+            type="submit"
+            class="btn btn-primary"
+          >
+            Lưu
+          </button>
         </div>
       </form>
     </div>

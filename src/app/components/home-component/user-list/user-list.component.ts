@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Toast } from 'bootstrap';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user-service/user.service';
 
@@ -20,7 +21,7 @@ export class UserListComponent implements OnInit {
   indexOfFirstItem = 0;
   totalRow = 0;
   totalUserListSearch: User[] = [];
-
+  deletedUser: User | undefined;
   constructor(private userService: UserService) {}
 
   ngOnInit() {
@@ -45,13 +46,15 @@ export class UserListComponent implements OnInit {
 
   handleSearch = (event: any) => {
     this.userFilter = event;
+    console.log(this.userFilter.get('selectedGender'));
+    
     this.userService
       .searchUser(
         this.userFilter.get('searchFilterInput'),
         this.userFilter.get('selectOptionValue'),
         this.userFilter.get('startDate'),
         this.userFilter.get('endDate'),
-        this.userFilter.get('selectedGender')
+        this.userFilter.get('selectedGender') 
       )
       .subscribe((response) => {
         this.totalUserListSearch = response;
@@ -65,16 +68,36 @@ export class UserListComponent implements OnInit {
   };
 
   handleDeleteUser = () => {
-    if (confirm('Are you sure you want to delete?')) {
-      const selectedListUser = this.totalUserList.filter(
-        (item) => item.isSelected == true
-      );
-      selectedListUser.forEach((element) => {
-        this.userService.deleteUser(element.userId).subscribe(() => {
-          this.totalUserList = this.totalUserList.filter(
-            (item) => item.isSelected != true
-          );
-        });
+    const selectedListUser = this.totalUserList.filter(
+      (item) => item.isSelected
+    );
+
+    selectedListUser.length == 0
+      ? this.deleteUser()
+      : this.deleteListUser(selectedListUser);
+  };
+
+  deleteListUser = (selectedListUser: User[]) => {
+    selectedListUser.forEach((item) =>
+      this.userService.deleteUser(item.userId).subscribe(() => {
+        this.showToastMessage('toast-updateSuccess');
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
+      })
+    );
+  };
+
+  getDeleteUser = (user: User) => {
+    this.deletedUser = user;
+  };
+  deleteUser = () => {
+    if (this.deletedUser) {
+      this.userService.deleteUser(this.deletedUser?.userId).subscribe(() => {
+        this.showToastMessage('toast-updateSuccess');
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
       });
     }
   };
@@ -104,5 +127,14 @@ export class UserListComponent implements OnInit {
         ? newList.length
         : this.currentPage * this.itemsPerPage;
     this.indexOfFirstItem = (this.currentPage - 1) * this.itemsPerPage;
+  }
+
+  showToastMessage(valid: string) {
+    const toastLiveExample = document.getElementById(valid);
+
+    if (toastLiveExample) {
+      const toastBootstrap = new Toast(toastLiveExample);
+      toastBootstrap.show();
+    }
   }
 }

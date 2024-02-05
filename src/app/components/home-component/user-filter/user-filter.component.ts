@@ -15,16 +15,30 @@ export class UserFilterComponent implements OnInit {
   startDate: string = '';
   endDate: string = '';
 
-  onStartDateChange(): void {
-    this.startDateValue.emit(this.formatDate(this.startDate));
+
+  onStartDateChange(startDate: any): void {
+    this.startDateValue.emit(this.formatDate(startDate));
   }
 
-  onEndDateChange(): void {
-    this.endDateValue.emit(this.formatDate(this.endDate));
+  onEndDateChange(endDate: any): void {
+    console.log(endDate);
+
+    this.endDateValue.emit(this.formatDate(endDate));
   }
 
   onGenderChange(): void {
-    this.selectedGenderValue.emit(this.selectedGender);
+   
+    if (this.selectedGender == 'male') {
+      this.selectedGenderValue.emit('1');
+    }
+    if (this.selectedGender == 'female') {
+      this.selectedGenderValue.emit('0');
+    }
+    if (this.selectedGender == '') {
+      this.selectedGenderValue.emit('');
+    }
+
+    console.log(this.selectedGender);
   }
 
   constructor(private userService: UserService) {}
@@ -32,6 +46,11 @@ export class UserFilterComponent implements OnInit {
   ngOnInit(): void {}
 
   formatDate(data: string): string {
-    return this.userService.formatDate(data);
+    if (data) {
+      return this.userService.formatDate(data);
+    }
+    return '';
   }
+
+
 }

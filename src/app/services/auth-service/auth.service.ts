@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -58,7 +59,10 @@ export class AuthService {
     }
   }
 
-  autoLoggout(){
-    
+  passwordMatchValidator(group: FormGroup): { [key: string]: any } | null {
+    const newPassword = group.get('newPassword')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+
+    return newPassword === confirmPassword ? null : { mismatch: true };
   }
 }

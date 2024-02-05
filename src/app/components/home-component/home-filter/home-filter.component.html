@@ -16,11 +16,11 @@
     ></app-home-dropdown>
   </div>
   <div class="home-filter__right">
-    <p class="home-filter__title">Tài khoản không truy cập trong</p>
+    <p class="home-filter__title">Tài khoản được cập nhật trong</p>
     <app-user-filter
       (startDateValue)="startDate = $event"
       (endDateValue)="endDate = $event"
-      (selectedGenderValue)="(selectedGender)"
+      (selectedGenderValue)="selectedGender = $event"
     ></app-user-filter>
     <button
       (click)="onSearch()"
