@@ -1,3 +1,4 @@
+// user-filter.component.ts
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/services/user-service/user.service';
 
@@ -15,19 +16,18 @@ export class UserFilterComponent implements OnInit {
   startDate: string = '';
   endDate: string = '';
 
-
-  onStartDateChange(startDate: any): void {
+  // Handle start date change
+  onStartDateChange = (startDate: any): void => {
     this.startDateValue.emit(this.formatDate(startDate));
   }
 
-  onEndDateChange(endDate: any): void {
-    console.log(endDate);
-
+  // Handle end date change
+  onEndDateChange = (endDate: any): void => {
     this.endDateValue.emit(this.formatDate(endDate));
   }
 
-  onGenderChange(): void {
-   
+  // Handle gender change
+  onGenderChange = (): void => {
     if (this.selectedGender == 'male') {
       this.selectedGenderValue.emit('1');
     }
@@ -37,20 +37,17 @@ export class UserFilterComponent implements OnInit {
     if (this.selectedGender == '') {
       this.selectedGenderValue.emit('');
     }
-
-    console.log(this.selectedGender);
   }
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
 
-  formatDate(data: string): string {
+  // Format date
+  formatDate = (data: string): string => {
     if (data) {
       return this.userService.formatDate(data);
     }
     return '';
   }
-
-
 }

@@ -1,118 +1,107 @@
-// Import necessary modules from Angular
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Observable, catchError } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 
-// Declare the Injectable decorator for the service
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  // Define HttpHeaders with 'Content-Type' set to 'application/json'
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });
 
-  // API endpoint for user-related operations
   private userApi = 'https://localhost:7226/User';
 
-  // Inject the HttpClient service into the constructor
   constructor(private http: HttpClient) {}
 
-  // Method to fetch all users
-  getAllUser(): Observable<User[]> {
-    return this.http.get<User[]>(this.userApi, { headers: this.headers });
-  }
+  // Fetch all users
+  getAllUser: () => Observable<User[]> = () =>
+    this.http.get<User[]>(this.userApi, { headers: this.headers });
 
-  // Method to search for users based on specified criteria
-  searchUser(
+  // Search for users based on specified criteria
+  searchUser: (
     input: string,
     type: string,
     startDate?: string,
     endDate?: string,
     gender?: number
-  ): Observable<User[]> {
-    // Construct the base URL
+  ) => Observable<User[]> = (input, type, startDate, endDate, gender) => {
     let url = `${this.userApi}/search?`;
 
-    // Append query parameters based on provided input
     if (input) url += `input=${input}&`;
     if (type) url += `type=${type}&`;
     if (startDate) url += `startDate=${startDate}&`;
     if (endDate) url += `endDate=${endDate}&`;
     if (gender !== undefined) url += `gender=${gender}&`;
 
-    // Send a GET request to the constructed URL with the HttpHeaders
     return this.http.get<User[]>(url, { headers: this.headers });
-  }
+  };
 
-  // Method to create a new user
-  createUser(newUser: any): Observable<any> {
-    return this.http.post<any>(this.userApi, newUser, { headers: this.headers });
-  }
+  // Create a new user
+  createUser: (newUser: any) => Observable<any> = (newUser) =>
+    this.http.post<any>(this.userApi, newUser, { headers: this.headers });
 
-  // Method to update an existing user
-  updateUser(userId: string, updatedUserData: any): Observable<User> {
+  // Update an existing user
+  updateUser: (userId: string, updatedUserData: any) => Observable<User> = (userId, updatedUserData) => {
     const url = `${this.userApi}/${userId}`;
-
     return this.http.put<User>(url, updatedUserData, { headers: this.headers });
-  }
+  };
 
-  // Method to delete a user
-  deleteUser(userId: string): Observable<any> {
+  // Delete a user
+  deleteUser: (userId: string) => Observable<any> = (userId) => {
     const url = `${this.userApi}/ban/${userId}`;
-    return this.http.put(url, { headers: this.headers })
-      .pipe(
-        catchError((error: any) => {
-          // Handle the error (log, show a message, etc.)
-          console.error('Error deleting user:', error);
-          // Propagate the error to the calling code
-          throw error;
-        })
-      );
-  }
-  
+    return this.http.put(url, { headers: this.headers }).pipe(
+      catchError((error: any) => {
+        console.error('Error deleting user:', error);
+        throw error;
+      })
+    );
+  };
 
-  // Method to change user password
-  changePassword(userId: string, oldPassword:string,newPassword: string, confirmPassword:string): Observable<any> {
+  // Change user password
+  changePassword: (userId: string, oldPassword: string, newPassword: string, confirmPassword: string) => Observable<any> = (
+    userId,
+    oldPassword,
+    newPassword,
+    confirmPassword
+  ) => {
     const url = `${this.userApi}/changePassword/${userId}?oldPassword=${oldPassword}&newPassword=${newPassword}&confirmPassword=${confirmPassword}`;
     return this.http.put(url, { newPassword }, { headers: this.headers });
-  }
+  };
 
   // Custom validator function for validating phone numbers
-  phoneNumberValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const phoneNumberRegex = /^\d{10}$/;
-      const value = control.value;
+  phoneNumberValidator: () => ValidatorFn = () => (control) => {
+    const phoneNumberRegex = /^\d{10}$/;
+    const value = control.value;
 
-      if (!value) return null;
+    if (!value) return null;
 
-      if (!phoneNumberRegex.test(value)) return { invalidPhoneNumber: true };
+    if (!phoneNumberRegex.test(value)) return { invalidPhoneNumber: true };
 
-      return null;
-    };
-  }
+    return null;
+  };
 
   // Custom validator function for validating age
-  ageValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const birthDate = new Date(control.value);
-      const today = new Date();
-      const age = today.getFullYear() - birthDate.getFullYear();
+  ageValidator: () => ValidatorFn = () => (control) => {
+    const birthDate = new Date(control.value);
+    const today = new Date();
+    const age = today.getFullYear() - birthDate.getFullYear();
 
-      if (age <= 18) return { invalidAge: true };
-
-      return null;
-    };
-  }
+    return age <= 18 ? { invalidAge: true } : null;
+  };
 
   // Helper method to format date strings
-  formatDate(dateString: string): string {
-    return new Date(dateString).toISOString().split('T')[0];
-  }
+  formatDate: (dateString: string) => string = (dateString) =>
+    new Date(dateString).toISOString().split('T')[0];
 
-  
-  
+  // Validator function for date of birth
+  dateOfBirthValidator: (control: FormControl) => ValidationErrors | null = (control) => {
+    const currentDate = new Date();
+    const enteredDate = new Date(control.value);
+    const age = currentDate.getFullYear() - enteredDate.getFullYear();
+
+    return age < 18 ? { underage: true } : null;
+  };
 }

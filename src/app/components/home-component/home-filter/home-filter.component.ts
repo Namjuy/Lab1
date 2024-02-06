@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-home-filter', // Selector for this component in HTML
-  templateUrl: './home-filter.component.html', // HTML template file
-  styleUrls: ['./home-filter.component.scss'], // Styles for this component
+  selector: 'app-home-filter',
+  templateUrl: './home-filter.component.html',
+  styleUrls: ['./home-filter.component.scss'],
 })
 export class HomeFilterComponent implements OnInit {
   // Output decorator to emit events to parent component

@@ -1,4 +1,6 @@
+<!-- Dropdown menu for selecting options -->
 <div class="dropdown-center">
+  <!-- Button triggering the dropdown menu, displaying the selected option -->
   <button
     class="btn btn-secondary dropdown-toggle"
     type="button"
@@ -10,29 +12,30 @@
   >
     {{ optionValue }}
   </button>
+  <!-- Dropdown menu containing options with corresponding click events -->
   <ul class="dropdown-menu">
     <li>
-      <a class="dropdown-item" href="#" (click)="selectOption('userName')"
-        >Tên đăng nhập</a
-      >
+      <a class="dropdown-item" href="#" (click)="selectOption('userName')">
+        Tên đăng nhập
+      </a>
     </li>
     <li><hr class="dropdown-divider" /></li>
     <li>
-      <a class="dropdown-item" href="#" (click)="selectOption('fullName')"
-        >Họ và tên</a
-      >
+      <a class="dropdown-item" href="#" (click)="selectOption('fullName')">
+        Họ và tên
+      </a>
     </li>
     <li><hr class="dropdown-divider" /></li>
     <li>
-      <a class="dropdown-item" href="#" (click)="selectOption('email')"
-        >Email</a
-      >
+      <a class="dropdown-item" href="#" (click)="selectOption('email')">
+        Email
+      </a>
     </li>
     <li><hr class="dropdown-divider" /></li>
     <li>
-      <a class="dropdown-item" href="#" (click)="selectOption('phoneNumber')"
-        >Điện thoại</a
-      >
+      <a class="dropdown-item" href="#" (click)="selectOption('phoneNumber')">
+        Điện thoại
+      </a>
     </li>
   </ul>
 </div>

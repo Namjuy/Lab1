@@ -1,4 +1,6 @@
+<!-- Dropdown menu container -->
 <div class="dropdown-center">
+  <!-- Button to trigger the dropdown -->
   <button
     class="btn btn-secondary dropdown-toggle"
     type="button"
@@ -8,55 +10,67 @@
     Chọn thời gian
   </button>
 
+  <!-- Dropdown menu content -->
   <ul class="dropdown-menu">
+    <!-- Date range selection -->
     <li class="d-flex dropdown-menu__date">
-      <span
-        >Từ ngày
+      <span>
+        Từ ngày
+        <!-- Input for selecting start date -->
         <input
           type="date"
           [(ngModel)]="startDate"
           (ngModelChange)="onStartDateChange(startDate)"
-      /></span>
-      <span
-        >Đến ngày
+        />
+      </span>
+      <span>
+        Đến ngày
+        <!-- Input for selecting end date -->
         <input
           type="date"
           [(ngModel)]="endDate"
           (ngModelChange)="onEndDateChange(endDate)"
-      /></span>
+        />
+      </span>
     </li>
+
+    <!-- Horizontal line separator -->
     <li><hr class="dropdown-divider" /></li>
+
+    <!-- Gender selection -->
     <li>
       <span class="d-flex dropdown-menu__gender">
         Giới tính:
+
+        <!-- Radio buttons for selecting gender -->
         <p>
           Nam
           <input
+            [(ngModel)]="selectedGender"
+            (change)="onGenderChange()"
             type="radio"
             name="gender"
             value="male"
-            [(ngModel)]="selectedGender"
-            (change)="onGenderChange()"
           />
         </p>
         <p>
           Nữ
           <input
+            [(ngModel)]="selectedGender"
+            (change)="onGenderChange()"
             type="radio"
             name="gender"
             value="female"
-            [(ngModel)]="selectedGender"
-            (change)="onGenderChange()"
           />
         </p>
         <p>
           Tất cả
           <input
+            [(ngModel)]="selectedGender"
+            (change)="onGenderChange()"
             type="radio"
             name="gender"
             value=""
-            [(ngModel)]="selectedGender"
-            (change)="onGenderChange()"
           />
         </p>
       </span>

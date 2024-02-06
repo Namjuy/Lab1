@@ -1,6 +1,13 @@
+<!-- Heading for the user list section -->
 <p class="home__heading">DANH SÁCH NGƯỜI DÙNG</p>
+
+<!-- User filter section -->
 <div class="home-filter d-flex">
+
+  <!-- Left side of the filter -->
   <div class="home-filter__left mb-3">
+
+    <!-- Input for entering username -->
     <input
       type="text"
       class="form-control"
@@ -10,23 +17,29 @@
       name="inputSearchValue"
       ngDefaultControl
     />
+
+    <!-- Search icon -->
     <span class="input-group-text"><i class="bi bi-search"></i></span>
-    <app-home-dropdown
-      (selectOptionValue)="selectOptionValue = $event"
-    ></app-home-dropdown>
+
+    <!-- Dropdown for selecting an option -->
+    <app-home-dropdown (selectOptionValue)="selectOptionValue = $event"></app-home-dropdown>
   </div>
+
+  <!-- Right side of the filter -->
   <div class="home-filter__right">
+
+    <!-- Title for the filter section -->
     <p class="home-filter__title">Tài khoản được cập nhật trong</p>
+
+    <!-- User filter component with date and gender inputs -->
     <app-user-filter
       (startDateValue)="startDate = $event"
       (endDateValue)="endDate = $event"
       (selectedGenderValue)="selectedGender = $event"
     ></app-user-filter>
-    <button
-      (click)="onSearch()"
-      type="button"
-      class="home-filter__btn-search btn btn-primary btn-sm"
-    >
+
+    <!-- Button to trigger the search -->
+    <button (click)="onSearch()" type="button" class="home-filter__btn-search btn btn-primary btn-sm">
       <i class="bi bi-search"></i>Tìm kiếm
     </button>
   </div>

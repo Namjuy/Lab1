@@ -10,6 +10,4 @@ export class ToastComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-
-  
 }
