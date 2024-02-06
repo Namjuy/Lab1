@@ -1,0 +1,22 @@
+.modal {
+  margin: 10% auto 50% auto;    
+  .modal-dialog {
+    .modal-content {
+      width: 300px;
+      margin: 0 auto;
+
+      .modal-header {
+        .modal-title {
+          font-size: 15px;
+          font-family: RobotoBold, sans-serif;
+          width: 100%;
+          text-align: center;
+        }
+      }
+      .modal-footer {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}

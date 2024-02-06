@@ -1,9 +1,12 @@
+<!-- Modal -->
 <div class="modal" id="exampleModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
+      <!-- Modal Header -->
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">
           {{ isCreateCheck ? "Tạo mới người dùng" : "Chỉnh sửa người dùng" }}
+          <!-- Title of the modal -->
         </h1>
         <button
           type="button"
@@ -11,12 +14,16 @@
           data-bs-dismiss="modal"
           aria-label="Close"
         ></button>
+        <!-- Close button for the modal -->
       </div>
+
+      <!-- Form -->
       <form
         (ngSubmit)="onSubmit()"
         [formGroup]="!isCreateCheck ? updateForm : createForm"
         method="post"
       >
+        <!-- Form Inputs -->
         <div
           *ngFor="
             let item of !isCreateCheck ? labelUpdateItem : labelCreateItem;
@@ -28,35 +35,40 @@
             *ngIf="i != 2 && i != 3 && i != 7 && i != 8"
             class="form-control"
           >
-            <label for="{{ item.type }}Input"
-              >{{ item.label
-              }}<strong *ngIf="i != 5 && i != 6">*</strong>:</label
-            >
+            <label for="{{ item.type }}Input">
+              {{ item.label }}
+              <strong *ngIf="i != 5 && i != 6">*</strong>:
+              <!-- Label for the input -->
+            </label>
             <div class="form-input">
               <input
-                [readOnly]="i == 0 && !isCreateCheck"
-                type="text"
-                [placeholder]="item.inputHolderValue"
-                [formControlName]="item.type"
-                [value]="!isCreateCheck ? selectedUser[item.type] : ''"
-                [ngModel]="selectedUser?.[item.type]"
-                name="selectedUser?.[item.type]'"
-                ngDefaultControl
-                id="{{ item.type }}Input"
+              [ngModel]="selectedUser?.[item.type]"
+              type="text"
+              [placeholder]="item.inputHolderValue"
+              [formControlName]="item.type"
+              [value]="!isCreateCheck ? selectedUser[item.type] : ''"
+              name="selectedUser?.[item.type]'"
+              ngDefaultControl
+              id="{{ item.type }}Input"
+              [readOnly]="i == 0 && !isCreateCheck"
               />
-              <label *ngIf="f[item.type].errors && isSubmitted && i == 0" for=""
-                >Tối đa 50 ký tự không dấu (không ký tự đặc biệt)</label
-              >
-              <label *ngIf="f[item.type].errors && isSubmitted && i != 0" for=""
-                >{{ item.label }} không hợp lệ</label
-              >
+              <label *ngIf="f[item.type].errors && isSubmitted && i == 0">
+                Tối đa 50 ký tự không dấu (không ký tự đặc biệt)
+                <!-- Error message for invalid input -->
+              </label>
+              <label *ngIf="f[item.type].errors && isSubmitted && i != 0">
+                {{ item.label }} không hợp lệ
+                <!-- Error message for invalid input -->
+              </label>
             </div>
           </div>
 
+          <!-- Date Input -->
           <div *ngIf="i == 2" class="form-control">
-            <label for="{{ item.type }}Input"
-              >{{ item.label }} <strong>*</strong>:</label
-            >
+            <label for="{{ item.type }}Input">
+              {{ item.label }} <strong>*</strong>:
+              <!-- Label for the date input -->
+            </label>
             <div class="form-input">
               <input
                 type="date"
@@ -75,6 +87,7 @@
             </div>
           </div>
 
+          <!-- Gender Dropdown -->
           <div *ngIf="i == 3" class="form-control">
             <label>{{ item.label }}<strong>*</strong>:</label>
             <div class="dropdown">
@@ -111,10 +124,11 @@
             </div>
           </div>
 
+          <!-- Password Inputs -->
           <div *ngIf="i == 7 || i == 8" class="form-control">
-            <label for="{{ item.type }}Input"
-              >{{ item.label }} <strong>*</strong></label
-            >
+            <label for="{{ item.type }}Input">
+              {{ item.label }} <strong>*</strong>
+            </label>
             <div class="form-input">
               <input
                 type="text"
@@ -126,25 +140,31 @@
                 *ngIf="
                   i == 7 && f[item.type].hasError('required') && isSubmitted
                 "
-                >Mật khẩu không được để trống</label
               >
+                Mật khẩu không được để trống
+                <!-- Error message for empty password field -->
+              </label>
               <label
                 *ngIf="
                   i == 8 && f[item.type].hasError('required') && isSubmitted
                 "
-                >Cần xác nhận mật khẩu
-                <label *ngIf="createForm.hasError('mismatch')"
-                  >Mật khẩu không trùng lặp
-                </label></label
               >
-
+                Cần xác nhận mật khẩu
+                <!-- Error message for empty password confirmation field -->
+              </label>
+              <label *ngIf="createForm.hasError('mismatch') && i == 8">
+                Mật khẩu không trùng lặp
+                <!-- Error message for mismatched passwords -->
+              </label>
               <label *ngIf="f[item.type].errors && isSubmitted && i == 7">
                 Mật khẩu tối thiểu 6 ký tự
+                <!-- Error message for password length requirement -->
               </label>
             </div>
           </div>
         </div>
 
+        <!-- Modal Footer -->
         <div class="modal-footer">
           <button
             type="button"
@@ -153,6 +173,7 @@
             (click)="setSubmit()"
           >
             Huỷ
+            <!-- Cancel button -->
           </button>
           <button
             *ngIf="selectedUser ? updateForm : createForm"
@@ -163,6 +184,7 @@
             class="btn btn-primary"
           >
             Lưu
+            <!-- Save button, enabled only if the form is valid -->
           </button>
         </div>
       </form>

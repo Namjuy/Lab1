@@ -11,12 +11,14 @@ import { UserService } from 'src/app/services/user-service/user.service';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
+  
   // Flags and variables
   isCreateCheck: boolean = true;
   userList: User[] = [];
   totalUserList: User[] = [];
   selectedUser: User | any;
   deletedUser: User | any;
+
   // Filtering and pagination variables
   userFilter: any;
   itemsPerPage = 10;

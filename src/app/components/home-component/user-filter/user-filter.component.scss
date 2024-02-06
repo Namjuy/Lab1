@@ -1,43 +1,54 @@
 .dropdown-center {
-  text-align: center;
+  text-align: center; 
 
+  /* Styles for the dropdown toggle button */
   .dropdown-toggle {
-    background-color: white;
-    color: black;
-    font-size: 12px;
-    border-radius: 0;
-    height: 30px;
-    font-family: RobotoBold, sans-serif;
-
+    background-color: white; 
+    color: black; 
+    font-size: 12px; 
+    border-radius: 0; 
+    height: 30px; 
+    font-family: RobotoBold, sans-serif; 
   }
-  .dropdown-menu {
-    font-size: x-small;
-    min-width: 268px;
-    li {
-      padding: 5px;
-    }
-    .dropdown-menu__date {
-      width: 100%;
-      justify-content: space-between;
 
+  /* Styles for the dropdown menu */
+  .dropdown-menu {
+    font-size: x-small; 
+    min-width: 268px;
+    
+    /* Styles for list items within the dropdown menu */
+    li {
+      padding: 5px; 
+    }
+    
+    /* Styles for a specific part of the dropdown menu related to dates */
+    .dropdown-menu__date {
+      width: 100%; 
+      justify-content: space-between;
+      /* Styles for spans within the date section */
       span {
         font-family: RobotoRegular, sans-serif;
-        max-width: 45%;
-        font-size: 12px;
+        max-width: 45%; 
+        font-size: 12px; 
       }
     }
 
+    /* Styles for a specific part of the dropdown menu related to gender */
     .dropdown-menu__gender {
       width: 100%;
-      justify-content: start;
+      justify-content: start; 
       font-family: RobotoRegular, sans-serif;
-      font-size: 12px;
+      font-size: 12px; 
+
+      /* Styles for paragraphs within the gender section */
       p {
-        display: flex;
+        display: flex; 
         align-items: center;
         margin-left: 20px;
-        font-family: RobotoRegular, sans-serif;
-        font-size: 12px;
+        font-family: RobotoRegular, sans-serif; 
+        font-size: 12px; 
+        
+        
         input {
           margin-left: 10px;
         }
@@ -45,5 +56,3 @@
     }
   }
 }
-
-

@@ -4,7 +4,7 @@
     <div class="modal-content">
       <!-- Modal header with a confirmation title and close button -->
       <div class="modal-header">
-        <h5 class="modal-title">Bạn chắc chứ ?</h5>
+        <h5 class="modal-title">Bạn chắc chắn muốn xoá chứ ?</h5>
         <button
           type="button"
           class="btn-close"
@@ -14,9 +14,6 @@
       </div>
       <!-- Modal footer with 'No' and 'Lưu' (Save) buttons -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Không
-        </button>
         <button
           data-bs-dismiss="modal"
           type="submit"
@@ -24,6 +21,9 @@
           (click)="handleDelete()"
         >
           Lưu
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Không
         </button>
       </div>
     </div>

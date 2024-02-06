@@ -1,4 +1,5 @@
 .modal {
+  margin: 10% auto 50% auto;  
   .modal-dialog {
     .modal-content {
       .modal-header {
@@ -13,48 +14,65 @@
         margin: 0 auto;
         display: flex;
         flex-wrap: wrap;
+
+        //  Styling for form containers 
         .form-container {
           display: flex;
           width: 100%;
+
+          //  Styling for form controls 
           .form-control {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border: none;
             margin-bottom: 10px;
+
+            //  Styling for labels 
             label {
               font-family: RobotoRegular, sans-serif;
               font-size: 13px;
+
+              // Styling for strong tags within labels 
               strong {
                 color: red;
               }
             }
 
+            // Styling for form inputs 
             .form-input {
               width: 60%;
+
               input {
                 width: 100%;
                 font-family: RobotoRegular, sans-serif;
                 font-size: 13px;
               }
+
               label {
                 display: block;
                 color: red;
                 width: 100%;
               }
             }
+
+            // Styling for dropdowns 
             .dropdown {
               border: 0.5px solid black;
               width: 30%;
               height: 23.5px;
               border: none;
+
               a {
                 text-align: center;
                 font-size: 13px;
                 padding-top: 2px;
               }
+
+              // Styling for dropdown menu 
               .dropdown-menu {
                 min-width: 100%;
+
                 .dropdown-item {
                   text-align: center;
                 }
@@ -62,12 +80,15 @@
             }
           }
 
+          // Additional styling for specific form containers 
           &:nth-child(3) {
             max-width: 70%;
             flex: 70%;
+
             .form-control {
               .form-input {
                 width: 41%;
+
                 input {
                   font-family: RobotoRegular, sans-serif;
                   font-size: 13px;
@@ -75,6 +96,7 @@
               }
             }
           }
+
           &:nth-child(4) {
             max-width: 30%;
             flex: 30%;
@@ -87,8 +109,10 @@
           }
         }
 
+        // Styling for modal footer buttons 
         .modal-footer {
           width: 100%;
+
           .btn {
             font-size: 13px;
           }

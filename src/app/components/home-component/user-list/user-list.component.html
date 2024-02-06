@@ -6,13 +6,23 @@
 
 <!-- Button to open modal for creating a new user -->
 <div class="form-create">
-  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="createUser()">
+  <button
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    (click)="createUser()"
+  >
     Tạo người dùng
   </button>
 </div>
 
+<!-- Table displaying none user -->
+<div *ngIf="userList.length === 0" class="empty-list-message mt-4 p-5">
+  Không tồn tại người dùng nào.
+</div>
+
 <!-- Table displaying user information with various actions -->
-<div class="table-container">
+<div *ngIf="userList.length > 0" class="table-container">
   <table class="table table-hover mt-4 mb-0">
     <!-- Table header -->
     <thead class="table__head">
@@ -34,7 +44,7 @@
       <th>Mở khoá</th>
       <th>Xoá</th>
     </thead>
-    
+
     <!-- Table body with user data -->
     <tbody class="table__body">
       <tr *ngFor="let item of userList; let i = index" class="table__row">
@@ -97,6 +107,7 @@
 
 <!-- Pagination component for navigating through user data -->
 <app-pagination
+  *ngIf="userList.length > 0"
   (currentPage)="handleCurrentPage($event)"
   (itemsPerPageNumber)="handleItemPerPage($event)"
   [totalPage]="totalPage"
@@ -107,10 +118,18 @@
 ></app-pagination>
 
 <!-- Modal component for user details and creation -->
-<app-user-modal [selectedUser]="selectedUser" [isCreateCheck]="isCreateCheck"></app-user-modal>
+<app-user-modal
+  [selectedUser]="selectedUser"
+  [isCreateCheck]="isCreateCheck"
+></app-user-modal>
 
 <!-- Modal component for changing user passwords -->
-<app-change-password-modal [selectedUser]="selectedUser"></app-change-password-modal>
+<app-change-password-modal
+  [selectedUser]="selectedUser"
+></app-change-password-modal>
 
 <!-- Confirm dialog component for user deletion -->
-<app-confirm-dialog [deleteUser]="handleDeleteUser" [getUser]="getUser"></app-confirm-dialog>
+<app-confirm-dialog
+  [deleteUser]="handleDeleteUser"
+  [getUser]="getUser"
+></app-confirm-dialog>

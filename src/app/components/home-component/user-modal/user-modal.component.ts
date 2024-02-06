@@ -1,4 +1,4 @@
-// user-modal.component.ts
+// Importing necessary modules and services
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
@@ -11,40 +11,35 @@ import { UserService } from 'src/app/services/user-service/user.service';
   styleUrls: ['./user-modal.component.scss'],
 })
 export class UserModalComponent implements OnInit {
+  // Input properties for selectedUser and isCreateCheck
   @Input() selectedUser: any;
   @Input() isCreateCheck: any;
 
+  // Variable for displayed gender
   displayedGender = 'Nam';
+
+  // Variables for form status
   isSubmitted = false;
   isValid = false;
 
+  // Form groups for update and create forms
   updateForm: FormGroup | any;
   createForm: FormGroup | any;
 
+  // Function to initialize form based on create/update mode
   initializeForm = (isCreate: boolean = false): FormGroup => {
+    // Common form controls
     const commonControls = {
-      userName: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('^[a-zA-Z0-9]+$'),
-          Validators.maxLength(50),
-        ],
-      ],
+      userName: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.maxLength(50)]],
       fullName: ['', [Validators.required, Validators.maxLength(200)]],
-      dateOfBirth: [
-        '',
-        [this.userService.dateOfBirthValidator, Validators.required],
-      ],
-      phoneNumber: [
-        '',
-        [Validators.required, Validators.pattern('[0-9 ]{10}')],
-      ],
-      email: ['',Validators.email],
+      dateOfBirth: ['', [this.userService.dateOfBirthValidator, Validators.required]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('[0-9 ]{10}')]],
+      email: ['', Validators.email],
       isMale: [1, Validators.required],
       address: [''],
     };
 
+    // Additional controls for create mode
     if (isCreate) {
       return this.formBuilder.group(
         {
@@ -59,6 +54,7 @@ export class UserModalComponent implements OnInit {
     }
   };
 
+  // Arrays for form labels
   labelUpdateItem = [
     { label: 'Tên đăng nhập', inputHolderValue: 'Nhập tên đăng nhập', type: 'userName' },
     { label: 'Họ tên nhân viên', inputHolderValue: 'Nhập tên tài xế', type: 'fullName' },
@@ -82,18 +78,22 @@ export class UserModalComponent implements OnInit {
     private toastService: ToastService
   ) {}
 
+  // Getter function for form controls
   get f() {
     return this.isCreateCheck ? this.createForm?.controls : this.updateForm?.controls;
   }
 
   ngOnInit(): void {
+    // Initialize forms and set displayed gender
     this.createForm = this.initializeForm(true);
     this.updateForm = this.initializeForm();
     this.displayedGender = this.setDisplayedGender();
   }
 
+  // Function to format time
   formatTime = (date: string): string => this.userService.formatDate(date);
 
+  // Function to set displayed gender
   setDisplayedGender = () => {
     if (this.selectedUser) {
       this.displayedGender = this.selectedUser['isMale'] == 0 ? 'Nữ' : 'Nam';
@@ -101,6 +101,7 @@ export class UserModalComponent implements OnInit {
     return this.displayedGender;
   };
 
+  // Function to set gender
   setGender = (form: FormGroup, gender: number) => {
     this.displayedGender = gender == 1 ? 'Nam' : 'Nữ';
     const isMaleControl = form.get('isMale');
@@ -111,15 +112,19 @@ export class UserModalComponent implements OnInit {
     this.setDisplayedGender();
   };
 
+  // Function to reset form submission status
   setSubmit = () => {
     this.isSubmitted = false;
+    this.createForm = this.initializeForm(true);
   };
 
+  // Function to handle form submission
   onSubmit = () => {
     this.isSubmitted = true;
     this.selectedUser ? this.updateUser() : this.createUser();
   };
 
+  // Function to update user
   updateUser = () => {
     const updateId = localStorage.getItem('userId');
     if (this.updateForm.valid) {
@@ -145,6 +150,7 @@ export class UserModalComponent implements OnInit {
     }
   };
 
+  // Function to create user
   createUser = () => {
     const createId = localStorage.getItem('userId');
 
