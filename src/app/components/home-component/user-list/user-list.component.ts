@@ -1,4 +1,3 @@
-// user-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Toast } from 'bootstrap';
 import { User } from 'src/app/models/user.model';
@@ -11,7 +10,6 @@ import { UserService } from 'src/app/services/user-service/user.service';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  
   // Flags and variables
   isCreateCheck: boolean = true;
   userList: User[] = [];
@@ -29,6 +27,8 @@ export class UserListComponent implements OnInit {
   indexOfFirstItem = 0;
   totalRow = 0;
 
+  inputPaginationData = new Map();
+
   constructor(
     private userService: UserService,
     private toastService: ToastService
@@ -39,6 +39,14 @@ export class UserListComponent implements OnInit {
     this.calculateIndex(this.totalUserList);
     this.getUser();
   }
+
+  updatePaginationData = (): void => {
+    this.inputPaginationData.set('currentPage', this.currentPage);
+    this.inputPaginationData.set('totalPage', this.totalPage);
+    this.inputPaginationData.set('indexOfLastItem', this.indexOfLastItem);
+    this.inputPaginationData.set('indexOfFirstItem', this.indexOfFirstItem);
+    this.inputPaginationData.set('totalRow', this.totalRow);
+  };
 
   // Handle changes in items per page
   handleItemPerPage = (event: any) => {
@@ -54,6 +62,8 @@ export class UserListComponent implements OnInit {
       this.indexOfFirstItem,
       this.indexOfLastItem
     );
+
+    this.updatePaginationData();
   };
 
   // Handle search functionality
@@ -140,5 +150,6 @@ export class UserListComponent implements OnInit {
         ? newList.length
         : this.currentPage * this.itemsPerPage;
     this.indexOfFirstItem = (this.currentPage - 1) * this.itemsPerPage;
+    this.updatePaginationData();
   };
 }

@@ -110,11 +110,7 @@
   *ngIf="userList.length > 0"
   (currentPage)="handleCurrentPage($event)"
   (itemsPerPageNumber)="handleItemPerPage($event)"
-  [totalPage]="totalPage"
-  [indexFirstItem]="indexOfFirstItem"
-  [indexLastItem]="indexOfLastItem"
-  [totalRow]="totalRow"
-  [currentPageIndex]="currentPage"
+  [inputPaginationData]="inputPaginationData"
 ></app-pagination>
 
 <!-- Modal component for user details and creation -->

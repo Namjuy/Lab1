@@ -1,4 +1,3 @@
-// pagination.component.ts
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -10,22 +9,25 @@ export class PaginationComponent implements OnInit {
   @Output() currentPage = new EventEmitter<number>();
   @Output() itemsPerPageNumber = new EventEmitter<number>();
 
-  @Input() totalRow: any;
-  @Input() totalPage: any;
-  @Input() indexFirstItem: any;
-  @Input() indexLastItem: any;
-  @Input() currentPageIndex = 1;
-  
+  currentPageIndex = 1;
+  totalPage: any;
+  @Input() inputPaginationData: any;
 
   itemsPerPage = 10;
 
   ngOnInit() {
-   
+    this.getInputPaginationData();
   }
+
+  getInputPaginationData = (): void => {
+    this.currentPageIndex = this.inputPaginationData.get('currentPage');
+    this.totalPage = this.inputPaginationData.get('totalPage');
+  };
 
   // Set items per page and emit the value
   setItemPerPage = (numberPerPage: number) => {
     this.itemsPerPage = numberPerPage;
+
     this.itemsPerPageNumber.emit(numberPerPage);
   };
 
@@ -33,6 +35,7 @@ export class PaginationComponent implements OnInit {
   handlePreviousPage = () => {
     if (this.currentPageIndex !== 1) {
       this.currentPageIndex = this.currentPageIndex - 1;
+
       this.currentPage.emit(this.currentPageIndex);
     }
   };
@@ -41,6 +44,7 @@ export class PaginationComponent implements OnInit {
   handleNextPage = () => {
     if (this.currentPageIndex !== this.totalPage) {
       this.currentPageIndex = this.currentPageIndex + 1;
+
       this.currentPage.emit(this.currentPageIndex);
     }
   };
@@ -48,23 +52,27 @@ export class PaginationComponent implements OnInit {
   // Handle first page
   handleFirstPage = () => {
     this.currentPageIndex = 1;
+    this.getInputPaginationData();
     this.currentPage.emit(1);
   };
 
   // Handle last page
   handleLastPage = () => {
     this.currentPageIndex = this.totalPage;
+    this.getInputPaginationData();
     this.currentPage.emit(this.totalPage);
   };
 
   // Change page
   changePage = (pageNumber: number) => {
     this.currentPageIndex = pageNumber;
+    this.getInputPaginationData();
     this.currentPage.emit(pageNumber);
   };
 
   // Get an array of page numbers
   getPages = () => {
+    this.getInputPaginationData();
     return Array.from({ length: this.totalPage }, (_, index) => index + 1);
   };
 }

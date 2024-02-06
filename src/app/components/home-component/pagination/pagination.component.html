@@ -6,7 +6,7 @@
     <ul class="pagination pagination-sm py-1 mb-0">
       <!-- First page button -->
       <li
-        [hidden]="currentPageIndex == 1"
+        [hidden]="inputPaginationData.get('currentPage') == 1"
         class="page-item"
         (click)="handleFirstPage()"
       >
@@ -17,7 +17,7 @@
 
       <!-- Previous page button -->
       <li
-        [hidden]="currentPageIndex == 1"
+        [hidden]="inputPaginationData.get('currentPage') == 1"
         class="page-item"
         (click)="handlePreviousPage()"
       >
@@ -30,7 +30,7 @@
       <li
         class="page-item"
         *ngFor="let pageNumber of getPages()"
-        [class.active]="currentPageIndex === pageNumber"
+        [class.active]="inputPaginationData.get('currentPage') === pageNumber"
       >
         <a class="page-link" (click)="changePage(pageNumber)">{{
           pageNumber
@@ -39,7 +39,7 @@
 
       <!-- Next page button -->
       <li
-        [hidden]="currentPageIndex == getPages().length"
+        [hidden]="inputPaginationData.get('currentPage') == getPages().length"
         class="page-item"
         (click)="handleNextPage()"
       >
@@ -50,7 +50,7 @@
 
       <!-- Last page button -->
       <li
-        [hidden]="currentPageIndex == getPages().length"
+        [hidden]="inputPaginationData.get('currentPage') == getPages().length"
         class="page-item"
         (click)="handleLastPage()"
       >
@@ -85,8 +85,9 @@
   <div class="pagination__right d-flex align-items-center">
     <!-- Display details about the current page and total rows -->
     <p class="pagination__right--detail py-1 mb-0">
-      {{ (currentPageIndex - 1) * itemsPerPage + 1 }} - {{ indexLastItem }} trên
-      tổng {{ totalRow }} dòng
+      {{ (inputPaginationData.get("currentPage") - 1) * itemsPerPage + 1 }} -
+      {{ inputPaginationData.get("indexOfLastItem") }} trên tổng
+      {{ inputPaginationData.get("totalRow") }} dòng
       <i class="bi bi-arrow-clockwise"></i>
     </p>
   </div>
