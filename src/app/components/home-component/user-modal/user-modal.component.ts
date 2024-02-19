@@ -1,5 +1,5 @@
 // Importing necessary modules and services
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ToastService } from 'src/app/services/toast-service/toast.service';
@@ -10,10 +10,14 @@ import { UserService } from 'src/app/services/user-service/user.service';
   templateUrl: './user-modal.component.html',
   styleUrls: ['./user-modal.component.scss'],
 })
+
+////Name   Date       Comments
+////duypn  17/1/2024  create
 export class UserModalComponent implements OnInit {
   // Input properties for selectedUser and isCreateCheck
   @Input() selectedUser: any;
   @Input() isCreateCheck: any;
+  @Output() getUser = new EventEmitter<any>();
 
   // Variable for displayed gender
   displayedGender = 'Nam';
@@ -30,13 +34,33 @@ export class UserModalComponent implements OnInit {
   initializeForm = (isCreate: boolean = false): FormGroup => {
     // Common form controls
     const commonControls = {
-      userName: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.maxLength(50)]],
-      fullName: ['', [Validators.required, Validators.maxLength(200)]],
-      dateOfBirth: ['', [this.userService.dateOfBirthValidator, Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('[0-9 ]{10}')]],
+      userName: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[a-zA-Z0-9]+$'),
+          Validators.maxLength(50),
+        ],
+      ],
+      fullName: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(200),
+          Validators.pattern('^[a-zA-ZÀ-Ỹà-ỹ0-9 ]+$'),
+        ],
+      ],
+      dateOfBirth: [
+        '',
+        [this.userService.dateOfBirthValidator, Validators.required],
+      ],
+      phoneNumber: [
+        '',
+        [Validators.required, Validators.pattern('[0-9 ]{10}')],
+      ],
       email: ['', Validators.email],
       isMale: [1, Validators.required],
-      address: [''],
+      address: ['', Validators.pattern('^[a-zA-ZÀ-Ỹà-ỹ0-9 ]+$')],
     };
 
     // Additional controls for create mode
@@ -44,8 +68,24 @@ export class UserModalComponent implements OnInit {
       return this.formBuilder.group(
         {
           ...commonControls,
-          newPassword: ['', [Validators.required, Validators.minLength(6)]],
-          confirmPassword: ['', [Validators.required]],
+          newPassword: [
+            '',
+            [
+              Validators.required,
+              Validators.minLength(6),
+              Validators.maxLength(100),
+              Validators.pattern('^[a-zA-Z0-9]+$'),
+            ],
+          ],
+          confirmPassword: [
+            '',
+            [
+              Validators.required,
+              Validators.minLength(6),
+              Validators.maxLength(100),
+              Validators.pattern('^[a-zA-Z0-9]+$'),
+            ],
+          ],
         },
         { validators: this.authService.passwordMatchValidator }
       );
@@ -56,19 +96,39 @@ export class UserModalComponent implements OnInit {
 
   // Arrays for form labels
   labelUpdateItem = [
-    { label: 'Tên đăng nhập', inputHolderValue: 'Nhập tên đăng nhập', type: 'userName' },
-    { label: 'Họ tên nhân viên', inputHolderValue: 'Nhập tên tài xế', type: 'fullName' },
+    {
+      label: 'Tên đăng nhập',
+      inputHolderValue: 'Nhập tên đăng nhập',
+      type: 'userName',
+    },
+    {
+      label: 'Họ tên nhân viên',
+      inputHolderValue: 'Nhập tên tài xế',
+      type: 'fullName',
+    },
     { label: 'Ngày sinh', inputHolderValue: '', type: 'dateOfBirth' },
     { label: 'Giới tính', inputHolderValue: '', type: 'isMale' },
-    { label: 'Số điện thoại di động', inputHolderValue: 'Nhập số điện thoại', type: 'phoneNumber' },
+    {
+      label: 'Số điện thoại di động',
+      inputHolderValue: 'Nhập số điện thoại',
+      type: 'phoneNumber',
+    },
     { label: 'Email', inputHolderValue: 'Nhập email', type: 'email' },
     { label: 'Địa chỉ', inputHolderValue: 'Nhập địa chỉ', type: 'address' },
   ];
 
   labelCreateItem = [
     ...this.labelUpdateItem,
-    { label: 'Mật khẩu', inputHolderValue: 'Nhập mật khẩu', type: 'newPassword' },
-    { label: 'Nhập lại mật khẩu', inputHolderValue: 'Nhập lại mật khẩu', type: 'confirmPassword' },
+    {
+      label: 'Mật khẩu',
+      inputHolderValue: 'Nhập mật khẩu',
+      type: 'newPassword',
+    },
+    {
+      label: 'Nhập lại mật khẩu',
+      inputHolderValue: 'Nhập lại mật khẩu',
+      type: 'confirmPassword',
+    },
   ];
 
   constructor(
@@ -80,7 +140,9 @@ export class UserModalComponent implements OnInit {
 
   // Getter function for form controls
   get f() {
-    return this.isCreateCheck ? this.createForm?.controls : this.updateForm?.controls;
+    return this.isCreateCheck
+      ? this.createForm?.controls
+      : this.updateForm?.controls;
   }
 
   ngOnInit(): void {
@@ -138,9 +200,8 @@ export class UserModalComponent implements OnInit {
       this.userService.updateUser(userId, updatedUserData).subscribe(
         () => {
           this.toastService.showToastMessage('toast-updateSuccess');
-          setTimeout(() => {
-            location.reload();
-          }, 2000);
+          this.getUser.emit();
+          this.isSubmitted = false;
         },
         (error) => {
           console.error('Error updating user:', error);
@@ -176,9 +237,9 @@ export class UserModalComponent implements OnInit {
       this.userService.createUser(createUserData).subscribe(
         () => {
           this.toastService.showToastMessage('toast-createSuccess');
-          setTimeout(() => {
-            location.reload();
-          }, 2000);
+          this.getUser.emit();
+          this.createForm.reset();
+          this.isSubmitted = false;
         },
         (error) => {
           console.error('Error creating user:', error);

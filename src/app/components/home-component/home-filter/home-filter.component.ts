@@ -5,7 +5,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   templateUrl: './home-filter.component.html',
   styleUrls: ['./home-filter.component.scss'],
 })
+
+////Name   Date       Comments
+////duypn  4/1/2024  create
 export class HomeFilterComponent implements OnInit {
+  
   // Output decorator to emit events to parent component
   @Output() handleSearch = new EventEmitter<any>();
 

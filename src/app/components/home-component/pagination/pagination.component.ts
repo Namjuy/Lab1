@@ -5,6 +5,9 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss'],
 })
+
+////Name   Date       Comments
+////duypn  19/1/2024  create
 export class PaginationComponent implements OnInit {
   @Output() currentPage = new EventEmitter<number>();
   @Output() itemsPerPageNumber = new EventEmitter<number>();
@@ -19,6 +22,7 @@ export class PaginationComponent implements OnInit {
     this.getInputPaginationData();
   }
 
+  // Get the pagination data
   getInputPaginationData = (): void => {
     this.currentPageIndex = this.inputPaginationData.get('currentPage');
     this.totalPage = this.inputPaginationData.get('totalPage');

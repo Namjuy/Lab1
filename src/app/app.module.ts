@@ -1,3 +1,4 @@
+import { VehicleMonitoringComponent } from './pages/vehicle-monitoring/vehicle-monitoring.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,9 @@ import { UserModalComponent } from './components/home-component/user-modal/user-
 import { ToastComponent } from './components/common/toast/toast.component';
 import { ChangePasswordModalComponent } from './components/home-component/change-password-modal/change-password-modal.component';
 import { ConfirmDialogComponent } from './components/home-component/confirm-dialog/confirm-dialog.component';
+import { MapComponent } from './components/vehicle-monitor/map/map.component';
+import { VehicleInformationComponent } from './components/vehicle-monitor/vehicle-information/vehicle-information.component';
+import { CommonHeaderComponent } from './components/common/common-header/common-header.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -33,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent },
+  { path: 'vehicle-monitor', component: VehicleMonitoringComponent },
 ];
 @NgModule({
   declarations: [
@@ -50,7 +55,11 @@ const appRoutes: Routes = [
     UserModalComponent,
     ToastComponent,
     ChangePasswordModalComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    VehicleMonitoringComponent,
+    MapComponent,
+    VehicleInformationComponent,
+    CommonHeaderComponent
   ],
   imports: [
     BrowserModule,

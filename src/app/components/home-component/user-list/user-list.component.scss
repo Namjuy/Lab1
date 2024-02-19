@@ -1,19 +1,15 @@
 //------- Styles for the form create section
 .form-create {
   //------- Styles for buttons
+  display: flex;
+  margin-top: 20px;
   .btn {
     font-size: 12px;
     font-family: RobotoBold, sans-serif;
+    &:nth-child(2){
+      margin-left: 10px;
+    }
   }
-}
-
-//-------  Styles for the empty list message
-.empty-list-message {
-  border: 1px solid black;
-  text-align: center;
-  font-family: RobotoBold, sans-serif;
-  font-size: 20px;
-  color: #0087ff;
 }
 
 //-------  Styles for the table container
@@ -85,8 +81,7 @@
           .bi-car-front-fill {
             color: #0087ff;
           }
-          .bi-person-fill {
-          }
+
           .bi-copy {
             color: #0087ff;
           }
@@ -117,11 +112,32 @@
         }
       }
     }
+    //-------  Styles for the empty list message
+    .empty-list-message {
+      tr {
+        td {
+          border: 0.5px solid grey;
+          margin: 10px auto;
+          text-align: center;
+          font-family: RobotoBold, sans-serif;
+          font-size: 15px;
+          color: #0087ff;
+        }
+      }
+    }
   }
 }
 
 //-------  Media queries for responsive design
 @media screen and (max-width: 992px) {
+}
+
+@media screen and (max-width: 470px) {
+  .form-create{
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-between;
+  }
 }
 
 @media screen and (max-width: 320px) {

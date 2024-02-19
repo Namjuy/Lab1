@@ -88,12 +88,15 @@
     height: fit-content;
 
     .home-filter__right {
-      justify-content: center;
+      justify-content: space-between;
       flex-wrap: wrap;
       gap: 10px;
       .home-filter__title {
         text-align: center;
         margin-right: 0;
+      }
+      .home-filter__btn-search{
+        margin-left: 0px;
       }
     }
   }

@@ -1,0 +1,26 @@
+.vehicle-infor {
+  float: left;
+  width: 30%;
+  border: 1px solid #18479d;
+
+  .vehicle-infor__heading {
+    text-align: center;
+    font-family: RobotoBold, sans-serif;
+    font-size: 13px;
+  }
+  .vehicle-infor__list {
+    padding-right: 32px;
+    width: 100%;
+    .vehicle-infor__item {
+      margin-top: 5px;
+      list-style: none;
+      background-color: #18479d;
+      color: white;
+      text-align: center;
+      &:hover {
+        cursor: pointer;
+        background-color: #5188ef;
+      }
+    }
+  }
+}

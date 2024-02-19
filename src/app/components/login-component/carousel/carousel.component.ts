@@ -4,7 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Toast } from 'bootstrap';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { JwtService } from 'src/app/services/jwt-service/jwt.service';
-import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'app-carousel',
@@ -23,8 +22,7 @@ export class CarouselComponent {
     private translate: TranslateService,
     private authService: AuthService,
     private router: Router,
-    private jwtService: JwtService,
-    private userService: UserService
+    private jwtService: JwtService
   ) {
     translate.addLangs(['vi', 'en']);
     translate.setDefaultLang('vi');

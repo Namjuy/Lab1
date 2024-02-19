@@ -7,6 +7,9 @@ import { UserService } from 'src/app/services/user-service/user.service';
   templateUrl: './user-filter.component.html',
   styleUrls: ['./user-filter.component.scss'],
 })
+
+////Name   Date       Comments
+////duypn  4/1/2024  create
 export class UserFilterComponent implements OnInit {
   @Output() startDateValue = new EventEmitter<string>();
   @Output() endDateValue = new EventEmitter<string>();

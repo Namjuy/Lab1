@@ -1,5 +1,5 @@
 .modal {
-  margin: 10% auto 50% auto;  
+  margin: auto;  
   .modal-dialog {
     .modal-content {
       .modal-header {
@@ -47,6 +47,9 @@
                 width: 100%;
                 font-family: RobotoRegular, sans-serif;
                 font-size: 13px;
+                &:disabled{
+                  border: 1px solid gray;
+                }
               }
 
               label {

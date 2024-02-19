@@ -14,39 +14,41 @@
   >
     Tạo người dùng
   </button>
-</div>
 
-<!-- Table displaying none user -->
-<div *ngIf="userList.length === 0" class="empty-list-message mt-4 p-5">
-  Không tồn tại người dùng nào.
+  <button
+    *ngIf="deleteUserList.length > 0"
+    data-bs-toggle="modal"
+    data-bs-target="#confirmDelete"
+    class="btn btn-primary"
+    type="button"
+   
+  >
+    Xoá người dùng chỉ định
+  </button>
 </div>
 
 <!-- Table displaying user information with various actions -->
-<div *ngIf="userList.length > 0" class="table-container">
+<div class="table-container">
   <table class="table table-hover mt-4 mb-0">
     <!-- Table header -->
     <thead class="table__head">
       <th>STT</th>
       <th>Chọn</th>
-      <th>Tên Công Ty</th>
-      <th>Đăng nhập</th>
+      <!-- <th>Đăng nhập</th> -->
       <th>Tài khoản</th>
       <th>Họ và tên</th>
-      <th>Mã NV</th>
+      <th class="w-25">Mã NV</th>
       <th>Kiểu tài khoản</th>
       <th>Ngày đăng nhập gần đây</th>
-      <th>Thông tin đăng nhập</th>
       <th>Email</th>
       <th>Điện thoại</th>
-
       <th>Đổi mật khẩu</th>
       <th>Chỉnh sửa thông tin</th>
-      <th>Mở khoá</th>
       <th>Xoá</th>
     </thead>
 
     <!-- Table body with user data -->
-    <tbody class="table__body">
+    <tbody *ngIf="userList.length > 0" class="table__body">
       <tr *ngFor="let item of userList; let i = index" class="table__row">
         <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
         <td>
@@ -58,24 +60,22 @@
             [(ngModel)]="item.isSelected"
             name="selectedUser?.[item.type]'"
             ngDefaultControl
+            (change)="setDeleteUserList()"
           />
         </td>
-        <td><i class="bi bi-box-arrow-in-right"></i></td>
-        <td>
+        <!-- <td>
           <i
             [class.bi-person-fill--blue]="item.isLog"
             [class.bi-person-fill]="!item.isLog"
           ></i>
-        </td>
+        </td> -->
         <td [ngClass]="{ red: item.isDeleted }">{{ item.userName }}</td>
         <td class="text-start">{{ item.fullName }}</td>
         <td>{{ item.userId }}</td>
         <td>Admin</td>
         <td>{{ item.lastModifyDate }}</td>
-        <td>Bình Anh | Samsung</td>
         <td>{{ item.email }}</td>
         <td>{{ item.phoneNumber }}</td>
-
         <td>
           <i
             class="bi bi-person-lock"
@@ -92,7 +92,6 @@
             (click)="getSelectedUser(item)"
           ></i>
         </td>
-        <td><i class="bi bi-arrow-repeat"></i></td>
         <td
           data-bs-toggle="modal"
           data-bs-target="#confirmDelete"
@@ -101,13 +100,18 @@
           <i class="bi bi-trash"></i>
         </td>
       </tr>
+      <!-- Table displaying none user -->
+    </tbody>
+    <tbody *ngIf="userList.length === 0" class="empty-list-message mt-4 p-5">
+      <tr>
+        <td colspan="12">Không tồn tại người dùng nào.</td>
+      </tr>
     </tbody>
   </table>
 </div>
 
 <!-- Pagination component for navigating through user data -->
 <app-pagination
-  *ngIf="userList.length > 0"
   (currentPage)="handleCurrentPage($event)"
   (itemsPerPageNumber)="handleItemPerPage($event)"
   [inputPaginationData]="inputPaginationData"
@@ -117,6 +121,7 @@
 <app-user-modal
   [selectedUser]="selectedUser"
   [isCreateCheck]="isCreateCheck"
+  (getUser)="getUser()"
 ></app-user-modal>
 
 <!-- Modal component for changing user passwords -->

@@ -93,8 +93,12 @@ export class UserService {
   };
 
   // Helper method to format date strings
-  formatDate: (dateString: string) => string = (dateString) =>
-    new Date(dateString).toISOString().split('T')[0];
+  formatDate: (dateString: string) => string = (dateString) => {
+    const date = new Date(dateString);
+    date.setHours(date.getHours() + 7); 
+    return date.toISOString().split('T')[0];
+};
+
 
   // Validator function for date of birth
   dateOfBirthValidator: (control: FormControl) => ValidationErrors | null = (control) => {

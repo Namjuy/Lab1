@@ -42,15 +42,15 @@
             </label>
             <div class="form-input">
               <input
-              [ngModel]="selectedUser?.[item.type]"
-              type="text"
-              [placeholder]="item.inputHolderValue"
-              [formControlName]="item.type"
-              [value]="!isCreateCheck ? selectedUser[item.type] : ''"
-              name="selectedUser?.[item.type]'"
-              ngDefaultControl
-              id="{{ item.type }}Input"
-              [readOnly]="i == 0 && !isCreateCheck"
+                [ngModel]="selectedUser?.[item.type]"
+                type="text"
+                [placeholder]="item.inputHolderValue"
+                [formControlName]="item.type"
+                [value]="!isCreateCheck ? selectedUser[item.type] : ''"
+                name="selectedUser?.[item.type]'"
+                ngDefaultControl
+                id="{{ item.type }}Input"
+                [attr.disabled]="i == 0 && !isCreateCheck"
               />
               <label *ngIf="f[item.type].errors && isSubmitted && i == 0">
                 Tối đa 50 ký tự không dấu (không ký tự đặc biệt)
@@ -84,6 +84,10 @@
                 ngDefaultControl
                 id="{{ item.type }}Input"
               />
+              <label *ngIf="f[item.type].errors && isSubmitted">
+                Tuổi phải trên 18
+                <!-- Error message for invalid input -->
+              </label>
             </div>
           </div>
 

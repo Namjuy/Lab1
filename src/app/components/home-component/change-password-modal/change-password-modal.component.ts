@@ -14,6 +14,9 @@ import { UserService } from 'src/app/services/user-service/user.service';
   templateUrl: './change-password-modal.component.html',
   styleUrls: ['./change-password-modal.component.scss'],
 })
+
+////Name   Date       Comments
+////duypn  25/1/2024  create
 export class ChangePasswordModalComponent implements OnInit {
   @Input() selectedUser?: User;
   changePasswordForm: FormGroup = new FormGroup({

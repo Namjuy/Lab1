@@ -5,6 +5,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss'],
 })
+
+////Name   Date       Comments
+////duypn  24/1/2024  create
 export class ConfirmDialogComponent implements OnInit {
   @Input() deleteUser: (() => void) | undefined;
 

@@ -9,6 +9,9 @@ import { UserService } from 'src/app/services/user-service/user.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
 })
+
+////Name   Date       Comments
+////duypn  17/1/2024  create
 export class UserListComponent implements OnInit {
   // Flags and variables
   isCreateCheck: boolean = true;
@@ -27,6 +30,8 @@ export class UserListComponent implements OnInit {
   indexOfFirstItem = 0;
   totalRow = 0;
 
+  deleteUserList: User[] = [];
+
   inputPaginationData = new Map();
 
   constructor(
@@ -40,6 +45,7 @@ export class UserListComponent implements OnInit {
     this.getUser();
   }
 
+  // Update input pagination data
   updatePaginationData = (): void => {
     this.inputPaginationData.set('currentPage', this.currentPage);
     this.inputPaginationData.set('totalPage', this.totalPage);
@@ -81,19 +87,19 @@ export class UserListComponent implements OnInit {
         this.totalUserList = response;
         this.totalRow = this.totalUserList.length;
         this.handleCurrentPage(1);
-        this.userList = response.slice(1, this.indexOfLastItem);
+        this.userList = response.slice(0, this.indexOfLastItem);
       });
+  };
+
+  setDeleteUserList = () => {
+    this.deleteUserList = this.totalUserList.filter((item) => item.isSelected);
   };
 
   // Handle deletion of users
   handleDeleteUser = () => {
-    const selectedListUser = this.totalUserList.filter(
-      (item) => item.isSelected
-    );
-
-    selectedListUser.length == 0
+    this.deleteUserList.length == 0
       ? this.deleteUser()
-      : this.deleteListUser(selectedListUser);
+      : this.deleteListUser(this.deleteUserList);
   };
 
   // Delete a list of users
@@ -101,9 +107,8 @@ export class UserListComponent implements OnInit {
     selectedListUser.forEach((item) =>
       this.userService.deleteUser(item.userId).subscribe(() => {
         this.toastService.showToastMessage('toast-updateSuccess');
-        setTimeout(() => {
-          location.reload();
-        }, 2000);
+        this.getUser();
+        this.deleteUserList = [];
       })
     );
   };
@@ -116,9 +121,10 @@ export class UserListComponent implements OnInit {
     if (this.deletedUser) {
       this.userService.deleteUser(this.deletedUser?.userId).subscribe(() => {
         this.toastService.showToastMessage('toast-updateSuccess');
-        setTimeout(() => {
-          location.reload();
-        }, 2000);
+
+        this.getUser();
+
+        this.deleteUserList = [];
       });
     }
   };
