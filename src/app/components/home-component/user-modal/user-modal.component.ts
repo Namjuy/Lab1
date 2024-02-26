@@ -1,4 +1,3 @@
-// Importing necessary modules and services
 import {
   Component,
   ElementRef,
@@ -163,9 +162,9 @@ export class UserModalComponent implements OnInit {
   ngOnInit(): void {
     // Initialize forms and set displayed gender
     this.createForm = this.initializeForm(true);
-    this.updateForm = this.initializeForm();
+    this.updateForm = this.initializeForm(false); // Set isCreateCheck to false for update form
     this.displayedGender = this.setDisplayedGender();
-    this.listenForOutsideClick();    
+    this.listenForOutsideClick();
   }
 
   //Catch event when click out side of modal
@@ -204,8 +203,22 @@ export class UserModalComponent implements OnInit {
 
   // Function to reset form submission status
   setSubmit = () => {
-    this.selectedUser= null;
     this.isSubmitted = false;
+    if (this.selectedUser) {
+      this.isCreateCheck = false;
+    } else {
+      this.isCreateCheck = true;
+    }
+    // Reset the form to the previously selected user's data
+    const formData = this.isCreateCheck ? this.createForm : this.updateForm;
+    if (formData && this.selectedUser) {
+      formData.patchValue({
+        ...this.selectedUser,
+        dateOfBirth: this.formatTime(this.selectedUser.dateOfBirth),
+      });
+    } else if (formData && !this.selectedUser) {
+      formData.reset();
+    }
   };
 
   // Function to handle form submission

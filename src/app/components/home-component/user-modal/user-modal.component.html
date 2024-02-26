@@ -50,7 +50,7 @@
                 name="selectedUser?.[item.type]'"
                 ngDefaultControl
                 id="{{ item.type }}Input"
-                [attr.disabled]="i == 0 && !isCreateCheck"
+                [attr.disabled]="i == 0 && selectedUser"
               />
               <label *ngIf="f[item.type].errors && isSubmitted && i == 0">
                 Tối đa 50 ký tự không dấu (không ký tự đặc biệt)

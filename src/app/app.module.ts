@@ -30,7 +30,7 @@ import { ConfirmDialogComponent } from './components/home-component/confirm-dial
 import { MapComponent } from './components/vehicle-monitor/map/map.component';
 import { VehicleInformationComponent } from './components/vehicle-monitor/vehicle-information/vehicle-information.component';
 import { CommonHeaderComponent } from './components/common/common-header/common-header.component';
-
+import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -84,7 +84,7 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
   ],
-  providers: [],
+  providers: [{provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

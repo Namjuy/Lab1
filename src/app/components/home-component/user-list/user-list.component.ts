@@ -146,7 +146,7 @@ export class UserListComponent implements OnInit {
   };
 
   // Navigate to create user mode
-  createUser = () => (this.isCreateCheck = true);
+  createUser = () => (this.isCreateCheck = true, this.selectedUser= undefined);
 
   // Calculate pagination indices
   private calculateIndex = (newList: User[]) => {
