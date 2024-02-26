@@ -137,19 +137,41 @@
             <div class="form-input">
               <div class="input-group">
                 <input
+                  *ngIf="i == 7"
                   [type]="isShowPassword ? 'text' : 'password'"
                   [placeholder]="item.inputHolderValue"
                   [formControlName]="item.type"
-                  [(ngModel)]="i == 7 ? password : confirmPassword"
+                  [(ngModel)]="password"
+                  id="{{ item.type }}Input"
+                />
+                <input
+                  *ngIf="i == 8"
+                  [type]="isShowConfirmPassword ? 'text' : 'password'"
+                  [placeholder]="item.inputHolderValue"
+                  [formControlName]="item.type"
+                  [(ngModel)]="confirmPassword"
                   id="{{ item.type }}Input"
                 />
                 <span
+                  *ngIf="i == 7"
                   (click)="tooglePasswordVisible()"
                   class="input-group-text"
                 >
                   <i
                     [class]="
                       isShowPassword ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'
+                    "
+                    id="togglePasword"
+                  ></i>
+                </span>
+                <span
+                  *ngIf="i == 8"
+                  (click)="toggleConfirmPasswordVisible()"
+                  class="input-group-text"
+                >
+                  <i
+                    [class]="
+                      isShowConfirmPassword ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'
                     "
                     id="togglePasword"
                   ></i>

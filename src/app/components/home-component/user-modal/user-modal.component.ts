@@ -37,6 +37,7 @@ export class UserModalComponent implements OnInit {
 
   // Initialize a boolean variable isShowPassword and set it to false
   isShowPassword: boolean = false;
+  isShowConfirmPassword: boolean = false;
 
   // Form groups for update and create forms
   updateForm: FormGroup | any;
@@ -294,4 +295,7 @@ export class UserModalComponent implements OnInit {
   tooglePasswordVisible = () => {
     this.isShowPassword = !this.isShowPassword;
   };
+  toggleConfirmPasswordVisible = () => {
+    this.isShowConfirmPassword = !this.isShowConfirmPassword;
+  }
 }
