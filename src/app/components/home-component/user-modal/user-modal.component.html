@@ -129,17 +129,32 @@
           </div>
 
           <!-- Password Inputs -->
+
           <div *ngIf="i == 7 || i == 8" class="form-control">
             <label for="{{ item.type }}Input">
               {{ item.label }} <strong>*</strong>
             </label>
             <div class="form-input">
-              <input
-                type="text"
-                [placeholder]="item.inputHolderValue"
-                [formControlName]="item.type"
-                id="{{ item.type }}Input"
-              />
+              <div class="input-group">
+                <input
+                  [type]="isShowPassword ? 'text' : 'password'"
+                  [placeholder]="item.inputHolderValue"
+                  [formControlName]="item.type"
+                  [(ngModel)]="i == 7 ? password : confirmPassword"
+                  id="{{ item.type }}Input"
+                />
+                <span
+                  (click)="tooglePasswordVisible()"
+                  class="input-group-text"
+                >
+                  <i
+                    [class]="
+                      isShowPassword ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'
+                    "
+                    id="togglePasword"
+                  ></i>
+                </span>
+              </div>
               <label
                 *ngIf="
                   i == 7 && f[item.type].hasError('required') && isSubmitted

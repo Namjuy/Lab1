@@ -1,5 +1,13 @@
 // Importing necessary modules and services
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  Renderer2,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ToastService } from 'src/app/services/toast-service/toast.service';
@@ -22,9 +30,14 @@ export class UserModalComponent implements OnInit {
   // Variable for displayed gender
   displayedGender = 'Nam';
 
+  password = '';
+  confirmPassword = '';
   // Variables for form status
   isSubmitted = false;
   isValid = false;
+
+  // Initialize a boolean variable isShowPassword and set it to false
+  isShowPassword: boolean = false;
 
   // Form groups for update and create forms
   updateForm: FormGroup | any;
@@ -135,7 +148,9 @@ export class UserModalComponent implements OnInit {
     private userService: UserService,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private renderer: Renderer2,
+    private elementRef: ElementRef
   ) {}
 
   // Getter function for form controls
@@ -150,7 +165,20 @@ export class UserModalComponent implements OnInit {
     this.createForm = this.initializeForm(true);
     this.updateForm = this.initializeForm();
     this.displayedGender = this.setDisplayedGender();
+    this.listenForOutsideClick();    
   }
+
+  //Catch event when click out side of modal
+  listenForOutsideClick = () => {
+    this.renderer.listen('document', 'click', (event: MouseEvent) => {
+      const isClickInsideModal = this.elementRef.nativeElement.contains(
+        event.target
+      );
+      if (!isClickInsideModal) {
+        this.setSubmit();
+      }
+    });
+  };
 
   // Function to format time
   formatTime = (date: string): string => this.userService.formatDate(date);
@@ -176,8 +204,8 @@ export class UserModalComponent implements OnInit {
 
   // Function to reset form submission status
   setSubmit = () => {
+    this.selectedUser= null;
     this.isSubmitted = false;
-    this.createForm = this.initializeForm(true);
   };
 
   // Function to handle form submission
@@ -247,5 +275,10 @@ export class UserModalComponent implements OnInit {
         }
       );
     }
+  };
+
+  // Create a method to toggle the visibility of the password
+  tooglePasswordVisible = () => {
+    this.isShowPassword = !this.isShowPassword;
   };
 }

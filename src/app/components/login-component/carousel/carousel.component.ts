@@ -110,9 +110,9 @@ export class CarouselComponent {
           }
         }
       },
-      (error) => {
+      (errorMess) => {
         this.showLoginMessage('toast-loginFailed');
-        console.error('Đăng nhập thất bại');
+        console.error('Đăng nhập thất bại',errorMess);
       }
     );
   }

@@ -1,5 +1,5 @@
 .modal {
-  margin: auto;  
+  margin: auto;
   .modal-dialog {
     .modal-content {
       .modal-header {
@@ -15,12 +15,12 @@
         display: flex;
         flex-wrap: wrap;
 
-        //  Styling for form containers 
+        //  Styling for form containers
         .form-container {
           display: flex;
           width: 100%;
 
-          //  Styling for form controls 
+          //  Styling for form controls
           .form-control {
             display: flex;
             justify-content: space-between;
@@ -28,18 +28,18 @@
             border: none;
             margin-bottom: 10px;
 
-            //  Styling for labels 
+            //  Styling for labels
             label {
               font-family: RobotoRegular, sans-serif;
               font-size: 13px;
 
-              // Styling for strong tags within labels 
+              // Styling for strong tags within labels
               strong {
                 color: red;
               }
             }
 
-            // Styling for form inputs 
+            // Styling for form inputs
             .form-input {
               width: 60%;
 
@@ -47,8 +47,20 @@
                 width: 100%;
                 font-family: RobotoRegular, sans-serif;
                 font-size: 13px;
-                &:disabled{
+                &:disabled {
                   border: 1px solid gray;
+                }
+              }
+
+              .input-group {
+                input {
+                  border: 0.5px solid black;
+                  width: 80%;
+                  font-family: RobotoRegular, sans-serif;
+                  font-size: 13px;
+                }
+                span {
+                  height: 25px;
                 }
               }
 
@@ -59,7 +71,7 @@
               }
             }
 
-            // Styling for dropdowns 
+            // Styling for dropdowns
             .dropdown {
               border: 0.5px solid black;
               width: 30%;
@@ -72,7 +84,7 @@
                 padding-top: 2px;
               }
 
-              // Styling for dropdown menu 
+              // Styling for dropdown menu
               .dropdown-menu {
                 min-width: 100%;
 
@@ -83,7 +95,7 @@
             }
           }
 
-          // Additional styling for specific form containers 
+          // Additional styling for specific form containers
           &:nth-child(3) {
             max-width: 70%;
             flex: 70%;
@@ -112,12 +124,65 @@
           }
         }
 
-        // Styling for modal footer buttons 
+        // Styling for modal footer buttons
         .modal-footer {
           width: 100%;
 
           .btn {
             font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .modal {
+    .modal-dialog {
+      .modal-content {
+        form {
+          .form-container {
+            .form-control {
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              label {
+                margin-bottom: 3px;
+              }
+              .form-input {
+                width: 100%;
+                .input-group {
+                  input {
+                    width: 79%;
+                  }
+                }
+              }
+            }
+            &:nth-child(3) {
+              max-width: 100%;
+              flex: 100%;
+
+              .form-control {
+                .form-input {
+                  width: 100%;
+                  input {
+                    font-family: RobotoRegular, sans-serif;
+                    font-size: 13px;
+                  }
+                }
+              }
+            }
+            &:nth-child(4) {
+              flex: 100%;
+              max-width: 100%;
+              .form-control {
+                label {
+                  text-align: center;
+                  width: 60%;
+                }
+              }
+            }
           }
         }
       }

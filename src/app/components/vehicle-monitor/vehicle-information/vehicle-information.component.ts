@@ -17,6 +17,6 @@ export class VehicleInformationComponent implements OnInit {
     this.selectedCoordinate.set('lat',lat);
     this.selectedCoordinate.set('lng',lng);
     this.selectedCoordinate.set('zoom',zoom);
-    this.setCoordinates.emit(this.selectedCoordinate);
+    this.setCoordinates.emit(this.selectedCoordinate);    
   };
 }

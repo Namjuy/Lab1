@@ -1,6 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  ValidationErrors,
+  ValidatorFn,
+} from '@angular/forms';
 import { Observable, catchError } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 
@@ -11,8 +16,8 @@ export class UserService {
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });
-
-  private userApi = 'https://localhost:7226/User';
+  // 10.1.21.114:1234
+  private userApi = 'http://localhost:5086/User';
 
   constructor(private http: HttpClient) {}
 
@@ -44,7 +49,10 @@ export class UserService {
     this.http.post<any>(this.userApi, newUser, { headers: this.headers });
 
   // Update an existing user
-  updateUser: (userId: string, updatedUserData: any) => Observable<User> = (userId, updatedUserData) => {
+  updateUser: (userId: string, updatedUserData: any) => Observable<User> = (
+    userId,
+    updatedUserData
+  ) => {
     const url = `${this.userApi}/${userId}`;
     return this.http.put<User>(url, updatedUserData, { headers: this.headers });
   };
@@ -61,7 +69,12 @@ export class UserService {
   };
 
   // Change user password
-  changePassword: (userId: string, oldPassword: string, newPassword: string, confirmPassword: string) => Observable<any> = (
+  changePassword: (
+    userId: string,
+    oldPassword: string,
+    newPassword: string,
+    confirmPassword: string
+  ) => Observable<any> = (
     userId,
     oldPassword,
     newPassword,
@@ -95,13 +108,14 @@ export class UserService {
   // Helper method to format date strings
   formatDate: (dateString: string) => string = (dateString) => {
     const date = new Date(dateString);
-    date.setHours(date.getHours() + 7); 
+    date.setHours(date.getHours() + 7);
     return date.toISOString().split('T')[0];
-};
-
+  };
 
   // Validator function for date of birth
-  dateOfBirthValidator: (control: FormControl) => ValidationErrors | null = (control) => {
+  dateOfBirthValidator: (control: FormControl) => ValidationErrors | null = (
+    control
+  ) => {
     const currentDate = new Date();
     const enteredDate = new Date(control.value);
     const age = currentDate.getFullYear() - enteredDate.getFullYear();
