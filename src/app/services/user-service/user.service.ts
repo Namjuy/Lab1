@@ -17,7 +17,7 @@ export class UserService {
     'Content-Type': 'application/json',
   });
   // 10.1.21.114:1234
-  private userApi = 'https://10.1.21.114:12345/User';
+  private userApi = 'https://10.1.21.125:12345/User';
 
   constructor(private http: HttpClient) {}
 
