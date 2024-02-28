@@ -29,8 +29,14 @@ import { ChangePasswordModalComponent } from './components/home-component/change
 import { ConfirmDialogComponent } from './components/home-component/confirm-dialog/confirm-dialog.component';
 import { MapComponent } from './components/vehicle-monitor/map/map.component';
 import { VehicleInformationComponent } from './components/vehicle-monitor/vehicle-information/vehicle-information.component';
+import {
+  HashLocationStrategy,
+  LocationStrategy,
+  
+  CommonModule,
+  DatePipe,
+} from '@angular/common';
 
-import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -59,7 +65,6 @@ const appRoutes: Routes = [
     VehicleMonitoringComponent,
     MapComponent,
     VehicleInformationComponent,
-   
   ],
   imports: [
     BrowserModule,
@@ -68,6 +73,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CommonModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -84,7 +90,9 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
   ],
-  providers: [{provide:LocationStrategy,useClass:HashLocationStrategy}],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy   },DatePipe
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

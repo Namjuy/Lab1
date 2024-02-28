@@ -7,7 +7,16 @@ import {
   Output,
   Renderer2,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ToastService } from 'src/app/services/toast-service/toast.service';
 import { UserService } from 'src/app/services/user-service/user.service';
@@ -23,6 +32,7 @@ import { UserService } from 'src/app/services/user-service/user.service';
 export class UserModalComponent implements OnInit {
   // Input properties for selectedUser and isCreateCheck
   @Input() selectedUser: any;
+  @Input() totalUserList: User[] | any;
   @Input() isCreateCheck: any;
   @Output() getUser = new EventEmitter<any>();
 
@@ -53,6 +63,7 @@ export class UserModalComponent implements OnInit {
           Validators.required,
           Validators.pattern('^[a-zA-Z0-9]+$'),
           Validators.maxLength(50),
+          this.checkUserNameExist(),
         ],
       ],
       fullName: [
@@ -72,7 +83,7 @@ export class UserModalComponent implements OnInit {
         [Validators.required, Validators.pattern('[0-9 ]{10}')],
       ],
       email: ['', Validators.email],
-      isMale: [1, Validators.required],
+      isMale: [1],
       address: ['', Validators.pattern('^[a-zA-ZÀ-Ỹà-ỹ0-9 ]+$')],
     };
 
@@ -100,7 +111,9 @@ export class UserModalComponent implements OnInit {
             ],
           ],
         },
-        { validators: this.authService.passwordMatchValidator }
+        {
+          validators: this.authService.passwordMatchValidator,
+        }
       );
     } else {
       return this.formBuilder.group(commonControls);
@@ -225,6 +238,7 @@ export class UserModalComponent implements OnInit {
   // Function to handle form submission
   onSubmit = () => {
     this.isSubmitted = true;
+
     this.selectedUser ? this.updateUser() : this.createUser();
   };
 
@@ -288,6 +302,8 @@ export class UserModalComponent implements OnInit {
           this.toastService.showToastMessage('toast-createFailed');
         }
       );
+    } else {
+      console.log(this.createForm);
     }
   };
 
@@ -297,5 +313,16 @@ export class UserModalComponent implements OnInit {
   };
   toggleConfirmPasswordVisible = () => {
     this.isShowConfirmPassword = !this.isShowConfirmPassword;
+  };
+
+  checkUserNameExist(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const username = control.value;
+      const user = this.totalUserList.find(
+        (user: User) => user.userName === username
+      );
+
+      return user ? { existed: true } : null;
+    };
   }
 }

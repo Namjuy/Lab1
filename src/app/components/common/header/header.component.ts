@@ -16,7 +16,7 @@ interface MenuItem {
 ////Name   Date       Comments
 ////duypn  19/12/2023  create
 export class HeaderComponent {
-  //check token
+  //get userId from local storage
   userId = localStorage.getItem('userId');
 
   constructor(
@@ -62,18 +62,12 @@ export class HeaderComponent {
   homeItem: MenuItem[] = [
     {
       title: 'VEHICLE_MONITOR',
-      link: 'http://localhost:4200/#/vehicle-monitor',
+      link: 'http://10.1.21.125:4201/#/vehicle-monitor',
     },
-    // {
-    //   title:'VEHICLE',
-    //   link: 'http://localhost:4200/#/vehicle-monitor'
-    // }
-    // {
-    //   title:'VEHICLE',
-    //   link: 'http://localhost:4200/#/vehicle-monitor'
-    // }
+  
   ];
 
+  //handle click logout
   logout = (): void => {
     this.authService.logout();
   };

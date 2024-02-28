@@ -52,13 +52,25 @@
                 id="{{ item.type }}Input"
                 [attr.disabled]="i == 0 && selectedUser"
               />
-              <label *ngIf="f[item.type].errors && isSubmitted && i == 0">
+              <label
+                *ngIf="f[item.type].errors?.pattern && isSubmitted && i == 0"
+              >
                 Tối đa 50 ký tự không dấu (không ký tự đặc biệt)
-                <!-- Error message for invalid input -->
+              </label>
+              <label
+                *ngIf="f[item.type].errors?.required && isSubmitted && i == 0"
+              >
+                Tên đăng nhập không hợp lệ
               </label>
               <label *ngIf="f[item.type].errors && isSubmitted && i != 0">
                 {{ item.label }} không hợp lệ
-                <!-- Error message for invalid input -->
+              </label>
+              <label
+                *ngIf="
+                  f[item.type].hasError('existed') && isSubmitted && i == 0
+                "
+              >
+                Tên đăng nhập trùng
               </label>
             </div>
           </div>
@@ -171,7 +183,9 @@
                 >
                   <i
                     [class]="
-                      isShowConfirmPassword ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'
+                      isShowConfirmPassword
+                        ? 'bi bi-eye-fill'
+                        : 'bi bi-eye-slash-fill'
                     "
                     id="togglePasword"
                   ></i>

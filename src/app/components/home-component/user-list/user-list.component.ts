@@ -3,6 +3,7 @@ import { Toast } from 'bootstrap';
 import { User } from 'src/app/models/user.model';
 import { ToastService } from 'src/app/services/toast-service/toast.service';
 import { UserService } from 'src/app/services/user-service/user.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-list',
@@ -36,7 +37,8 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit() {
@@ -146,7 +148,9 @@ export class UserListComponent implements OnInit {
   };
 
   // Navigate to create user mode
-  createUser = () => (this.isCreateCheck = true, this.selectedUser= undefined);
+  createUser = () => (
+    (this.isCreateCheck = true), (this.selectedUser = undefined)
+  );
 
   // Calculate pagination indices
   private calculateIndex = (newList: User[]) => {
@@ -157,5 +161,9 @@ export class UserListComponent implements OnInit {
         : this.currentPage * this.itemsPerPage;
     this.indexOfFirstItem = (this.currentPage - 1) * this.itemsPerPage;
     this.updatePaginationData();
+  };
+
+  convertDateFormat = (inputDateString: Date) => {
+    return this.datePipe.transform(inputDateString, 'dd/MM/yyyy');
   };
 }

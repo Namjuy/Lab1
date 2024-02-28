@@ -21,7 +21,6 @@
     data-bs-target="#confirmDelete"
     class="btn btn-primary"
     type="button"
-   
   >
     Xoá người dùng chỉ định
   </button>
@@ -42,7 +41,7 @@
       <th>Ngày cuối được cập nhật</th>
       <th>Email</th>
       <th>Điện thoại</th>
-      <th>Đổi mật khẩu</th>
+      <!-- <th>Đổi mật khẩu</th> -->
       <th>Chỉnh sửa thông tin</th>
       <th>Xoá</th>
     </thead>
@@ -73,17 +72,17 @@
         <td class="text-start">{{ item.fullName }}</td>
         <td>{{ item.userId }}</td>
         <td>Admin</td>
-        <td>{{ item.lastModifyDate }}</td>
+        <td>{{ convertDateFormat(item.lastModifyDate) }}</td>
         <td>{{ item.email }}</td>
         <td>{{ item.phoneNumber }}</td>
-        <td>
+        <!-- <td>
           <i
             class="bi bi-person-lock"
             data-bs-toggle="modal"
             data-bs-target="#changePasswordModal"
             (click)="getSelectedUser(item)"
           ></i>
-        </td>
+        </td> -->
         <td>
           <i
             data-bs-toggle="modal"
@@ -121,6 +120,7 @@
 <app-user-modal
   [selectedUser]="selectedUser"
   [isCreateCheck]="isCreateCheck"
+  [totalUserList]="totalUserList"
   (getUser)="getUser()"
 ></app-user-modal>
 

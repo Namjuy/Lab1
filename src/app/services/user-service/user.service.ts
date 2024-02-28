@@ -34,15 +34,16 @@ export class UserService {
     gender?: number
   ) => Observable<User[]> = (input, type, startDate, endDate, gender) => {
     let url = `${this.userApi}/search?`;
-
-    if (input) url += `input=${input}&`;
-    if (type) url += `type=${type}&`;
-    if (startDate) url += `startDate=${startDate}&`;
-    if (endDate) url += `endDate=${endDate}&`;
-    if (gender !== undefined) url += `gender=${gender}&`;
-
+  
+    if (input) url += `input=${encodeURIComponent(input)}&`;
+    if (type) url += `type=${encodeURIComponent(type)}&`;
+    if (startDate) url += `startDate=${encodeURIComponent(startDate)}&`;
+    if (endDate) url += `endDate=${encodeURIComponent(endDate)}&`;
+    if (gender !== undefined) url += `gender=${encodeURIComponent(gender)}&`;
+  
     return this.http.get<User[]>(url, { headers: this.headers });
   };
+  
 
   // Create a new user
   createUser: (newUser: any) => Observable<any> = (newUser) =>
@@ -67,6 +68,11 @@ export class UserService {
       })
     );
   };
+
+  //Get username in list 
+  getUserName(userName:string , listUser:any[]){
+    return listUser.some(item => item.name === userName);
+  }
 
   // Change user password
   changePassword: (
