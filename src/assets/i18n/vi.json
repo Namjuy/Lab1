@@ -8,6 +8,7 @@
   "ABOUT": "Về chúng tôi",
 
   "LOGIN": "Đăng nhập",
+  "LOGOUT": "Đăng xuất",
   "USER": "Tên người dùng",
   "PASSWORD": "Mật khẩu",
   "FORGETPASS": "Quên mật khẩu",
@@ -35,5 +36,7 @@
   "LOCATION3": "Số B5-15, ngõ 26, Đ. Nguyễn Thái Học, TP. Vinh, Nghệ An.",
   "LOCATION4": "Lô 1 Khu B2-19, KĐT Biệt thự sinh thái, Công Viên Văn Hóa Làng Quê và Quần thể Du lịch sông nước, P. Hòa Quý, Ngũ Hành Sơn, TP. Đà Nẵng.",
   "LOCATION5": "Số 9, Đường 37, KĐT Vạn Phúc, P. Hiệp Bình Phước, TP. Thủ Đức, TP. Hồ Chí Minh.",
-  "LOCATION6": "Số 402, Đ. Trần Phú, X. Thạch Trung, TP. Hà Tĩnh, Hà Tĩnh"
+  "LOCATION6": "Số 402, Đ. Trần Phú, X. Thạch Trung, TP. Hà Tĩnh, Hà Tĩnh",
+
+  "VEHICLE_MONITOR": "Quản lý phương tiện"
 }

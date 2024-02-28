@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HeaderComponent } from './components/login-component/header/header.component';
+import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/login-component/footer/footer.component';
 import { CarouselComponent } from './components/login-component/carousel/carousel.component';
 import { HomeDropdownComponent } from './components/home-component/home-dropdown/home-dropdown.component';
@@ -29,7 +29,7 @@ import { ChangePasswordModalComponent } from './components/home-component/change
 import { ConfirmDialogComponent } from './components/home-component/confirm-dialog/confirm-dialog.component';
 import { MapComponent } from './components/vehicle-monitor/map/map.component';
 import { VehicleInformationComponent } from './components/vehicle-monitor/vehicle-information/vehicle-information.component';
-import { CommonHeaderComponent } from './components/common/common-header/common-header.component';
+
 import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
     VehicleMonitoringComponent,
     MapComponent,
     VehicleInformationComponent,
-    CommonHeaderComponent
+   
   ],
   imports: [
     BrowserModule,

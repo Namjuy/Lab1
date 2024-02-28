@@ -55,6 +55,11 @@ nav {
           width: 19px;
         }
       }
+      .navbar-right__logout{
+        width: max-content;
+        text-decoration: none;
+        cursor: pointer;
+      }
 
       .navbar-right__icon--language {
         color: yellow;
@@ -73,6 +78,13 @@ nav {
       }
     }
   }
+}
+
+.navbar-line{
+  width: 100%;
+  background-color:#1b75d0;
+  height: 2px;
+  margin-bottom: 5px;
 }
 
 /* ---------------------------Responsive------------------- */

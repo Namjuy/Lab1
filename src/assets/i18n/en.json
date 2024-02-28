@@ -8,6 +8,7 @@
   "ABOUT": "About US",
 
   "LOGIN": "Login",
+  "LOGOUT": "Logout",
   "USER": "Username",
   "PASSWORD": "Password",
   "FORGETPASS": "Forget Password",
@@ -34,7 +35,7 @@
   "LOCATION3": "No. B5-15, Alley 26, Nguyen Thai Hoc Street, Vinh City, Nghe An Province.",
   "LOCATION4": "Lot 1 Zone B2-19, Ecological Villa Area, Cultural Village of Countryside and Water Tourism Community, Hoa Quy Ward, Ngu Hanh Son District, Da Nang City.",
   "LOCATION5": "No. 9, Street 37, Vạn Phúc Urban Area, Hiệp Bình Phước Ward, Thu Duc City, Ho Chi Minh City.",
-  "LOCATION6": "No. 402, Tran Phu Street, Thach Trung Commune, Ha Tinh City, Ha Tinh Province."
+  "LOCATION6": "No. 402, Tran Phu Street, Thach Trung Commune, Ha Tinh City, Ha Tinh Province.",
   
-
+  "VEHICLE_MONITOR":"Vehicle monitor"
 }

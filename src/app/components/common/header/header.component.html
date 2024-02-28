@@ -24,7 +24,10 @@
   >
     <!-- ------------------Create menu items--------------------- -->
     <ul class="navbar-middle navbar-nav">
-      <li *ngFor="let menuItem of menuItems" class="nav-item">
+      <li
+        *ngFor="let menuItem of userId ? homeItem : menuItems"
+        class="nav-item"
+      >
         <a class="nav-link" target="_blank" [href]="menuItem.link">{{
           menuItem.title | translate
         }}</a>
@@ -33,7 +36,7 @@
 
     <ul class="navbar-right navbar-nav">
       <!-- -----------------Create phone contact item----------------- -->
-      <li class="navbar-right__phone nav-item d-inline-block">
+      <li *ngIf="!userId" class="navbar-right__phone nav-item d-inline-block">
         <a href="tel:19080000" class="nav-link">
           <i class="navbar-right__icon--phone bi bi-telephone-fill pe-2"></i
           >19080000</a
@@ -84,7 +87,11 @@
             </a>
           </div>
         </div>
+        <a *ngIf="userId" class="navbar-right__logout" (click)="logout()">{{
+          "LOGOUT" | translate
+        }}</a>
       </li>
     </ul>
   </div>
 </nav>
+<div *ngIf="userId" class="navbar-line"></div>
