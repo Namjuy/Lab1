@@ -11,11 +11,13 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 export class PaginationComponent implements OnInit {
   @Output() currentPage = new EventEmitter<number>();
   @Output() itemsPerPageNumber = new EventEmitter<number>();
-
-  currentPageIndex = 1;
-  totalPage: any;
   @Input() inputPaginationData: any;
 
+  //Initalzie page index and total page
+  currentPageIndex = 1;
+  totalPage: any;
+
+  //Initialize current page
   itemsPerPage = 10;
 
   ngOnInit() {

@@ -12,12 +12,14 @@ import { User } from 'src/app/models/user.model';
 @Injectable({
   providedIn: 'root',
 })
+////Name   Date       Comments
+////duypn  19/1/2024  create
 export class UserService {
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });
   // 10.1.21.114:1234
-  private userApi = 'https://10.1.21.125:12345/User';
+  private userApi = 'https://10.1.20.121:12345/User';
 
   constructor(private http: HttpClient) {}
 
@@ -34,16 +36,15 @@ export class UserService {
     gender?: number
   ) => Observable<User[]> = (input, type, startDate, endDate, gender) => {
     let url = `${this.userApi}/search?`;
-  
+
     if (input) url += `input=${encodeURIComponent(input)}&`;
     if (type) url += `type=${encodeURIComponent(type)}&`;
     if (startDate) url += `startDate=${encodeURIComponent(startDate)}&`;
     if (endDate) url += `endDate=${encodeURIComponent(endDate)}&`;
     if (gender !== undefined) url += `gender=${encodeURIComponent(gender)}&`;
-  
+
     return this.http.get<User[]>(url, { headers: this.headers });
   };
-  
 
   // Create a new user
   createUser: (newUser: any) => Observable<any> = (newUser) =>
@@ -69,9 +70,9 @@ export class UserService {
     );
   };
 
-  //Get username in list 
-  getUserName(userName:string , listUser:any[]){
-    return listUser.some(item => item.name === userName);
+  //Get username in list
+  getUserName(userName: string, listUser: any[]) {
+    return listUser.some((item) => item.name === userName);
   }
 
   // Change user password
@@ -100,15 +101,6 @@ export class UserService {
     if (!phoneNumberRegex.test(value)) return { invalidPhoneNumber: true };
 
     return null;
-  };
-
-  // Custom validator function for validating age
-  ageValidator: () => ValidatorFn = () => (control) => {
-    const birthDate = new Date(control.value);
-    const today = new Date();
-    const age = today.getFullYear() - birthDate.getFullYear();
-
-    return age <= 18 ? { invalidAge: true } : null;
   };
 
   // Helper method to format date strings

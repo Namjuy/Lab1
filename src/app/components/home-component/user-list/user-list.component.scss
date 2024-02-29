@@ -6,7 +6,7 @@
   .btn {
     font-size: 12px;
     font-family: RobotoBold, sans-serif;
-    &:nth-child(2){
+    &:nth-child(2) {
       margin-left: 10px;
     }
   }
@@ -38,6 +38,12 @@
         font-family: RobotoBold, sans-serif;
         border: 0.5px solid grey;
         vertical-align: middle;
+      }
+      th:nth-child(1) {
+        width: 35px;
+      }
+      th:nth-child(2) {
+        width: 30px;
       }
 
       //------- Adjust width for last 8 cells
@@ -133,7 +139,7 @@
 }
 
 @media screen and (max-width: 470px) {
-  .form-create{
+  .form-create {
     display: flex;
     margin-top: 50px;
     justify-content: space-between;

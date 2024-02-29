@@ -8,6 +8,9 @@ import { FormGroup } from '@angular/forms';
 @Injectable({
   providedIn: 'root',
 })
+
+////Name   Date       Comments
+////duypn  14/1/2024  create
 export class AuthService {
   // Define HttpHeaders with 'Content-Type' set to 'application/json'
   private headers = new HttpHeaders({
@@ -24,7 +27,7 @@ export class AuthService {
   // Method to handle user login
   login(username: string, password: string): Observable<any> {
     // Construct the login URL with provided username and password
-    const loginUrl = `https://10.1.21.125:12345/api/Authentication/login?username=${username}&password=${password}`;
+    const loginUrl = `https://10.1.20.121:12345/api/Authentication/login?username=${username}&password=${password}`;
 
     // Send a POST request to the login URL with the HttpHeaders
     return this.http.post<any>(loginUrl, { headers: this.headers });
@@ -36,6 +39,7 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
+  //Method to check authentication status
   checkAuth(token: string | null): void {
     if (token) {
       // Decode the token (you may need to use a library for this)
@@ -65,6 +69,7 @@ export class AuthService {
     }
   }
 
+  //Handel check the password and confirm password are same
   passwordMatchValidator(group: FormGroup): { [key: string]: any } | null {
     const newPassword = group.get('newPassword')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;

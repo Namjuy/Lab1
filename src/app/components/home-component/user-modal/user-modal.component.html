@@ -207,7 +207,7 @@
                 Cần xác nhận mật khẩu
                 <!-- Error message for empty password confirmation field -->
               </label>
-              <label *ngIf="createForm.hasError('mismatch') && i == 8">
+              <label *ngIf="createForm.hasError('mismatch') && i == 8 && isSubmitted">
                 Mật khẩu không trùng lặp
                 <!-- Error message for mismatched passwords -->
               </label>
