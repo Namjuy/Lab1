@@ -8,5 +8,4 @@ import { JwtService } from './services/jwt-service/jwt.service';
 })
 export class AppComponent {
   title = 'Lab1';
-
 }

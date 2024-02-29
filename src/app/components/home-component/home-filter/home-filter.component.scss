@@ -6,10 +6,9 @@
 .home-filter {
   justify-content: space-between;
 
-  .home-filter__left,
-  .home-filter__right {
+  .home-filter__left {
     display: flex;
-    width: 50%;
+    width: 30%;
     height: 30px;
   }
 
@@ -30,21 +29,32 @@
   }
 
   .home-filter__right {
-    justify-content: flex-end;
-    align-items: center;
-
     .home-filter__title {
+      text-align: center;
+      margin-bottom: 0;
+      font-size: 12px;
+    }
+    display: flex;
+    width: 70%;
+    height: 30px;
+  }
+  .home-filter__right {
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    width: 35%;
+    .btn-primary {
+      height: 30px;
       font-size: 12px;
       margin: auto 0;
-      margin-right: 30px;
       font-family: RobotoRegular, sans-serif;
     }
+  }
 
-    .home-filter__btn-search {
-      margin-left: 30px;
-      font-size: 12px;
-      height: 30px;
-    }
+  .btn-primary {
+    height: 30px;
+    font-size: 12px;
+    font-family: RobotoRegular, sans-serif;
   }
 }
 
@@ -95,7 +105,7 @@
         text-align: center;
         margin-right: 0;
       }
-      .home-filter__btn-search{
+      .home-filter__btn-search {
         margin-left: 0px;
       }
     }

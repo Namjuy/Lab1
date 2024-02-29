@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Toast } from 'bootstrap';
 import { User } from 'src/app/models/user.model';
 import { ToastService } from 'src/app/services/toast-service/toast.service';
@@ -14,6 +14,7 @@ import { DatePipe } from '@angular/common';
 ////Name   Date       Comments
 ////duypn  17/1/2024  create
 export class UserListComponent implements OnInit {
+
   // Flags and variables
   isCreateCheck: boolean = true;
   userList: User[] = [];
@@ -24,7 +25,6 @@ export class UserListComponent implements OnInit {
   // Filtering and pagination variables
   userFilter: any;
   itemsPerPage = 10;
-
   currentPage = 1;
   totalPage = 0;
   indexOfLastItem = 0;

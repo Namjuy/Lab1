@@ -10,7 +10,6 @@ import {
 import {
   AbstractControl,
   FormBuilder,
-  FormControl,
   FormGroup,
   ValidationErrors,
   ValidatorFn,
@@ -38,6 +37,7 @@ export class UserModalComponent implements OnInit {
 
   // Variable for displayed gender
   displayedGender = 'Nam';
+  formInteracted: boolean = false;
 
   password = '';
   confirmPassword = '';
@@ -164,7 +164,9 @@ export class UserModalComponent implements OnInit {
     private toastService: ToastService,
     private renderer: Renderer2,
     private elementRef: ElementRef
-  ) {}
+  ) {
+    this.formInteracted = false;
+  }
 
   // Getter function for form controls
   get f() {
@@ -176,7 +178,7 @@ export class UserModalComponent implements OnInit {
   ngOnInit(): void {
     // Initialize forms and set displayed gender
     this.createForm = this.initializeForm(true);
-    this.updateForm = this.initializeForm(false); // Set isCreateCheck to false for update form
+    this.updateForm = this.initializeForm(false);
     this.displayedGender = this.setDisplayedGender();
     this.listenForOutsideClick();
   }
@@ -238,13 +240,14 @@ export class UserModalComponent implements OnInit {
   // Function to handle form submission
   onSubmit = () => {
     this.isSubmitted = true;
-
     this.selectedUser ? this.updateUser() : this.createUser();
   };
 
   // Function to update user
   updateUser = () => {
+    
     const updateId = localStorage.getItem('userId');
+
     if (this.updateForm.valid) {
       const userId = this.selectedUser.userId;
       const updatedUserData = {
@@ -298,12 +301,9 @@ export class UserModalComponent implements OnInit {
           this.isSubmitted = false;
         },
         (error) => {
-          console.error('Error creating user:', error);
           this.toastService.showToastMessage('toast-createFailed');
         }
       );
-    } else {
-      console.log(this.createForm);
     }
   };
 
@@ -311,6 +311,7 @@ export class UserModalComponent implements OnInit {
   tooglePasswordVisible = () => {
     this.isShowPassword = !this.isShowPassword;
   };
+
   toggleConfirmPasswordVisible = () => {
     this.isShowConfirmPassword = !this.isShowConfirmPassword;
   };

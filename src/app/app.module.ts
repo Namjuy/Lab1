@@ -13,7 +13,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/login-component/footer/footer.component';
@@ -32,7 +31,6 @@ import { VehicleInformationComponent } from './components/vehicle-monitor/vehicl
 import {
   HashLocationStrategy,
   LocationStrategy,
-  
   CommonModule,
   DatePipe,
 } from '@angular/common';
@@ -71,9 +69,11 @@ const appRoutes: Routes = [
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
+
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -83,15 +83,16 @@ const appRoutes: Routes = [
     }),
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: true } 
     ),
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatDatepickerModule,
+
     MatNativeDateModule,
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy   },DatePipe
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })

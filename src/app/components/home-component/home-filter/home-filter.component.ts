@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-home-filter',
@@ -9,10 +9,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 ////Name   Date       Comments
 ////duypn  4/1/2024  create
 export class HomeFilterComponent implements OnInit {
-  
   // Output decorator to emit events to parent component
   @Output() handleSearch = new EventEmitter<any>();
-
+  @Output() handleCreate = new EventEmitter<any>();
+  @Output() handleDeleteUser = new EventEmitter<any>();
+  
   // Variables to hold filter values
   inputSearchValue: string = '';
   selectOptionValue = 'userName';
@@ -26,7 +27,6 @@ export class HomeFilterComponent implements OnInit {
   // Constructor for the component
   constructor() {}
 
-
   ngOnInit() {}
 
   // Event handler for the search button click
@@ -36,9 +36,17 @@ export class HomeFilterComponent implements OnInit {
     this.filterMap.set('selectOptionValue', this.selectOptionValue);
     this.filterMap.set('startDate', this.startDate);
     this.filterMap.set('endDate', this.endDate);
-    this.filterMap.set('selectedGender', (this.selectedGender));
+    this.filterMap.set('selectedGender', this.selectedGender);
 
     // Emit the filter map to the parent component
     this.handleSearch.emit(this.filterMap);
   };
+
+  onCreate = () => {
+    this.handleCreate.emit();
+  };
+
+  onDelete = () => {
+    this.handleDeleteUser.emit();
+  }
 }

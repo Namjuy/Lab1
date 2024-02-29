@@ -1,5 +1,5 @@
 // user-filter.component.ts
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2 } from '@angular/core';
 import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
@@ -42,7 +42,7 @@ export class UserFilterComponent implements OnInit {
     }
   }
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService,private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit(): void {}
 

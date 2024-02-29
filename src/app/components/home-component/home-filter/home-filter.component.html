@@ -3,10 +3,8 @@
 
 <!-- User filter section -->
 <div class="home-filter d-flex">
-
   <!-- Left side of the filter -->
   <div class="home-filter__left mb-3">
-
     <!-- Input for entering username -->
     <input
       type="text"
@@ -22,12 +20,13 @@
     <span class="input-group-text"><i class="bi bi-search"></i></span>
 
     <!-- Dropdown for selecting an option -->
-    <app-home-dropdown (selectOptionValue)="selectOptionValue = $event"></app-home-dropdown>
+    <app-home-dropdown
+      (selectOptionValue)="selectOptionValue = $event"
+    ></app-home-dropdown>
   </div>
 
   <!-- Right side of the filter -->
   <div class="home-filter__right">
-
     <!-- Title for the filter section -->
     <p class="home-filter__title">Tài khoản được cập nhật trong</p>
 
@@ -39,8 +38,31 @@
     ></app-user-filter>
 
     <!-- Button to trigger the search -->
-    <button (click)="onSearch()" type="button" class="home-filter__btn-search btn btn-primary btn-sm">
+    <button
+      (click)="onSearch()"
+      type="button"
+      class="home-filter__btn-search btn btn-primary btn-sm"
+    >
       <i class="bi bi-search"></i>Tìm kiếm
     </button>
   </div>
+  <button
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    (click)="onCreate()"
+  >
+    Tạo người dùng
+  </button>
+  <!-- <button
+  *ngIf="deleteUserList.length > 0"
+  data-bs-toggle="modal"
+  data-bs-target="#confirmDelete"
+  class="btn btn-primary"
+  type="button"
+  
+>
+  Xoá người dùng chỉ định
+</button> -->
+  
 </div>
